@@ -11,6 +11,6 @@
  * file per style scope.
  */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap';
+@import 'bootstrap-sprockets';
 @import "home_style.scss"
