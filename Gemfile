@@ -14,6 +14,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # Use bootstrap-sass
 gem 'bootstrap-sass', '~> 3.3.6'
+# Bootstrap twitter
+gem 'twitter-bootstrap-rails'
+# Device Bootstrap
+gem 'devise-bootstrap-views'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # Devise gem

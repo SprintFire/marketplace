@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
+
+  resources :shops
+  resources :products
+
   root 'pages#home'
   get "dashboard" => "pages#dashboard"
   get "create_shop" => "pages#create_shop"

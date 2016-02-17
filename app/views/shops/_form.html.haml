@@ -1,0 +1,13 @@
+.container-fluid
+	.row
+		= form_for(@shop) do |f|
+			= f.label :name
+			= f.text_field :name
+			%br/
+			= f.label :shop_Name
+			= f.text_field :slug
+			%br/
+			= f.label :description
+			= f.text_area :description
+			%br/
+			= f.submit(class: "btn btn-primary")
