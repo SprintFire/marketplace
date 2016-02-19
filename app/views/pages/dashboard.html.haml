@@ -2,9 +2,8 @@
 
 %p Your shops
 
-= @shop.each do |shop|
+- @shops.each do |shop|
   %div
     = link_to shop.name, shop_path(shop)
 
-
-#{link_to "Create your Shop", '/shops/new', class: "btn btn-default btn-lg"}
+= link_to 'Create your Shop', new_shop_path, class: 'btn btn-default btn-lg'

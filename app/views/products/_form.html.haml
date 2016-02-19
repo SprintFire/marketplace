@@ -1,6 +1,6 @@
 .container-fluid
 	.row
-		= form_for(new_shop_product_path) do |f|
+		= form_for([@shop, @product]) do |f|
 			= f.label :name_Of_The_Product
 			= f.text_field :name
 			%br/

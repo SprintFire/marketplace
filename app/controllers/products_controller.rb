@@ -1,50 +1,56 @@
 class ProductsController < ApplicationController
-	before_action :set_shop, only: [:edit, :update, :show, :destroy]
-  	before_action :require_same_user, only: [:edit, :update, :destroy]
+	before_action :authenticate_user!, except: [:index, :show]
+	before_action :set_shop
+	before_action :set_product, only: [:edit, :update, :destroy]
 
-  	def index
-    	@products = Product.all
-  	end
+	def index
+		@products = Product.all
+	end
+
+	def show
+		@product = Product.find(params[:id])
+	end
 
 	def new
-		@product = current_user.shops.find(params[:shop_id]).products.new
+		@product = Product.new
 	end
 
 	def create
-    	@product = current_user.shops.find(params[:shop_id]).products.new(product_params)
+		@product = current_user.shops.find(params[:shop_id]).products.new(product_params)
 		if @product.save
 			flash[:success] = "Products was successfully saved!"
-			redirect_to product_path(@product)
+			redirect_to shop_product_path(@shop, @product)
 		else
 			render 'new'
 		end
- 	end
+	end
 
- 	def edit
-  	end
-
-	def show
+	def edit
 	end
 
 	def update
-    if @product.update(product_params)
+		if @product.update(product_params)
 			flash[:success] = "product was successfully updated"
-			redirect_to product_path(@product)
+			redirect_to shop_product_path(@shop, @product)
 		else
 			render 'edit'
 		end
- 	end
-
- 	def destroy
- 	end
-
-  	private
-
-	def set_product
-	    @product = Product.find(params[:id])
 	end
 
-	def product_params
-	    params.require(:product).permit(:name, :product, :description)
+	def destroy
 	end
+
+	private
+
+		def set_shop
+			@shop = Shop.find(params[:shop_id])
+		end
+
+		def set_product
+			@product = current_user.shops.find(params[:shop_id]).products.find(params[:id])
+		end
+
+		def product_params
+				params.require(:product).permit(:name, :product, :description)
+		end
 end
