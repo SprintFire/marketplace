@@ -13,6 +13,8 @@ gem 'font-awesome-rails'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'devise','~>4.0.0.rc1'
+gem 'devise-bootstrap-views'
+
 gem "haml-rails", "~> 0.9"
 gem 'jquery-rails'
 gem 'turbolinks'

@@ -1,0 +1,10 @@
+- if !flash.empty?
+  #flash_banner.alert.alert-dismissible.auto-dismiss{role: "alert"}
+    .container
+      .row
+        .col-md-12
+          %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+            %span{"aria-hidden" => "true"} &times;
+          - flash.each do |key, value|
+            %span{class: "alert" + key}
+              = value
