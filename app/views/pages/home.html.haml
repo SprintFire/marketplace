@@ -1,16 +1,7 @@
-.container-fluid#home_body
-	.col-md-8
-		%h1 MarketPlace App
-		%p All in One.
-		%p.para Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+.container
+	.col-md-8.col-md-offset-2.text-xs-center
+		%h1 Lorem Ipsum is simply dummy text.
+		%h5 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
 
-	.col-md-4
-		.row
-			/ %button.alert.bt_one Register Now
-			#{link_to "Sign up", new_user_registration_path, class: "btn btn-default btn-lg"}
-		.row
-			%p or
-		.row
-			/ %button.alert.bt_one Sign in
-			#{link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg"}	
-
+		= link_to 'Explore', shops_path, class: 'btn btn-primary btn-lg'
+		= link_to 'Create a Shop', new_shop_path, class: 'btn btn-primary btn-lg'

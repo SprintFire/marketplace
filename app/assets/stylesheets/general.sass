@@ -1,2 +1,18 @@
 #main
   margin-top: 50px
+
+body.pages.home
+  @include background-cover('beach.jpeg')
+
+  #main
+    @include background-opacity($black, 0.5)
+    color: white
+    padding: 200px 0
+    margin-top: 0px
+    margin-bottom: -50px
+
+    h1
+      margin-bottom: 30px
+
+    .btn
+      margin: 30px 10px
