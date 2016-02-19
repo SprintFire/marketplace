@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'registrations' }
+
+  devise_for :users, path: "", path_names: { 
+    sign_in: 'login', 
+    sign_out: 'logout', 
+    password: 'reset_password', 
+    confirmation: 'verification', 
+    unlock: 'unlock', 
+    sign_up: 'join' 
+  }
+
+  root 'pages#home'
 
   resources :shops do
     resources :products
   end
 
-  root 'pages#home'
   get "dashboard" => "pages#dashboard"
 
 
