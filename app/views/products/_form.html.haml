@@ -4,6 +4,12 @@
 			= f.label :name_Of_The_Product
 			= f.text_field :name
 			%br/
+			= f.label :price
+			= f.number_field :price, :class => 'text_field', :step => 'any'
+			%br/
+			= f.label :quantity
+			= f.number_field :quantity, :value => 1, :min => 0
+			%br/
 			= f.label :description
 			= f.text_area :description
 			%br/
