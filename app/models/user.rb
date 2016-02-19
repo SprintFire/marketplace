@@ -1,3 +1,6 @@
 class User < ActiveRecord::Base
-	has_many :shops
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
+  has_many :shops
 end
