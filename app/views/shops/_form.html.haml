@@ -10,4 +10,19 @@
 			= f.label :description
 			= f.text_area :description
 			%br/
+			= f.label :facebook_url
+			= f.url_field :facebook_url
+			%br/
+			= f.label :twitter_username
+			= f.url_field :twitter_username
+			%br/
+			= f.label :instagram_username
+			= f.url_field :instagram_username
+			%br/
+			= f.label :contact_phone
+			= f.telephone_field :contact_phone
+			%br/
+			= f.label :email_id
+			= f.email_field :email_id
+			%br/
 			= f.submit(class: "btn btn-primary")
