@@ -2,7 +2,7 @@
 %html.no-js{ lang: 'eng' }
   %head
     = render 'shared/head'
-  %body
+  %body{class: "#{params[:controller]} #{params[:action]}"}
 
     = render 'shared/flash_banner'
     = render 'shared/header'
