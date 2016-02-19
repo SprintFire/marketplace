@@ -1,6 +1,8 @@
 %h1= @shop.name
 
-%p= 'by ' + @shop.user.first_name + " " + @shop.user.last_name
+/ %p= 'by ' + @shop.user.first_name + " " + @shop.user.last_name
 
-%p= @shop.name
+%p= @shop.slug
 %p= @shop.description
+
+#{link_to "Create Products", '/products/new', class: "btn btn-default btn-lg"}

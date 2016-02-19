@@ -1,6 +1,10 @@
 %h1 Welcome to your Dashboard!
 
-= @shop[0].name
+%p Your shops
+
+= @shop.each do |shop|
+  %div
+    = link_to shop.name, shop_path(shop)
+
 
 #{link_to "Create your Shop", '/shops/new', class: "btn btn-default btn-lg"}
-#{link_to "Create your Products", '/products/new', class: "btn btn-default btn-lg"}

@@ -2,7 +2,6 @@ class ShopsController < ApplicationController
 	before_action :set_shop, only: [:edit, :update, :show, :destroy]
   	before_action :require_same_user, only: [:edit, :update, :destroy]
 
-
 	def new
 		@shop = Shop.new
 	end
@@ -11,7 +10,7 @@ class ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
 		@shop.user = current_user
 		if @shop.save
-			flash[:success] = "Article was successfully created"
+			flash[:success] = "Your shop was successfully created"
 			redirect_to shop_path(@shop)
 		else
 			render 'new'
@@ -26,7 +25,7 @@ class ShopsController < ApplicationController
 
  	def update
     if @shop.update(shop_params)
-			flash[:success] = "Company was successfully updated"
+			flash[:success] = "Shop was successfully updated"
 			redirect_to shop_path(@shop)
 		else
 			render 'edit'
