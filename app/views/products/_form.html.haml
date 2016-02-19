@@ -1,10 +1,10 @@
 .container-fluid
 	.row
-		= form_for(@product) do |f|
+		= form_for(new_shop_product_path) do |f|
 			= f.label :name_Of_The_Product
 			= f.text_field :name
 			%br/
 			= f.label :description
 			= f.text_area :description
 			%br/
-			= f.submit(class: "btn btn-primary")
+			= f.submit "Create", class: "btn btn-primary"

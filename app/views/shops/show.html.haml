@@ -5,4 +5,4 @@
 %p= @shop.slug
 %p= @shop.description
 
-#{link_to "Create Products", '/products/new', class: "btn btn-default btn-lg"}
+#{link_to "Create Products", new_shop_product_path(@shop), class: "btn btn-default btn-lg"}

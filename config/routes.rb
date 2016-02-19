@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
 
-  resources :shops
-  resources :products
+  resources :shops do
+    resources :products
+  end
 
   root 'pages#home'
   get "dashboard" => "pages#dashboard"
-  get "create_shop" => "pages#create_shop"
-  get "create_product" => "pages#create_product"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

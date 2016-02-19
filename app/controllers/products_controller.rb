@@ -7,12 +7,11 @@ class ProductsController < ApplicationController
   	end
 
 	def new
-		@product = Product.new
+		@product = current_user.shops.find(params[:shop_id]).products.new
 	end
 
 	def create
-    @product = Product.new(product_params)
-		@product.user = current_user
+    	@product = current_user.shops.find(params[:shop_id]).products.new(product_params)
 		if @product.save
 			flash[:success] = "Products was successfully saved!"
 			redirect_to product_path(@product)
