@@ -1,0 +1,13 @@
+#top
+  %nav.navbar.navbar-static-top
+    %button.navbar-toggler.hidden-sm-up{"aria-controls" => "navbar-header", "data-target" => "#navbar-header", "data-toggle" => "collapse", :type => "button"}
+      ☰
+    #navbar-header.collapse.navbar-toggleable-xs
+      =link_to 'Pix', root_path, class: 'navbar-brand'
+      %ul.nav.navbar-nav
+        %li.nav-item.active
+          =link_to 'Home', root_path, class: 'nav-link'
+        %li.nav-item.pull-xs-right
+          =link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'
+        %li.nav-item.pull-xs-right
+          =link_to 'Join', new_user_session_path, class: 'nav-link'
