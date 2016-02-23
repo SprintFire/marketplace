@@ -13,12 +13,12 @@
         .col-sm-6
           .form-group.form-group-default
             = f.label :first_name
-            = f.text_field :first_name, autofocus: true, required: true, class: "form-control", placeholder: "First name"
+            = f.text_field :first_name, autofocus: true, required: false, class: "form-control", placeholder: "First name"
 
         .col-sm-6
           .form-group.form-group-default
             = f.label :last_name
-            = f.text_field :last_name, required: true, class: "form-control", placeholder: "Last name"
+            = f.text_field :last_name, required: false, class: "form-control", placeholder: "Last name"
 
       .row
         .col-sm-12
@@ -32,11 +32,11 @@
             = f.label :password, "New Password"
             - if @minimum_password_length
               %small (#{@minimum_password_length} characters minimum)
-            = f.password_field :password, required: true, autocomplete: "off", class: "form-control", placeholder: "Password"
+            = f.password_field :password, required: false, autocomplete: "off", class: "form-control", placeholder: "Password"
         .col-sm-6
           .form-group.form-group-default
             = f.label :password_confirmation, "Confirm New Password"
-            = f.password_field :password_confirmation, required: true, autocomplete: "off", class: "form-control", placeholder: "Password confirmation"
+            = f.password_field :password_confirmation, required: false, autocomplete: "off", class: "form-control", placeholder: "Password confirmation"
         .col-sm-12
           .form-group.form-group-default
             = f.label :current_password
