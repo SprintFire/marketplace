@@ -27,13 +27,15 @@
             = f.email_field :email, required: true, class: "form-control", placeholder: "e.g. me@example.com"
 
       .row
-        .col-sm-6
+        .col-sm-12
           .form-group.form-group-default
             = f.label :password, "New Password"
+            %i
+              (#{t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it")})
             - if @minimum_password_length
               %small (#{@minimum_password_length} characters minimum)
             = f.password_field :password, required: false, autocomplete: "off", class: "form-control", placeholder: "Password"
-        .col-sm-6
+        .col-sm-12
           .form-group.form-group-default
             = f.label :password_confirmation, "Confirm New Password"
             = f.password_field :password_confirmation, required: false, autocomplete: "off", class: "form-control", placeholder: "Password confirmation"
