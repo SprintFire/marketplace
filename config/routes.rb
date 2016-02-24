@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  devise_for :users, path: "", path_names: { 
-    sign_in: 'login', 
-    sign_out: 'logout', 
-    password: 'reset_password', 
-    confirmation: 'verification', 
-    unlock: 'unlock', 
-    sign_up: 'join' 
+  devise_for :users, path: "", path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    password: 'reset_password',
+    confirmation: 'verification',
+    unlock: 'unlock',
+    sign_up: 'join',
+    edit: 'profile'
   }
 
   root 'pages#home'
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   end
 
   get "dashboard" => "pages#dashboard"
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
