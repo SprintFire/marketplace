@@ -29,7 +29,7 @@ class ShopsController < ApplicationController
 
  	def update
     if @shop.update(shop_params)
-			flash[:success] = "Shop was successfully updated."
+			flash[:success] = "Your shop was successfully updated."
 			redirect_to shop_path(@shop)
 		else
 			render 'edit'
@@ -37,6 +37,10 @@ class ShopsController < ApplicationController
  	end
 
  	def destroy
+		@shop = Shop.find(params[:id])
+		@shop.destroy
+		flash[:info] = "Your shop was successfully deleted."
+		redirect_to dashboard_path
  	end
 
   private
