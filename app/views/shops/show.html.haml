@@ -1,8 +1,12 @@
-%h1= @shop.name
+.container
+  .row
+    %h1= @shop.name
 
-/ %p= 'by ' + @shop.user.first_name + " " + @shop.user.last_name
+    / %p= 'by ' + @shop.user.first_name + " " + @shop.user.last_name
 
-%p= @shop.slug
-%p= @shop.description
-
-#{link_to "Create Products", new_shop_product_path(@shop), class: "btn btn-default btn-lg"}
+    %p= @shop.slug
+    %p= @shop.description
+  .div
+    .row
+      #{link_to "Create Products", new_shop_product_path(@shop), class: "btn btn-default btn-lg"}
+      #{link_to "Delete Shop", shop_path(@shop), method: "delete", class: "btn btn-default btn-lg"}
