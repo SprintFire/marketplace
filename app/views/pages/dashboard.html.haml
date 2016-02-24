@@ -8,9 +8,10 @@
   %div
     %h4 SHOP
     - @shops.each do |shop|
-
       %h5
         = link_to shop.name, shop_path(shop)
+        = link_to "Edit", edit_shop_path(shop)
+        = link_to "Delete", shop_path(shop), method: :delete
       - if shop.products.empty?
         %h6 No product in this shop.
         = link_to 'Create product in this shop', new_shop_product_path(shop)
