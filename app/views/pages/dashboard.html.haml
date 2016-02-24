@@ -17,10 +17,10 @@
       - else
         %div
           %h6 PRODUCTS
-          - shop.products.each do |pro|
+          - shop.products.each do |product|
             %div
-              = link_to pro.name, shop_product_path(shop, pro)
-              = link_to "Edit", edit_shop_product_path(shop, pro)
-              = link_to "Delete", shop_product_path(shop, pro), method: :delete
+              = link_to product.name, shop_product_path(shop, product)
+              = link_to "Edit", edit_shop_product_path(shop, product)
+              = link_to "Delete", shop_product_path(shop, product), method: :delete
 
 = link_to 'Create your Shop', new_shop_path, class: 'btn btn-default btn-lg'
