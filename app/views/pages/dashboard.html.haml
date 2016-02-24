@@ -1,9 +1,26 @@
-%h1 Welcome to your Dashboard!
+%h1 Dashboard
 
-%p Your shops
+%h3 Your Shops and Products
 
-- @shops.each do |shop|
+- if @shops.empty?
+  %h6 There is no shop.
+- else
   %div
-    = link_to shop.name, shop_path(shop)
+    %h4 SHOP
+    - @shops.each do |shop|
+
+      %h5
+        = link_to shop.name, shop_path(shop)
+      - if shop.products.empty?
+        %h6 No product in this shop.
+        = link_to 'Create product in this shop', new_shop_product_path(shop)
+      - else
+        %div
+          %h6 PRODUCTS
+          - shop.products.each do |product|
+            %div
+              = link_to product.name, shop_product_path(shop, product)
+              = link_to "Edit", edit_shop_product_path(shop, product)
+              = link_to "Delete", shop_product_path(shop, product), method: :delete
 
 = link_to 'Create your Shop', new_shop_path, class: 'btn btn-default btn-lg'
