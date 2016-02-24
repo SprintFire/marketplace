@@ -37,7 +37,7 @@ class ShopsController < ApplicationController
  	end
 
  	def destroy
-		@shop = Shop.find(params[:id])
+		@shop = current_user.shops.find(params[:id])
 		@shop.destroy
 		flash[:info] = "Your shop was successfully deleted."
 		redirect_to dashboard_path
