@@ -38,6 +38,9 @@ class ProductsController < ApplicationController
 	end
 
 	def destroy
+		@product.destroy
+		flash[:success] = "Product was successfully deleted."
+		redirect_to dashboard_path
 	end
 
 	private
