@@ -12,6 +12,7 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require locationpicker.jquery
 //= require bootstrap
 //= require turbolinks
 //= require_tree .

@@ -25,4 +25,19 @@
 			= f.label :email_id
 			= f.email_field :email_id
 			%br/
+			Location:
+			%input#us2-address{:style => "width: 200px", :type => "text"}/
+			#us2{:style => "width: 500px; height: 400px;"}
+			:javascript
+				$('#us2').locationpicker({
+					location: {latitude: 53.348864, longitude: -6.2502467},
+					radius: 0,
+					inputBinding: {
+						latitudeInput: $('#us2-lat'),
+						longitudeInput: $('#us2-lon'),
+						radiusInput: $('#us2-radius'),
+						locationNameInput: $('#us2-address')
+					}
+				});
+			%br/
 			= f.submit(class: "btn btn-primary")
