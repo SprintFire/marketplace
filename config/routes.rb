@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     password: 'reset_password',
     confirmation: 'verification',
     unlock: 'unlock',
-    sign_up: 'join'
-  }
+    sign_up: 'join'},
+    :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
 
   root 'pages#home'
 

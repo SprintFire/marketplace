@@ -15,6 +15,8 @@ gem 'font-awesome-rails'
 gem 'devise','~>4.0.0.rc1'
 gem 'devise-bootstrap-views'
 
+gem 'omniauth-facebook'
+
 gem "haml-rails", "~> 0.9"
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -42,5 +44,3 @@ group :development, :test do
 end
 
 gem 'rails_12factor', group: :production
-
-
