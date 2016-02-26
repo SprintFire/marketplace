@@ -26,6 +26,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
+    flash[:error] = 'Oops! Looks like something went wrong... :('
     redirect_to root_path
   end
 end
