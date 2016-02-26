@@ -29,6 +29,10 @@ gem 'figaro'
 
 gem 'web-console', '~> 2.0', group: :development
 
+gem 'carrierwave'
+gem "mini_magick"
+gem 'rmagick', '2.13.2'
+
 group :development, :test do
   gem 'byebug'
   gem 'spring'
@@ -42,5 +46,3 @@ group :development, :test do
 end
 
 gem 'rails_12factor', group: :production
-
-
