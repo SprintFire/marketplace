@@ -18,6 +18,8 @@ gem 'devise-bootstrap-views'
 gem "haml-rails", "~> 0.9"
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
+
 
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -42,5 +44,3 @@ group :development, :test do
 end
 
 gem 'rails_12factor', group: :production
-
-
