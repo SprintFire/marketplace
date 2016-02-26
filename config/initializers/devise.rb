@@ -23,7 +23,7 @@ Devise.setup do |config|
   # ==> Facebook Authentication
   config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"]
   config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"],{
-    :scope => "email,profile",:access_type => "online"
+    :scope => "email,profile",:access_type => "offline", :approval_prompt => ""
   }
 
   # ==> ORM configuration
