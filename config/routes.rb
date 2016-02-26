@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   :controllers => {
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
-  
+
+  get "account", to: 'users#edit', as: :account
+  patch "account", to: 'users#update'
+
   root 'pages#home'
 
   resources :shops do

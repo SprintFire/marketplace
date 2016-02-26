@@ -1,0 +1,22 @@
+.col-md-6
+  .card
+    .card-header About You
+    .card-block
+      = form_for @user, url: account_path, html: {:autocomplete => "off", :role => "form"} do |f|
+        = render "shared/form_errors", f: @user
+        .row
+          .col-sm-6
+            .form-group.form-group-default
+              = f.label :first_name
+              = f.text_field :first_name, autofocus: true, required: false, class: "form-control", placeholder: "First name"
+
+          .col-sm-6
+            .form-group.form-group-default
+              = f.label :last_name
+              = f.text_field :last_name, required: false, class: "form-control", placeholder: "Last name"
+
+        .row
+          .col-md-1.text-xs-right
+            = f.submit "Update", class: "btn btn-primary btn-cons m-t-10"
+.col-md-6
+  = render "users/edit_login"
