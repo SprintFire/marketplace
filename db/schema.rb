@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219190136) do
+ActiveRecord::Schema.define(version: 20160226103946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,8 +38,11 @@ ActiveRecord::Schema.define(version: 20160219190136) do
     t.string   "instagram_username"
     t.decimal  "contact_phone"
     t.string   "email_id"
+    t.decimal  "longitude"
+    t.decimal  "latitude"
   end
 
+  add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree
   add_index "shops", ["slug"], name: "index_shops_on_slug", using: :btree
   add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
 
