@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
-         :omniauthable, :omniauth_providers => [:facebook,:google_oauth2]
+         :omniauthable, :omniauth_providers => [:google_oauth2]
   has_many :shops
 
   def self.from_omniauth(auth)
