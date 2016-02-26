@@ -6,9 +6,11 @@ Rails.application.routes.draw do
     password: 'reset_password',
     confirmation: 'verification',
     unlock: 'unlock',
-    sign_up: 'join',
-    edit: 'profile'
+    sign_up: 'join'
   }
+
+  get "account", to: 'users#edit', as: :account
+  patch "account", to: 'users#update'
 
   root 'pages#home'
 

@@ -3,4 +3,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   has_many :shops
+
+  validates :first_name, length: {minimum: 3, maximum: 15}
 end
