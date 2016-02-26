@@ -7,8 +7,11 @@ Rails.application.routes.draw do
     confirmation: 'verification',
     unlock: 'unlock',
     sign_up: 'join'
+  },
+  :controllers => {
+    :omniauth_callbacks => "users/omniauth_callbacks"
   }
-
+  
   root 'pages#home'
 
   resources :shops do
