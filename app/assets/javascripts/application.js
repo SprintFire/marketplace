@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require locationpicker.jquery
+//= require map
 //= require bootstrap
-//= require turbolinks
+//= require jquery.turbolinks
 //= require_tree .

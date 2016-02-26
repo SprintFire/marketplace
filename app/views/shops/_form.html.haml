@@ -28,20 +28,7 @@
 			Location:
 			%input#address{:style => "width: 200px", :type => "text"}/
 			#map{:style => "width: 500px; height: 400px;"}
-			= f.hidden_field :latitude
-			= f.hidden_field :longitude
-			:javascript
-				var lat = parseFloat($('#shop_latitude').val())
-				var lon = parseFloat($('#shop_longitude').val())
-				$('#map').locationpicker({
-					location: {latitude: lat || 53.348864, longitude: lon || -6.2502467},
-					radius: 0,
-					enableAutocomplete: true,
-					inputBinding: {
-						latitudeInput: $('#shop_latitude'),
-						longitudeInput: $('#shop_longitude'),
-						locationNameInput: $('#address')
-					}
-				});
+			= f.hidden_field :latitude, id: 'latitude'
+			= f.hidden_field :longitude, id: 'longitude'
 			%br/
 			= f.submit(class: "btn btn-primary")
