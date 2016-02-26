@@ -26,15 +26,21 @@
 			= f.email_field :email_id
 			%br/
 			Location:
-			%input#us2-address{:style => "width: 200px", :type => "text"}/
-			#us2{:style => "width: 500px; height: 400px;"}
+			%input#address{:style => "width: 200px", :type => "text"}/
+			#map{:style => "width: 500px; height: 400px;"}
+			= f.hidden_field :latitude
+			= f.hidden_field :longitude
 			:javascript
-				$('#us2').locationpicker({
-					location: {latitude: 53.348864, longitude: -6.2502467},
+				var lat = parseFloat($('#shop_latitude').val())
+				var lon = parseFloat($('#shop_longitude').val())
+				$('#map').locationpicker({
+					location: {latitude: lat || 53.348864, longitude: lon || -6.2502467},
 					radius: 0,
 					enableAutocomplete: true,
 					inputBinding: {
-						locationNameInput: $('#us2-address')
+						latitudeInput: $('#shop_latitude'),
+						longitudeInput: $('#shop_longitude'),
+						locationNameInput: $('#address')
 					}
 				});
 			%br/
