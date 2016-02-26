@@ -20,8 +20,11 @@ Devise.setup do |config|
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
 
-  # ==> Mailer Configuration
+  # ==> Facebook Authentication
   config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"]
+  config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"],{
+    :scope => "email,profile",:access_type => "online"
+  }
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
