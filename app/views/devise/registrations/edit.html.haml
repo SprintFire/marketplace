@@ -1,31 +1,50 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+-# -# %h3 Cancel my account
+-# -# %p
+-# -#   Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+-# -# = link_to "Back", :back
+-# .card
+-#   .card-header Your Profile
+-#
+-#   .card-block
+-#     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+-#       = devise_error_messages!
+-#
+-#       .row
+-#         .col-sm-6
+-#           .form-group.form-group-default
+-#             = f.label :first_name
+-#             = f.text_field :first_name, autofocus: true, required: false, class: "form-control", placeholder: "First name"
+-#
+-#         .col-sm-6
+-#           .form-group.form-group-default
+-#             = f.label :last_name
+-#             = f.text_field :last_name, required: false, class: "form-control", placeholder: "Last name"
+-#
+-#       .row
+-#         .col-sm-12
+-#           .form-group.form-group-default
+-#             = f.label :email
+-#             = f.email_field :email, required: true, class: "form-control", placeholder: "e.g. me@example.com"
+-#
+-#       .row
+-#         .col-sm-12
+-#           .form-group.form-group-default
+-#             = f.label :password, "New Password"
+-#             %i
+-#               (#{t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it")})
+-#             - if @minimum_password_length
+-#               %small (#{@minimum_password_length} characters minimum)
+-#             = f.password_field :password, required: false, autocomplete: "off", class: "form-control", placeholder: "Password"
+-#         .col-sm-12
+-#           .form-group.form-group-default
+-#             = f.label :password_confirmation, "Confirm New Password"
+-#             = f.password_field :password_confirmation, required: false, autocomplete: "off", class: "form-control", placeholder: "Password confirmation"
+-#         .col-sm-12
+-#           .form-group.form-group-default
+-#             = f.label :current_password
+-#             = f.password_field :current_password, required: false, autocomplete: "off", class: "form-control", placeholder: "Current password"
+-#         .col-md-1.text-xs-right
+-#           = f.submit "Update", class: "btn btn-primary btn-cons m-t-10"
+
+
+= render "users/edit_login"
