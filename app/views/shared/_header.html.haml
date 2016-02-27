@@ -21,7 +21,10 @@
           %li.nav-item.pull-xs-left
             %form.navbar-form.navbar-left{:role => "search"}
               .form-group
-                %input.form-control{:placeholder => "Search shops", :type => "text"}/
+                %input.form-control#search_location{:placeholder => "Search location", :type => "text", :style => "width: 300px"}/
+                #locationSearch{:type => "hidden"}
+                %input#search_latitude{:type => "hidden"}/
+                %input#search_longitude{:type => "hidden"}/
               %button.btn.btn-default{:type => "submit"} Search
 #heading
   .container
