@@ -1,7 +1,11 @@
-.container-fluid
+.container-fluid.shop-form
 	.row
-		.card.card-block.col-md-8.col-md-offset-2
+		.col-md-10.col-md-offset-1
+			- if @shop.profile_image
+				= image_tag(@shop.profile_image_url, class: "img-thumbnail img-responsive shop-profile")
+		.card.card-block.col-md-10.col-md-offset-1
 			%h3.card-title= form_header
+			%hr
 			= form_for @shop, :html => {class: ''} do |f|
 				%fieldset.form-group
 					= f.label :name
@@ -32,11 +36,20 @@
 						%label.file
 							= f.file_field :profile_image
 							%span.file-custom
-							-# = image_tag(@shop.profile_image_url) if @shop.profile_image?
+
 					%fieldset.form-group.col-md-6
 						= f.label :header_image
 						%label.file
 							= f.file_field :header_image
 							%span.file-custom
 						-# = image_tag(@shop.header_image_url) if @shop.header_image?
+				%fieldset.form-group
+					Location
+					%input.form-control#address{:type => "text", autocomplete: "off"}/
+				.row
+					.col-md-12#map{style: "height: 500px;"}
+					= f.hidden_field :latitude, id: 'latitude'
+					= f.hidden_field :longitude, id: 'longitude'
+				%br/
+				%hr
 				= f.submit(class: "btn btn-primary")
