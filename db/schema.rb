@@ -40,8 +40,11 @@ ActiveRecord::Schema.define(version: 20160226142344) do
     t.string   "email_id"
     t.string   "profile_image"
     t.string   "header_image"
+    t.decimal  "longitude"
+    t.decimal  "latitude"
   end
 
+  add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree
   add_index "shops", ["slug"], name: "index_shops_on_slug", using: :btree
   add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
 

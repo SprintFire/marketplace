@@ -55,3 +55,7 @@ bower.json
 
 # Ignore application configuration
 /config/application.yml
+
+
+# Ignore images from development
+/public/uploads/*
