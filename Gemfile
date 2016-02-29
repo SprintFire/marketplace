@@ -33,7 +33,7 @@ gem 'web-console', '~> 2.0', group: :development
 
 gem 'carrierwave'
 gem "mini_magick"
-gem 'rmagick', '2.13.2'
+gem 'fog'
 
 group :development, :test do
   gem 'byebug'
