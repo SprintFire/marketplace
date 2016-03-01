@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301131158) do
+ActiveRecord::Schema.define(version: 20160301173254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "products", force: :cascade do |t|
+  create_table "items", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.decimal  "price"
@@ -26,7 +26,23 @@ ActiveRecord::Schema.define(version: 20160301131158) do
     t.integer  "quantity"
   end
 
-  create_table "shops", force: :cascade do |t|
+  create_table "purchases", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "item_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "item_id",     null: false
+    t.integer  "star_rating"
+    t.text     "comment"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "suppliers", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.string   "slug"
@@ -42,9 +58,9 @@ ActiveRecord::Schema.define(version: 20160301131158) do
     t.decimal  "latitude"
   end
 
-  add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree
-  add_index "shops", ["slug"], name: "index_shops_on_slug", using: :btree
-  add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
+  add_index "suppliers", ["longitude", "latitude"], name: "index_suppliers_on_longitude_and_latitude", using: :btree
+  add_index "suppliers", ["slug"], name: "index_suppliers_on_slug", using: :btree
+  add_index "suppliers", ["user_id"], name: "index_suppliers_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"

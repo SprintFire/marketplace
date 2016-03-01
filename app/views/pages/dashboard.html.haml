@@ -1,13 +1,13 @@
 %h1 Dashboard
 
-%h3 Your Shops and Products
+%h3 Your Suppliers and Products
 
-- if @shops.empty?
-  %h6 There is no shop.
+- if @suppliers.empty?
+  %h6 There is no supplier.
 - else
   %div
     %h4 SHOP
-    - @shops.each do |shop|
+    - @suppliers.each do |supplier|
       %h5
         = link_to shop.name, shop_path(shop)
         = link_to "Edit", edit_shop_path(shop)
@@ -18,7 +18,7 @@
       - else
         %div
           %h6 PRODUCTS
-          - shop.products.each do |product|
+          - shop.products.each do |item|
             %div
               = link_to product.name, shop_product_path(shop, product)
               = link_to "Edit", edit_shop_product_path(shop, product)

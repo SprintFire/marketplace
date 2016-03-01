@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-  	@shops = current_user.shops
+  	@suppliers = current_user.suppliers
   end
 
 end
