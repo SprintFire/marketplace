@@ -1,27 +1,35 @@
 %h1 Dashboard
 
-%h3 Your Shops and Products
+%h3
 
-- if @shops.empty?
-  %h6 There is no shop.
-- else
-  %div
-    %h4 SHOP
-    - @shops.each do |shop|
-      %h5
-        = link_to shop.name, shop_path(shop)
-        = link_to "Edit", edit_shop_path(shop)
-        = link_to "Delete", shop_path(shop), method: :delete
-      - if shop.products.empty?
-        %h6 No product in this shop.
-        = link_to 'Create product in this shop', new_shop_product_path(shop)
-      - else
-        %div
-          %h6 PRODUCTS
-          - shop.products.each do |product|
-            %div
-              = link_to product.name, shop_product_path(shop, product)
-              = link_to "Edit", edit_shop_product_path(shop, product)
-              = link_to "Delete", shop_product_path(shop, product), method: :delete
-
-= link_to 'Create your Shop', new_shop_path, class: 'btn btn-default btn-lg'
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title Your Shops and Products
+  .panel-body
+    - if @shops.empty?
+      %h6 There is no shop.
+    - else
+      %div.list-group
+        - @shops.each do |shop|
+          %li.list-group-item
+            %h4
+              = link_to shop.name, shop_path(shop)
+            = link_to "Edit", edit_shop_path(shop)
+            = link_to "Delete", shop_path(shop), method: :delete
+          %ul.nav.nav-tabs.nav-justified
+            %li Products
+            - if shop.products.empty?
+              %h6 No product in this shop.
+              = link_to 'Create product in this shop', new_shop_product_path(shop)
+            - else
+              %div
+                - shop.products.each do |product|
+                  %div
+                    = link_to product.name, shop_product_path(shop, product)
+                    = link_to "Edit", edit_shop_product_path(shop, product)
+                    = link_to "Delete", shop_product_path(shop, product), method: :delete
+            %li
+              = link_to "Edit", edit_shop_path(shop)
+            %li
+              = link_to "Delete", shop_path(shop), method: :delete
+= link_to 'Create a new shop', new_shop_path, class: 'btn btn-default btn-lg'
