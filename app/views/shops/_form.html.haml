@@ -1,8 +1,7 @@
 .container-fluid.shop-form
 	.row
 		.col-md-10.col-md-offset-1
-			- if @shop.profile_image
-				= image_tag(@shop.profile_image_url, size: "168x168", class: "img-thumbnail img-responsive shop-profile")
+			= image_tag(@shop.profile_image_url, size: "168x168", class: "img-thumbnail img-responsive shop-profile") if @shop.profile_image?
 		.card.card-block.col-md-10.col-md-offset-1
 			%h3.card-title= form_header
 			%hr
