@@ -18,12 +18,12 @@
             = link_to "Edit", edit_shop_path(shop), class: 'btn btn-info btn-sm'
             = link_to "Delete", shop_path(shop), method: :delete, class: 'btn btn-danger btn-sm'
             - if shop.products.empty?
-              %h6 No product in this shop.
-              = link_to 'Create product in this shop', new_shop_product_path(shop)
+              %li.list-group-item
+                %h6 No product in this shop.
             - else
               - shop.products.each do |product|
                 %li.list-group-item
                   = link_to product.name, shop_product_path(shop, product)
-                  = link_to "Edit", edit_shop_product_path(shop, product), class: 'btn btn-info btn-sm'
-                  = link_to "Delete", shop_product_path(shop, product), method: :delete, class: 'btn btn-danger btn-sm'
+                  = link_to "Delete", shop_product_path(shop, product), method: :delete, class: 'btn btn-danger btn-sm pull-right'
+                  = link_to "Edit", edit_shop_product_path(shop, product), class: 'btn btn-info btn-sm pull-right'
   = link_to 'Create a new shop', new_shop_path, class: 'btn btn-primary btn-lg'
