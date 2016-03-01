@@ -56,5 +56,9 @@ bower.json
 # Ignore application configuration
 /config/application.yml
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a1a5f067198c47ca9dcf313c03873e08b0610638
 # Ignore images from development
 /public/uploads/*
