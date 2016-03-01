@@ -1,0 +1,12 @@
+.container
+  .row
+    %h1= @supplier.name
+
+    / %p= 'by ' + @shop.user.first_name + " " + @shop.user.last_name
+
+    %p= @supplier.slug
+    %p= @supplier.description
+  .div
+    .row
+      #{link_to "Create Products", new_supplier_item_path(@supplier), class: "btn btn-default btn-lg"}
+      #{link_to "Delete Shop", supplier_path(@supplier), method: "delete", class: "btn btn-default btn-lg"}

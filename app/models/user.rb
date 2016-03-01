@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
-  has_many :shops
+  has_many :suppliers
 
   validates :first_name, length: {minimum: 3, maximum: 15}
 
