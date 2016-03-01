@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 20160301131158) do
     t.string   "facebook_url"
     t.string   "twitter_username"
     t.string   "instagram_username"
+    t.string   "contact_phone",      limit: 20
     t.string   "email_id"
     t.decimal  "longitude"
     t.decimal  "latitude"
-    t.string   "contact_phone",      limit: 20
   end
 
   add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree
