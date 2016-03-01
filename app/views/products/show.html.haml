@@ -1,1 +1,20 @@
-%p= @product.name
+.container
+  .row
+    %h1= @product.name
+    /%h4 = @product.
+  .row
+    .col-md-1
+      %h6 Price
+    .col-md-1
+      %p= @product.price
+  .row
+    .col-md-1
+      %h6 Quantity
+    .col-md-1
+      %p= @product.quantity
+  .row
+    .col-md-1
+      %h6 Description
+  .row
+    .col.md-6
+      %p= @product.description
