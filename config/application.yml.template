@@ -12,42 +12,40 @@
 
 host: 'localhost:3000'
 
-GOOGLE_CLIENT_ID: "xxx.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET: "xxx"
+GOOGLE_CLIENT_ID: "564497404903-e4amfod356ehee7envvreoc4jl424vu4.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET: "9tNQk0sMdyE_DxMi1f6IEx7Z"
 
-FACEBOOK_APP_ID: "xxx"
-FACEBOOK_APP_SECRET: "xxx"
+FACEBOOK_APP_ID: "684758421665850"
+FACEBOOK_APP_SECRET: "435481a02fe373a605aee6ad1aa46ac8"
 
 STRIPE_SECRET_KEY: "xxx"
 STRIPE_PUBLISHABLE_KEY: "xxx"
 
 development:
-  DB_HOST: 'XXX'
-  DB_USERNAME: 'XXX'
-  DB_PASSWORD: 'XXX'
+ DB_HOST: 'localhost'
+ DB_USERNAME: 'postgres'
+ DB_PASSWORD: 'postgres'
 
-  host: 'marketplace.dev'
+ host: 'localhost:3000'
 
 test:
 
-  smtp_address: "mailtrap.io"
-  smtp_username: "xxx"
-  smtp_password: "xxx"
+ smtp_address: "mailtrap.io"
+ smtp_username: "xxx"
+ smtp_password: "xxx"
 
-  S3_BUCKET_NAME: "xxx"
-  AWS_ACCESS_KEY_ID: "xxx"
-  AWS_SECRET_ACCESS_KEY: "xxx"
+ S3_BUCKET: "marketplacesprintfire"
+ S3_ACCESS_KEY: "AKIAJJPED4E5FAQRMYJQ"
+ S3_SECRET_KEY: "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"
 
 production:
 
-  host: 'marketplace.com'
+ host: 'marketplace.com'
 
-  smtp_address: "mailtrap.io"
-  smtp_username: "xxx"
-  smtp_password: "xxx"
+ smtp_address: "mailtrap.io"
+ smtp_username: "xxx"
+ smtp_password: "xxx"
 
-  S3_BUCKET_NAME: "xxx"
-  AWS_ACCESS_KEY_ID: "xxx"
-  AWS_SECRET_ACCESS_KEY: "xxx"
-
-
+ S3_BUCKET_NAME: "xxx"
+ AWS_ACCESS_KEY_ID: "xxx"
+ AWS_SECRET_ACCESS_KEY: "xxx"
