@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160226103946) do
+ActiveRecord::Schema.define(version: 20160301131158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,23 +23,23 @@ ActiveRecord::Schema.define(version: 20160226103946) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "shop_id"
-    t.decimal  "quantity"
+    t.integer  "quantity"
   end
 
   create_table "shops", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.string   "slug"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "user_id",            null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "user_id",                       null: false
     t.string   "facebook_url"
     t.string   "twitter_username"
     t.string   "instagram_username"
-    t.decimal  "contact_phone"
     t.string   "email_id"
     t.decimal  "longitude"
     t.decimal  "latitude"
+    t.string   "contact_phone",      limit: 20
   end
 
   add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree
