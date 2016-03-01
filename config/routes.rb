@@ -18,11 +18,14 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :shops do
-    resources :products
+    resources :products do
+      resources :review
+    end
   end
 
   get "dashboard" => "pages#dashboard", as: "dashboard"
 
+  post "reviews" => "reviews#create", as: "create_review"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
