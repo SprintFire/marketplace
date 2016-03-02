@@ -57,4 +57,5 @@ bower.json
 /config/application.yml
 
 
-/public/uploads/
+# Ignore images from development
+/public/uploads/*
