@@ -1,7 +1,9 @@
 .container
   .row
     %h1= @product.name
-    /%h4 = @product.
+    %h4
+      by
+      = link_to @product.shop.name, @product.shop
   .row
     .col-md-1
       %h6 Price
