@@ -1,1 +1,13 @@
-%h3 Purchase History
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title Purchase History
+  .panel-body
+    - if @purchases.empty?
+      %h6 There is no purchase has been made yet.
+    - else
+      .list-group
+        - @purchases.each do |purchase|
+          %li.list-group-item
+            = purchase.id
+            = purchase.product.name
+            = purchase.created_at
