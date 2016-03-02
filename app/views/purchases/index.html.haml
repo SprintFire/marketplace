@@ -1,0 +1,7 @@
+%h1 Purchases History
+
+- @purchases.each do |purchase|
+  .row
+    = purchase.id
+    = purchase.product.name
+    = purchase.created_at
