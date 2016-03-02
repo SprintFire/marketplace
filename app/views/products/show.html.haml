@@ -1,5 +1,8 @@
 %p= @product.name
 
+- if @product.quantity == 0
+  = render 'sold_out'
+
 %h2 Add a comment:
 = form_for(@review, url: create_review_path(@review)) do |f|
   = f.hidden_field :product, value: @product
