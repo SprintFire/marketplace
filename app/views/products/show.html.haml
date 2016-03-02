@@ -1,5 +1,3 @@
-%p= @product.name
-=link_to "Checkout", checkout_path(@product), :method => :post
 .container
   .row
     %h1= @product.name
@@ -22,3 +20,4 @@
   .row
     .col.md-6
       %p= @product.description
+  =link_to "Checkout", checkout_path(@product), :method => :post
