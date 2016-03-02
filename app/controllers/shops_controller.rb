@@ -29,7 +29,7 @@ class ShopsController < ApplicationController
 
  	def update
     if @shop.update(shop_params)
-			flash[:success] = "Shop was successfully updated."
+			flash[:success] = "Your shop was successfully updated."
 			redirect_to shop_path(@shop)
 		else
 			render 'edit'
@@ -37,6 +37,10 @@ class ShopsController < ApplicationController
  	end
 
  	def destroy
+		@shop = current_user.shops.find(params[:id])
+		@shop.destroy
+		flash[:info] = "Your shop was successfully deleted."
+		redirect_to dashboard_path
  	end
 
   private
@@ -46,7 +50,7 @@ class ShopsController < ApplicationController
 		end
 
 		def shop_params
-		    params.require(:shop).permit(:name, :description, :facebook_url, :twitter_username, :instagram_username, :contact_phone, :email_id)
+		    params.require(:shop).permit(:name, :description, :facebook_url, :twitter_username, :instagram_username, :contact_phone, :email_id, :latitude, :longitude)
 		end
 
 end

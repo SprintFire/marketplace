@@ -25,4 +25,10 @@
 			= f.label :email_id
 			= f.email_field :email_id
 			%br/
+			Location:
+			%input#address{:style => "width: 200px", :type => "text"}/
+			#map{:style => "width: 500px; height: 400px;"}
+			= f.hidden_field :latitude, id: 'latitude'
+			= f.hidden_field :longitude, id: 'longitude'
+			%br/
 			= f.submit(class: "btn btn-primary")

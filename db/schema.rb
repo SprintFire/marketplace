@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219190136) do
+ActiveRecord::Schema.define(version: 20160301131158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,23 +23,26 @@ ActiveRecord::Schema.define(version: 20160219190136) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "shop_id"
-    t.decimal  "quantity"
+    t.integer  "quantity"
   end
 
   create_table "shops", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.string   "slug"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "user_id",            null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "user_id",                       null: false
     t.string   "facebook_url"
     t.string   "twitter_username"
     t.string   "instagram_username"
-    t.decimal  "contact_phone"
+    t.string   "contact_phone",      limit: 20
     t.string   "email_id"
+    t.decimal  "longitude"
+    t.decimal  "latitude"
   end
 
+  add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree
   add_index "shops", ["slug"], name: "index_shops_on_slug", using: :btree
   add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
 
@@ -62,6 +65,8 @@ ActiveRecord::Schema.define(version: 20160219190136) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
