@@ -9,14 +9,14 @@ class ReviewsController < ApplicationController
       redirect_to shop_product_path(@product.shop, @product)
     end
 
-    @star_rating = @product.star_rating.new :value => params[:value]
-    if @star_rating.save
-      flash[:success] = "Rating successful."
-      redirect_to shop_product_path(@product.shop, @product)
-    else
-      flash[:success] = "Something went wrong."
-      redirect_to shop_product_path(@product.shop, @product)
-    end
+    # @star_rating = @product.star_rating.new :value => params[:value]
+    # if @star_rating.save
+    #   flash[:success] = "Rating successful."
+    #   redirect_to shop_product_path(@product.shop, @product)
+    # else
+    #   flash[:success] = "Something went wrong."
+    #   redirect_to shop_product_path(@product.shop, @product)
+    # end
   end
 
   def edit
@@ -28,8 +28,8 @@ class ReviewsController < ApplicationController
 			redirect_to shop_product_path(@shop, @product)
 		end
 
-    @star_rating = Review.star_rating.find(params[:id])
-    @star_rating.update_attribute :value, params[:value]
+    # @star_rating = Review.star_rating.find(params[:id])
+    # @star_rating.update_attribute :value, params[:value]
 	end
 
 	def destroy
