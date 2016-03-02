@@ -1,6 +1,6 @@
 %h1 Dashboard
 
-%h3 Your Shops and Products
+%h3
 
 - if @shops.empty?
   %h6 There is no shop.
@@ -26,3 +26,4 @@
 
 = link_to 'Create your Shop', new_shop_path, class: 'btn btn-default btn-lg'
 = render 'purchase_history'
+= link_to 'View purchases history', purchase_history_path, class: 'btn btn-default'
