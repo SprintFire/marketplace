@@ -32,6 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'premailer-rails'
 gem 'figaro'
 
+gem 'stripe'
+
 gem 'web-console', '~> 2.0', group: :development
 
 group :development, :test do
