@@ -21,10 +21,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def after_confirmation
-    ConfirmationMailer.welcome_email(current_user)
-  end
-
   private
 
   def user_not_authorized
