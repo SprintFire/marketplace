@@ -15,9 +15,14 @@ gem 'font-awesome-rails'
 gem 'devise','~>4.0.0.rc1'
 gem 'devise-bootstrap-views'
 
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+
 gem "haml-rails", "~> 0.9"
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
+
 
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
@@ -28,6 +33,10 @@ gem 'premailer-rails'
 gem 'figaro'
 
 gem 'web-console', '~> 2.0', group: :development
+
+gem 'carrierwave'
+gem "mini_magick"
+gem 'fog'
 
 group :development, :test do
   gem 'byebug'
@@ -42,5 +51,3 @@ group :development, :test do
 end
 
 gem 'rails_12factor', group: :production
-
-

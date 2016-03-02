@@ -1,0 +1,33 @@
+.card
+  .card-header Login Details
+
+  .card-block
+    = form_for(@user, url: registration_path(@user), html: { method: :put }) do |f|
+      = render "shared/form_errors", f: @user
+      .row
+        .col-sm-12
+          .form-group.form-group-default
+            = f.label :email
+            = f.email_field :email, required: true, class: "form-control", placeholder: "e.g. me@example.com"
+
+      .row
+        .col-sm-12
+          .form-group.form-group-default
+            = f.label :password, "New Password"
+            %i
+              (#{t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it")})
+            - if @minimum_password_length
+              %small (#{@minimum_password_length} characters minimum)
+            = f.password_field :password, required: false, autocomplete: "off", class: "form-control", placeholder: "Password"
+        .col-sm-12
+          .form-group.form-group-default
+            = f.label :password_confirmation, "Confirm New Password"
+            = f.password_field :password_confirmation, required: false, autocomplete: "off", class: "form-control", placeholder: "Password confirmation"
+        .col-sm-12
+          .form-group.form-group-default
+            = f.label :current_password
+            %i
+              (will be required to update fields)
+            = f.password_field :current_password, required: false, autocomplete: "off", class: "form-control", placeholder: "Current password"
+        .col-md-1.text-xs-right
+          = f.submit "Update", class: "btn btn-primary btn-cons m-t-10"
