@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   get "dashboard" => "pages#dashboard", as: "dashboard"
-  get "dashboard/purchases" => "purchases#index"
+  get "dashboard/purchases" => "purchases#index", as: "purchase_history"
   post "checkout/:id" => "purchases#create", as: "checkout"
 
   # The priority is based upon order of creation: first created -> highest priority.
