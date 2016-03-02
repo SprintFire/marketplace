@@ -1,14 +1,10 @@
-!!!
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-  %body
-    %h1
-      Welcome to marketplace.com, #{@user.first_name}
-    %p
-      You have successfully signed up to marketplace.com.
-      %br
-    %p
-      To login to the site, just follow this link:
-      %a{href: @url} #{@url}
-    %p Thanks for joining and have a great day!
+= render layout: 'html_template' do
+  %h1
+    Welcome to marketplace.com, #{@user.first_name}
+  %p
+    You have successfully signed up to marketplace.com.
+    %br
+  %p
+    To login to the site, just follow this link:
+    %a{href: @url} #{@url}
+  %p Thanks for joining and have a great day!

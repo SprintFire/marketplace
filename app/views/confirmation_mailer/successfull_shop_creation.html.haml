@@ -1,10 +1,6 @@
-!!!
-%html
-  %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-  %body
-    %h1
-      You have successfully created your shop : #{@shop.name}
-    %p
-      Visit your shop here:
-      %a{href: @url} #{@shop.name}
+= render layout: 'html_template' do
+  %h1
+    You have successfully created your shop : #{@shop.name}
+  %p
+    Visit your shop here:
+    %a{href: @url} #{@shop.name}

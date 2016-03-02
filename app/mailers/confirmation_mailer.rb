@@ -14,16 +14,16 @@ class ConfirmationMailer < ApplicationMailer
     mail(to: @user.email, subject: "You have created you shop")
   end
 
-  def sold_product_email(product, user)
+  def sold_product_email(product)
     @product = product
-    @user = user
+    @user = product.user
     mail(to: @user.email, subject: "Your product has been bought")
   end
 
-  def new_review_email(product, review, user)
+  def new_review_email(product, review)
     @product = product
     @review = review
-    @user = user
+    @user = product.user
     mail(to: @user.email, subject: "Your product has gotten a new review")
   end
 end
