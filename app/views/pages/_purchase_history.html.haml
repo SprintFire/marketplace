@@ -6,8 +6,24 @@
       %h6 There is no purchase has been made yet.
     - else
       .list-group
+        %li.list-group-item
+          .row
+            .col-md-1
+              .strong No.
+            .col-md-2
+              .strong Product Name
+            .col-md-2
+              .strong From Shop
+            .col-md-3
+              .strong Purchase Date
         - @purchases.each do |purchase|
           %li.list-group-item
-            = purchase.id
-            = purchase.product.name
-            = purchase.created_at
+            .row
+              .col-md-1
+                = purchase.id
+              .col-md-2
+                = link_to purchase.product.name, shop_product_path(purchase.product.shop, purchase.product)
+              .col-md-2
+                = link_to purchase.product.shop.name, shop_path(purchase.product.shop)
+              .col-md-3
+                = purchase.created_at
