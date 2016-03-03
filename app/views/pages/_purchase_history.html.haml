@@ -16,7 +16,7 @@
               .strong From Shop
             .col-md-3
               .strong Purchase Date
-        - @purchases.each do |purchase|
+        - @purchases.reverse_each do |purchase|
           %li.list-group-item
             .row
               .col-md-1
