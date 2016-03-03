@@ -49,8 +49,6 @@ ActiveRecord::Schema.define(version: 20160301131158) do
     t.string   "header_image"
     t.decimal  "longitude"
     t.decimal  "latitude"
-    t.string   "profile_image"
-    t.string   "header_image"
   end
 
   add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree
