@@ -17,6 +17,7 @@ class ShopsController < ApplicationController
 	def create
     @shop = current_user.shops.new(shop_params)
 		if @shop.save
+			ConfirmationMailer.successfull_shop_creation(@shop, current_user).deliver_later
 			flash[:success] = "Your shop was successfully created."
 			redirect_to shop_path(@shop)
 		else

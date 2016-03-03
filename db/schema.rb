@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20160301131158) do
     t.integer  "quantity"
   end
 
+  create_table "purchases", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shops", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -42,6 +49,8 @@ ActiveRecord::Schema.define(version: 20160301131158) do
     t.string   "header_image"
     t.decimal  "longitude"
     t.decimal  "latitude"
+    t.string   "profile_image"
+    t.string   "header_image"
   end
 
   add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree
