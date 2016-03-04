@@ -36,10 +36,21 @@ ActiveRecord::Schema.define(version: 20160303202129) do
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",             null: false
+    t.integer  "product_id",          null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "purchasing_quantity"
+    t.decimal  "purchasing_price"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "product_id",  null: false
+    t.integer  "star_rating"
+    t.text     "comment"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "shops", force: :cascade do |t|
