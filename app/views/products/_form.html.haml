@@ -1,7 +1,7 @@
 .container-fluid.product-form
 	.row
 		.card.card-block.col-md-10.col-md-offset-1
-			%h3.card-title Create Product
+			%h3.card-title= form_header
 			%hr
 			= form_for([@shop, @product]) do |f|
 				.row
