@@ -1,0 +1,6 @@
+= render layout: 'html_template' do
+  %h1
+    You have successfully created your shop : #{@shop.name}
+  %p
+    Visit your shop here:
+    %a{href: @url} #{@shop.name}

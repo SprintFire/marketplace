@@ -1,14 +1,26 @@
-%p= @product.name
-
 - if @product.quantity == 0
   = render 'sold_out'
 
-%h2 Add a comment:
-= form_for(@review, url: create_review_path(@review)) do |f|
-  = f.hidden_field :product, value: @product
-  %p
-    = f.label :comment
-    %br/
-    = f.text_field :comment
-  %p
-    = f.submit
+.container
+  .row
+    %h1= @product.name
+    %h4
+      by
+      = link_to @product.shop.name, @product.shop
+  .row
+    .col-md-1
+      %h6 Price
+    .col-md-1
+      %p= @product.price
+  .row
+    .col-md-1
+      %h6 Quantity
+    .col-md-1
+      %p= @product.quantity
+  .row
+    .col-md-1
+      %h6 Description
+  .row
+    .col.md-6
+      %p= @product.description
+  = link_to "Checkout", checkout_path(@product), :method => :post

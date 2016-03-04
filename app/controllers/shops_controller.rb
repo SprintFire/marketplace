@@ -17,6 +17,7 @@ class ShopsController < ApplicationController
 	def create
     @shop = current_user.shops.new(shop_params)
 		if @shop.save
+			ConfirmationMailer.successfull_shop_creation(@shop, current_user).deliver_later
 			flash[:success] = "Your shop was successfully created."
 			redirect_to shop_path(@shop)
 		else
@@ -50,7 +51,7 @@ class ShopsController < ApplicationController
 		end
 
 		def shop_params
-		    params.require(:shop).permit(:name, :description, :facebook_url, :twitter_username, :instagram_username, :contact_phone, :email_id, :latitude, :longitude)
+			params.require(:shop).permit(:name, :description, :facebook_url, :twitter_username, :instagram_username, :contact_phone, :email_id, :latitude, :longitude, :profile_image, :header_image)
 		end
 
 end

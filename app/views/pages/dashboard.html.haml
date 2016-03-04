@@ -1,27 +1,41 @@
 %h1 Dashboard
 
-%h3 Your Shops and Products
+.panel.panel-default
+  .panel-heading
+    %h3.panel-title Your Shops and Products
+  .panel-body
+    - if @shops.empty?
+      %h6 There is no shop.
+    - else
+      - @shops.each do |shop|
+        .list-group
+          %li.list-group-item
+            .row
+              %h4.col-md-4.col-md-5-offset
+                = link_to shop.name, shop_path(shop)
+              .pull-right.col-md-3
+                .col-md-4
+                  = link_to "New", new_shop_product_path(shop), class: 'btn btn btn-success btn-sm'
+                .col-md-4
+                  = link_to "Edit", edit_shop_path(shop), class: 'btn btn-info btn-sm'
+                .col-md-4
+                  = link_to "Delete", shop_path(shop), method: :delete, class: 'btn btn-danger btn-sm'
+            - if shop.products.empty?
+              %li.list-group-item
+                %h6 No product in this shop.
+            - else
+              - shop.products.each do |product|
+                %li.list-group-item
+                  .row
+                    .col-md-4.col-md-5-offset
+                      = link_to product.name, shop_product_path(shop, product)
+                    .pull-right.col-md-3
+                      .col-md-4.pull-right
+                        = link_to "Delete", shop_product_path(shop, product), method: :delete, class: 'btn btn-danger btn-sm'
+                      .col-md-4.pull-right
+                        = link_to "Edit", edit_shop_product_path(shop, product), class: 'btn btn-info btn-sm'
+  = render 'purchase_history'
+  = link_to 'Create a new shop', new_shop_path, class: 'btn btn-primary btn-med'
 
-- if @shops.empty?
-  %h6 There is no shop.
-- else
-  %div
-    %h4 SHOP
-    - @shops.each do |shop|
-      %h5
-        = link_to shop.name, shop_path(shop)
-        = link_to "Edit", edit_shop_path(shop)
-        = link_to "Delete", shop_path(shop), method: :delete
-      - if shop.products.empty?
-        %h6 No product in this shop.
-        = link_to 'Create product in this shop', new_shop_product_path(shop)
-      - else
-        %div
-          %h6 PRODUCTS
-          - shop.products.each do |product|
-            %div
-              = link_to product.name, shop_product_path(shop, product)
-              = link_to "Edit", edit_shop_product_path(shop, product)
-              = link_to "Delete", shop_product_path(shop, product), method: :delete
-
-= link_to 'Create your Shop', new_shop_path, class: 'btn btn-default btn-lg'
+  // There is a vew of purchase history might be useful in the future
+  //= link_to 'View purchases history', purchase_history_path, class: 'btn btn-default btn-lg'
