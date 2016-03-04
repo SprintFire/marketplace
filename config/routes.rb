@@ -18,9 +18,7 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :shops do
-    resources :products do
-      resources :review
-    end
+    resources :products
   end
 
   get "dashboard" => "pages#dashboard", as: "dashboard"
