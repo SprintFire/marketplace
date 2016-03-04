@@ -20,4 +20,7 @@
   .row
     .col.md-6
       %p= @product.description
-  = link_to "Checkout", checkout_path(@product), :method => :post
+  - if @product.quantity == 0
+    = render 'sold_out'
+  - else
+    = link_to "Checkout", checkout_path(@product), :method => :post
