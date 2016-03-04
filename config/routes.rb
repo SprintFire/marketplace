@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :comments
   devise_for :users, path: "", path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -18,7 +19,9 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :shops do
-    resources :products
+    resources :products do
+      resources :comments
+    end
   end
 
   get "dashboard" => "pages#dashboard", as: "dashboard"
@@ -60,8 +63,7 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end

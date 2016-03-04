@@ -20,7 +20,18 @@
   .row
     .col.md-6
       %p= @product.description
+
+  = link_to "Checkout", checkout_path(@product), :method => :post
+  %h4 Comments
+  %div
+    = render :partial => @product.comments
+    
+  = form_for([@shop, @product, @comment]) do |f|
+    = f.text_field :body
+    = f.submit "Add Comment", class: "btn btn-primary"
+
   - if @product.quantity == 0
     = render 'sold_out'
   - else
     = link_to "Checkout", checkout_path(@product), :method => :post
+
