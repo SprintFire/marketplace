@@ -3,4 +3,7 @@ class Product < ActiveRecord::Base
 	has_many :purchases
 
 	acts_as_commontable
+
+	ratyrate_rateable "quality"
+
 end
