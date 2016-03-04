@@ -1,12 +1,33 @@
-%p= @product.name
-
-%h4 Comments
-%div
-  = render :partial => @product.comments
-= form_for ([@shop, @product, @comment])	do |f|
-  %p
-    /
-      <haml_loud> f.label :body, "New Comment" </haml_loud></br>
-      <haml_loud> f.text_area :body </haml_loud>
-    = f.input :body, :label => "New Comment", as: :text, input_html: { rows: "3" }
-  %p= f.submit "Add Comment", class: "btn btn-primary"
+.container
+  .row
+    %h1= @product.name
+    %h4
+      by
+      = link_to @product.shop.name, @product.shop
+  .row
+    .col-md-1
+      %h6 Price
+    .col-md-1
+      %p= @product.price
+  .row
+    .col-md-1
+      %h6 Quantity
+    .col-md-1
+      %p= @product.quantity
+  .row
+    .col-md-1
+      %h6 Description
+  .row
+    .col.md-6
+      %p= @product.description
+  = link_to "Checkout", checkout_path(@product), :method => :post
+  %h4 Comments
+  %div
+    = render :partial => @product.comments
+  = form_for ([@shop, @product, @comment])	do |f|
+    %p
+      /
+        <haml_loud> f.label :body, "New Comment" </haml_loud></br>
+        <haml_loud> f.text_area :body </haml_loud>
+      = f.input :body, :label => "New Comment", as: :text, input_html: { rows: "3" }
+    %p= f.submit "Add Comment", class: "btn btn-primary"

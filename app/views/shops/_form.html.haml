@@ -1,34 +1,69 @@
-.container-fluid
+.container-fluid.shop-form
 	.row
-		= form_for(@shop) do |f|
-			= f.label :name
-			= f.text_field :name
-			%br/
-			= f.label :shop_Name
-			= f.text_field :slug
-			%br/
-			= f.label :description
-			= f.text_area :description
-			%br/
-			= f.label :facebook_url
-			= f.url_field :facebook_url
-			%br/
-			= f.label :twitter_username
-			= f.url_field :twitter_username
-			%br/
-			= f.label :instagram_username
-			= f.url_field :instagram_username
-			%br/
-			= f.label :contact_phone
-			= f.telephone_field :contact_phone
-			%br/
-			= f.label :email_id
-			= f.email_field :email_id
-			%br/
-			Location:
-			%input#address{:style => "width: 200px", :type => "text"}/
-			#map{:style => "width: 500px; height: 400px;"}
-			= f.hidden_field :latitude, id: 'latitude'
-			= f.hidden_field :longitude, id: 'longitude'
-			%br/
-			= f.submit(class: "btn btn-primary")
+		.col-md-10.col-md-offset-1
+			= image_tag(@shop.profile_image_url, size: "168x168", class: "img-thumbnail img-responsive shop-profile") if @shop.profile_image?
+		.card.card-block.col-md-10.col-md-offset-1
+			%h3.card-title= form_header
+			%hr
+			= form_for @shop, :html => {class: ''} do |f|
+				%fieldset.form-group
+					= f.label :name
+					= f.text_field :name, class: "form-control", autofocus: true
+				.row
+					%fieldset.form-group.col-md-4
+						= f.label :facebook_url
+						= f.url_field :facebook_url, class: "form-control"
+					%fieldset.form-group.col-md-4
+						= f.label :twitter_username
+						= f.url_field :twitter_username, class: "form-control"
+					%fieldset.form-group.col-md-4
+						= f.label :instagram_username
+						= f.url_field :instagram_username, class: "form-control"
+				.row
+					%fieldset.form-group.col-md-6
+						= f.label :contact_phone
+						= f.telephone_field :contact_phone, class: "form-control"
+					%fieldset.form-group.col-md-6
+						= f.label :email_id
+						= f.email_field :email_id, class: "form-control"
+				%fieldset.form-group
+					= f.label :description
+					= f.text_area :description, class: "form-control"
+				.row
+					%fieldset.form-group.col-md-6
+						= f.label :profile_image
+						%label.file
+							= f.file_field :profile_image
+							%span.file-custom
+
+					%fieldset.form-group.col-md-6
+						= f.label :header_image
+						%label.file
+							= f.file_field :header_image
+							%span.file-custom
+						-# = image_tag(@shop.header_image_url) if @shop.header_image?
+				%fieldset.form-group
+					Location
+					%input.form-control#address{:type => "text", autocomplete: "off"}/
+				.row
+					.col-md-12#map{style: "height: 500px;"}
+					= f.hidden_field :latitude, id: 'latitude'
+					= f.hidden_field :longitude, id: 'longitude'
+				%br/
+				%hr
+				= f.submit(class: "btn btn-primary")
+
+:javascript
+	imageValidation($('#shop_header_image'));
+	imageValidation($('#shop_profile_image'));
+
+	function imageValidation(el) {
+		el.bind('change', function() {
+			var size_in_megabytes = this.files[0].size/1024;
+			if(size_in_megabytes > 5) {
+				$(this).parent().parent().append("<p class=\"text-danger\" >The image is to large, please use an image less than 5MB</p>");
+			} else {
+				$(this).parent().parent().append("<p class=\"text-success\">" + this.files[0].name + " uploaded");
+			}
+		});
+	}

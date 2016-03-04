@@ -35,6 +35,10 @@ gem 'figaro'
 
 gem 'web-console', '~> 2.0', group: :development
 
+gem 'carrierwave'
+gem "mini_magick"
+gem 'fog'
+
 group :development, :test do
   gem 'byebug'
   gem 'spring'
