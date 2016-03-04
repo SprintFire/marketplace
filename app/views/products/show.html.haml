@@ -24,10 +24,6 @@
   %h4 Comments
   %div
     = render :partial => @product.comments
-  = form_for ([@shop, @product, @comment])	do |f|
-    %p
-      /
-        <haml_loud> f.label :body, "New Comment" </haml_loud></br>
-        <haml_loud> f.text_area :body </haml_loud>
-      = f.input :body, :label => "New Comment", as: :text, input_html: { rows: "3" }
-    %p= f.submit "Add Comment", class: "btn btn-primary"
+  = form_for ([@shop, @product])	do |f|
+    = f.text_field :body
+    = f.submit "Add Comment", class: "btn btn-primary"
