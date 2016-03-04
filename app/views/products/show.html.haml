@@ -22,5 +22,5 @@
       %p= @product.description
   - if @product.quantity == 0
     = render 'sold_out'
-  - else  
+  - else
     = link_to "Checkout", checkout_path(@product), :method => :post
