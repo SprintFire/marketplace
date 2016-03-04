@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
 
   validates :first_name, length: {minimum: 3, maximum: 15}
 
+  acts_as_commontator
+
+  def full_name
+    first_name + " " + last_name
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

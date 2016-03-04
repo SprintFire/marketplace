@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find(params[:id])
+		commontator_thread_show(@product)
 	end
 
 	def new

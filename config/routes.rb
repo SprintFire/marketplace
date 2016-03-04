@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
 
+  mount Commontator::Engine => '/commontator'
+
   get "account", to: 'users#edit', as: :account
   patch "account", to: 'users#update'
 

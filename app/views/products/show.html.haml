@@ -24,3 +24,6 @@
     = render 'sold_out'
   - else
     = link_to "Checkout", checkout_path(@product), :method => :post
+
+  comments
+  = commontator_thread(@product)
