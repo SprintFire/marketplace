@@ -8,9 +8,9 @@
 			= f.number_field :price, :class => 'text_field', :step => 'any'
 			%br/
 			= f.label :quantity
-			= f.number_field :quantity, :value => 1, :min => 0
+      = f.number_field :quantity, :min => 1
 			%br/
 			= f.label :description
 			= f.text_area :description
 			%br/
-			= f.submit "Create", class: "btn btn-primary"
+			= f.submit class: "btn btn-primary"
