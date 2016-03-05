@@ -1,5 +1,6 @@
 haml:
   enabled: true
+
   linters:
     LineLength:
       Enabled: true
@@ -7,3 +8,9 @@ haml:
 
 ruby:
   enabled: true
+
+  Rails:
+    Enabled: true
+
+  Metrics/LineLength:
+    Max: 140
