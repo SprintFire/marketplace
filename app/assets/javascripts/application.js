@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require locationpicker.jquery
 //= require map
+//= require jquery.raty
+//= require ratyrate
 //= require bootstrap
 //= require jquery.turbolinks
 //= require_tree .
