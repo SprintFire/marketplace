@@ -12,5 +12,8 @@ ruby:
   Rails:
     Enabled: true
 
-  Metrics/LineLength:
-    Enabled: false
+
+LineLength:
+  Description: 'Limit lines to 90 characters.'
+  Enabled: true
+  Max: 140
