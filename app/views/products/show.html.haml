@@ -24,3 +24,9 @@
     = render 'sold_out'
   - else
     = link_to "Checkout", checkout_path(@product), :method => :post
+
+  %h3 Comments
+  = commontator_thread(@product)
+
+  %p Please rate  :
+  = rating_for @product, "quality", :disable_after_rate => false
