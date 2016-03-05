@@ -1,3 +1,8 @@
-linters:
-  LineLength:
-    enabled: false
+haml:
+  enabled: true
+  linters:
+    LineLength:
+      enabled: false
+
+ruby:
+  enabled: true
