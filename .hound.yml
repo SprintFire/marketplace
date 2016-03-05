@@ -13,4 +13,4 @@ ruby:
     Enabled: true
 
   Metrics/LineLength:
-    Max: 140
+    Enabled: false
