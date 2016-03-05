@@ -1,4 +1,3 @@
 linters:
   LineLength:
     enabled: false
-    max: 80
