@@ -2,7 +2,8 @@ haml:
   enabled: true
   linters:
     LineLength:
-      enabled: false
+      Enabled: true
+      Max: 140
 
 ruby:
   enabled: true
