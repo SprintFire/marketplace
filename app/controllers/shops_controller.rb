@@ -18,31 +18,31 @@ class ShopsController < ApplicationController
     @shop = current_user.shops.new(shop_params)
     if @shop.save
       ConfirmationMailer.successfull_shop_creation(@shop, current_user).deliver_later
-      flash[:success] = "Your shop was successfully created."
+      flash[:success] = 'Your shop was successfully created.'
       redirect_to shop_path(@shop)
     else
       render 'new'
     end
-   end
-
-   def edit
   end
 
-   def update
+  def edit
+  end
+
+  def update
     if @shop.update(shop_params)
-      flash[:success] = "Your shop was successfully updated."
+      flash[:success] = 'Your shop was successfully updated.'
       redirect_to shop_path(@shop)
     else
       render 'edit'
     end
-   end
+  end
 
-   def destroy
+  def destroy
     @shop = current_user.shops.find(params[:id])
     @shop.destroy
-    flash[:info] = "Your shop was successfully deleted."
+    flash[:info] = 'Your shop was successfully deleted.'
     redirect_to dashboard_path
-   end
+  end
 
   private
 

@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
   def create
     @product = current_user.shops.find(params[:shop_id]).products.new(product_params)
     if @product.save
-      flash[:success] = "Products was successfully saved!"
+      flash[:success] = 'Products was successfully saved!'
       redirect_to shop_product_path(@shop, @product)
     else
       render 'new'
@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      flash[:success] = "product was successfully updated"
+      flash[:success] = 'Product was successfully updated!'
       redirect_to shop_product_path(@shop, @product)
     else
       render 'edit'
