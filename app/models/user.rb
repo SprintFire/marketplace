@@ -3,8 +3,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   has_many :shops
+  has_many :purchases
 
   validates :first_name, length: {minimum: 3, maximum: 15}
+
+  acts_as_commontator
+
+  ratyrate_rater
+
+  def full_name
+    first_name + " " + last_name
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -22,6 +31,4 @@ class User < ActiveRecord::Base
       end
     end
   end
-
-
 end

@@ -25,6 +25,9 @@ gem 'jquery-turbolinks'
 
 gem 'geocoder'
 
+gem 'commontator', '~> 4.11.1'
+gem 'ratyrate'
+
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -34,6 +37,10 @@ gem 'premailer-rails'
 gem 'figaro'
 
 gem 'web-console', '~> 2.0', group: :development
+
+gem 'carrierwave'
+gem "mini_magick"
+gem 'fog'
 
 group :development, :test do
   gem 'byebug'

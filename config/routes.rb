@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users, path: "", path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
 
+  mount Commontator::Engine => '/commontator'
+
   get "account", to: 'users#edit', as: :account
   patch "account", to: 'users#update'
 
@@ -22,7 +25,8 @@ Rails.application.routes.draw do
   end
 
   get "dashboard" => "pages#dashboard", as: "dashboard"
-
+  get "dashboard/purchases" => "purchases#index", as: "purchase_history"
+  post "checkout/:id" => "purchases#create", as: "checkout"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
