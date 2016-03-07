@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304200523) do
+ActiveRecord::Schema.define(version: 20160307143312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20160304200523) do
     t.float    "avg",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "stripe_customer_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "stripe_card_id"
+    t.string   "card_brand"
+    t.string   "card_last_4"
   end
 
   create_table "commontator_comments", force: :cascade do |t|
@@ -86,10 +96,13 @@ ActiveRecord::Schema.define(version: 20160304200523) do
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",             null: false
+    t.integer  "product_id",          null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "purchasing_quantity"
+    t.decimal  "purchasing_price"
+    t.string   "stripe_charge_id"
   end
 
   create_table "rates", force: :cascade do |t|
@@ -121,18 +134,19 @@ ActiveRecord::Schema.define(version: 20160304200523) do
     t.string   "name"
     t.text     "description"
     t.string   "slug"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "user_id",                       null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.integer  "user_id",                                   null: false
     t.string   "facebook_url"
     t.string   "twitter_username"
     t.string   "instagram_username"
     t.string   "contact_phone",      limit: 20
     t.string   "email_id"
-    t.decimal  "longitude"
-    t.decimal  "latitude"
     t.string   "profile_image"
     t.string   "header_image"
+    t.decimal  "longitude"
+    t.decimal  "latitude"
+    t.integer  "balance",                       default: 0
   end
 
   add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree
