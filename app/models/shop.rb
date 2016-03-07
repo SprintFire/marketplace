@@ -5,11 +5,29 @@ class Shop < ActiveRecord::Base
   #geocoded_by :full_street_address
   #after_validation :geocode
 
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
+
   mount_uploader :profile_image, UserProfileUploader
   mount_uploader :header_image, UserHeaderImageUploader
 
   validate :picture_size
 
+  # def search
+  #   @location = params[:search]
+  #   @distance = params[:miles]
+  #   @shops = Shop.near(@location, @distance)
+  #
+  #   if @location.present?
+  #     flash[:success] = 'Please enter a search term.'
+  #     redirect_to "/"
+  #   else
+  #     if @farms.length < 1
+  #       flash[:success] = 'Sorry! We could not find anything'
+  #     else
+  #       @locations = Location.near(params[:search], 50, :order => :distance)
+  #     end
+  # end
 
   private
 
