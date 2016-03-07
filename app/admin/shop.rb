@@ -6,6 +6,7 @@ ActiveAdmin.register Shop do
     id_column
     column :name
     column :description
+    column :user_id
     column :facebook_url
     column :twitter_username
     column :instagram_username
@@ -13,8 +14,6 @@ ActiveAdmin.register Shop do
     column :email_id
     column :longitude
     column :latitude
-    column :profile_image
-    column :header_image
     actions
   end
 
@@ -28,6 +27,7 @@ ActiveAdmin.register Shop do
     attributes_table do
       row :name
       row :description
+      row :user_id
       row :facebook_url
       row :twitter_username
       row :instagram_username

@@ -22,6 +22,7 @@ ActiveAdmin.register User do
 
   show :title => :email do
     attributes_table do
+      row :id
       row :email
       row :first_name
       row :last_name
