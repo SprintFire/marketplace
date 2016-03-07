@@ -23,7 +23,12 @@ Rails.application.routes.draw do
 
   get "dashboard" => "pages#dashboard", as: "dashboard"
   get "dashboard/purchases" => "purchases#index", as: "purchase_history"
-  post "checkout/:id" => "purchases#create", as: "checkout"
+
+  # get "checkout/:id", to: "purchases#show", as: "checkout"
+  # post "checkout/:id", to: "purchases#create"
+
+  get 'checkout/:id', to: "checkouts#new", as: "checkout"
+  post "checkout/:id", to: "checkouts#create"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
