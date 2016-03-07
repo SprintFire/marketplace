@@ -23,6 +23,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 
+gem 'geocoder'
+
 gem 'commontator', '~> 4.11.1'
 gem 'ratyrate'
 

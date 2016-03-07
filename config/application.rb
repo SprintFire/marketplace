@@ -22,7 +22,10 @@ module Marketplace
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    
+
+    # For 404 and 500 error callbacks
+    config.exceptions_app = self.routes
+
     # Required for Heroku
     config.assets.initialize_on_precompile = false
   end
