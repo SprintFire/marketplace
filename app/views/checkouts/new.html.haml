@@ -1,10 +1,10 @@
 %h2
   = @product.name
   %strongr Amount: &euro; #{@product.price}
-%h4 Current cards
-.card
-  .card-block
-    - unless @cards.empty?
+- unless @cards.empty?
+  %h4 Current cards
+  .card
+    .card-block
       - @cards.each do |card|
         .row
           .col-md-4
