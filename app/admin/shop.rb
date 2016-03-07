@@ -56,10 +56,16 @@ ActiveAdmin.register Shop do
   end
 
   form do |f|
-    f.inputs "User Details" do
-      f.input :email
-      f.input :first_name
-      f.input :last_name
+    f.inputs "Shop Details" do
+      f.input :name
+      f.input :description
+      f.input :facebook_url
+      f.input :twitter_username
+      f.input :instagram_username
+      f.input :contact_phone
+      f.input :email_id
+      f.input :longitude
+      f.input :latitude
     end
     f.actions
   end
