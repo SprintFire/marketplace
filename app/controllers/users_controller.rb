@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @cards = Card.where(user: current_user)
   end
 
   def update
@@ -13,6 +14,16 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def delete_card
+    customer = Stripe::Customer.retrieve(params[:customer_id])
+    customer.sources.retrieve(params[:card_id]).delete
+
+    Card.find_by(stripe_card_id: params[:card_id]).destroy
+
+    flash[:success] = "Card deleted!"
+    redirect_to account_path
   end
 
   private

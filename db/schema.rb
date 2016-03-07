@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305001330) do
+ActiveRecord::Schema.define(version: 20160307143312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 20160305001330) do
     t.string   "stripe_customer_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.string   "stripe_card_id"
+    t.string   "card_brand"
+    t.string   "card_last_4"
   end
 
   create_table "commontator_comments", force: :cascade do |t|
@@ -131,9 +134,9 @@ ActiveRecord::Schema.define(version: 20160305001330) do
     t.string   "name"
     t.text     "description"
     t.string   "slug"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.integer  "user_id",                       null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.integer  "user_id",                                   null: false
     t.string   "facebook_url"
     t.string   "twitter_username"
     t.string   "instagram_username"
@@ -143,6 +146,7 @@ ActiveRecord::Schema.define(version: 20160305001330) do
     t.string   "header_image"
     t.decimal  "longitude"
     t.decimal  "latitude"
+    t.integer  "balance",                       default: 0
   end
 
   add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree

@@ -1,39 +1,78 @@
 class CheckoutsController < ApplicationController
+  before_action :set_variables, only: [:checkout_current_card, :checkout_new_card]
+
+
   def new
     @product = Product.find(params[:id])
+    @cards = Card.where(user: current_user)
   end
 
-  def create
-    # get the product from the params
-    product = Product.find(params[:id])
 
-    # multiply by 100 since stripe holds 1 as a cent.
-    @amount = product.price.to_i * 100
+  def checkout_current_card
+    @charge = Stripe::Charge.create(
+      :customer => params[:customer_id],
+      :amount => @amount,
+      :currency => 'eur'
+    )
 
+    record_purchase
+
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to root_path
+  end
+
+
+  def checkout_new_card
     # create the customer account on stripe
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]
     )
 
-    # store the user and the customer_id from stripe so we can charge the card automatically
-    card = Card.create(user: current_user, stripe_customer_id: customer.id)
-
-    charge = Stripe::Charge.create(
+    @charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => @amount,
       :description => 'Marketplace customer',
       :currency    => 'eur'
     )
 
-    p charge
+    # store the user and the customer_id from stripe so we can charge the card automatically
+    card = Card.create(user: current_user, stripe_customer_id: customer.id, stripe_card_id: @charge[:source][:id], card_brand: @charge[:source][:brand], card_last_4: @charge[:source][:last4])
 
-    purchase = Purchase.create(user: current_user, product: product, purchasing_price: product.price, purchasing_quantity: 1, stripe_charge_id: charge.id)
+    record_purchase
 
-    redirect_to root_path
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to root_path
+  end
+
+
+
+  private
+  def set_variables
+    @product = Product.find(params[:id])
+    @shop = @product.shop
+    @amount = @product.price.to_i * 100
+  end
+
+  def record_purchase
+    # create record of the purcase in the database
+    purchase = Purchase.create(user: current_user, product: @product, purchasing_price: @product.price, purchasing_quantity: 1, stripe_charge_id: @charge.id)
+
+    # balance transaction information for a particular charge
+    balance_transaction = Stripe::BalanceTransaction.retrieve(@charge[:balance_transaction])
+    balance_after_stripe_fees = balance_transaction[:net].to_i
+    balance_after_marketplace_percentage = balance_after_stripe_fees - marketplace_percentage(balance_after_stripe_fees)
+    new_shop_balance = @shop.balance.to_i + balance_after_marketplace_percentage
+    @shop.update(balance: new_shop_balance)
+
+    flash[:success] = "Payment successfull"
+    redirect_to root_path
+  end
+
+  def marketplace_percentage(cost)
+    cost * 0.20 # return 20% of the cost
   end
 
 end

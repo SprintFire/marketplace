@@ -16,6 +16,8 @@
               .strong From Shop
             .col-md-3
               .strong Purchase Date
+            .col-md-3
+              .strong Purchase Price
         - @purchases.reverse_each do |purchase|
           %li.list-group-item
             .row
@@ -26,4 +28,6 @@
               .col-md-2
                 = link_to purchase.product.shop.name, shop_path(purchase.product.shop)
               .col-md-3
-                = purchase.created_at
+                = time_ago_in_words(purchase.created_at) + " ago"
+              .col-md-3
+                &euro; #{number_with_precision(purchase.purchasing_price, :precision => 2)} 

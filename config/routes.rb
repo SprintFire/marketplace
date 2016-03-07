@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get "account", to: 'users#edit', as: :account
   patch "account", to: 'users#update'
+  post "delete_card", to: "users#delete_card", as: "delete_card"
 
   root 'pages#home'
 
@@ -31,7 +32,8 @@ Rails.application.routes.draw do
   # post "checkout/:id", to: "purchases#create"
 
   get 'checkout/:id', to: "checkouts#new", as: "checkout"
-  post "checkout/:id", to: "checkouts#create"
+  post "checkout/:id", to: "checkouts#checkout_new_card"
+  post "checkout_current_card", to: "checkouts#checkout_current_card", as: "checkout_current_card"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
