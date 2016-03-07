@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users, path: "", path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
   :controllers => {
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
+
+  mount Commontator::Engine => '/commontator'
 
   get "account", to: 'users#edit', as: :account
   patch "account", to: 'users#update'

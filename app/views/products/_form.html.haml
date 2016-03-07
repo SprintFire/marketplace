@@ -1,16 +1,25 @@
-.container-fluid
-	.row
-		= form_for([@shop, @product]) do |f|
-			= f.label :name_Of_The_Product
-			= f.text_field :name
-			%br/
-			= f.label :price
-			= f.number_field :price, :class => 'text_field', :step => 'any'
-			%br/
-			= f.label :quantity
-			= f.number_field :quantity, :value => 1, :min => 0
-			%br/
-			= f.label :description
-			= f.text_area :description
-			%br/
-			= f.submit "Create", class: "btn btn-primary"
+.container-fluid.product-form
+  .row
+    .card.card-block.col-md-10.col-md-offset-1
+      %h3.card-title= form_header
+      %hr
+      = form_for([@shop, @product]) do |f|
+        .row
+          %fieldset.form-group
+            .col-md-12
+              = f.label :name_Of_The_Product, "Name"
+              = f.text_field :name, :style => "width: 100%", class: "form-control"
+        .row
+          %fieldset.form-group
+            .col-md-6
+              = f.label :price
+              = f.number_field :price, :class => 'text_field', :step => 'any', :style => "width: 100%", class: "form-control"
+            .col-md-6
+              = f.label :quantity
+              = f.number_field :quantity, :min => 1, :style => "width: 100%", class: "form-control"
+        .row
+          %fieldset.form-group
+            .col-md-12
+              = f.label :description
+              = f.text_area :description, :style => "width: 100%", class: "form-control"
+        = f.submit "Create", class: "btn btn-primary"
