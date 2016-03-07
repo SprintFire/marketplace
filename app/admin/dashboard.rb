@@ -40,9 +40,9 @@ ActiveAdmin.register_page "Dashboard" do
           table_for Product.order('id desc').limit(10).each do |product|
             column(:name)    {|product| product.name }
             column(:description)    {|product| product.description }
-            column(:price) {|product| product.price}
-            column(:by_shop) {|product| product.shop.name }
-            column(:created_at)    {|product| time_ago_in_words(product.created_at) + " ago" }
+            column(:price) {|product| number_to_currency product.price}
+            column("From Shop") {|product| product.shop.name }
+            column("Listed at")    {|product| time_ago_in_words(product.created_at) + " ago" }
           end
         end
       end
@@ -52,8 +52,8 @@ ActiveAdmin.register_page "Dashboard" do
           table_for Purchase.order('id desc').limit(10).each do |purchase|
             column(:buyer_email)   {|purchase| purchase.user.email }
             column(:product) {|purchase| purchase.product.name }
-            column(:by_shop) {|purchase| purchase.product.shop.name }
-            column(:purchase_at)    {|purchase| time_ago_in_words(purchase.created_at) + " ago" }
+            column("From Shop") {|purchase| purchase.product.shop.name }
+            column("Purchased at")    {|purchase| time_ago_in_words(purchase.created_at) + " ago" }
           end
         end
       end
