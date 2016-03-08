@@ -22,18 +22,21 @@
               =link_to 'Login', new_user_session_path, class: 'nav-link'
           %li.nav-item.pull-xs-left
             %form.navbar-form.navbar-left.row{:role => "search"}
-              = form_tag("/search", method: "get") do
+              = form_tag(search_path, method: "get") do
                 %input.form-control#search_location{:placeholder => "Search location", :type => "text", :style => "width: 300px"}/
                 .col-md-12#locationSearch{type: "hidden", style: "height: 0; width: 0;"}
                 = hidden_field_tag 'latitude'
                 = hidden_field_tag 'longitude'
                 = submit_tag("Search")
-              -# = form_for(:shops, url: search_path, method: :get ) do |f|
+              -# = form_for(:shop, url: search_url, method: :get ) do |f|
               -#   %input.form-control#search_location{:placeholder => "Search location", :type => "text", :style => "width: 300px"}/
               -#   .col-md-12#locationSearch{type: "hidden", style: "height: 0; width: 0;"}
-              -#   = f.hidden_field :latitude, id: 'search_latitude'
-              -#   = f.hidden_field :longitude, id: 'search_longitude'
-              -# = link_to 'Search', search_path(:longitude => "search_longitude", :latitude => "search_latitude"), class: "btn btn-default"
+              -#   = f.hidden_field :latitude, id: 'latitude'
+              -#   = f.hidden_field :longitude, id: 'longitude'
+              -#   = submit_tag("Search")
+
+
+
 
 #heading
   .container

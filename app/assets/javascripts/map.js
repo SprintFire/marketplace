@@ -9,8 +9,8 @@ $(function() {
       radius: 0,
       enableAutocomplete: true,
       inputBinding: {
-        latitudeInput: $('#latitude'),
-        longitudeInput: $('#longitude'),
+        latitudeInput: $('#set-latitude'),
+        longitudeInput: $('#set-longitude'),
         locationNameInput: $('#address')
       }
     });

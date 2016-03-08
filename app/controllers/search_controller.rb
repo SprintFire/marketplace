@@ -1,9 +1,15 @@
 class SearchController < ApplicationController
   def index
-    if params[:search].present?
-      @locations = Shop.near(params[:search], 50, :order => :distance)
+    if params[:shop][:latitude] && params[:shop][:longitude]
+      @locations = Shop.near(get_geolocation, 50)
     else
       @locations = Shop.all
     end
   end
+
+  private
+
+    def get_geolocation
+      [params[:shop][:latitude], params[:shop][:longitude]]
+    end
 end

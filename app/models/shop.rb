@@ -2,8 +2,9 @@ class Shop < ActiveRecord::Base
   belongs_to :user
   has_many :products, :dependent => :delete_all
 
-  #geocoded_by :full_street_address
-  #after_validation :geocode
+  # geocoded_by :full_street_address
+  # after_validation :geocode
+  geocoded_by :latitude => :latitude, :longitude => :longitude
 
   mount_uploader :profile_image, UserProfileUploader
   mount_uploader :header_image, UserHeaderImageUploader
