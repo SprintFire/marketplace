@@ -4,7 +4,7 @@ class CheckoutsController < ApplicationController
 
   def new
     @product = Product.find(params[:id])
-    @cards = Card.where(user: current_user)
+    @cards = current_user.cards
   end
 
 
