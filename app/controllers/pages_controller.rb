@@ -9,16 +9,4 @@ class PagesController < ApplicationController
     @purchases = current_user.purchases.all
   end
 
-  def terms_and_conditions
-
-  end
-
-  def about_us
-
-  end
-
-  def privacy_policy
-    
-  end
-
 end
