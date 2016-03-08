@@ -18,14 +18,7 @@ Rails.application.routes.draw do
   get "account", to: 'users#edit', as: :account
   patch "account", to: 'users#update'
 
-
-
   root 'pages#home'
-
-  # static pages
-  get 'terms_and_conditions', to: "pages#terms_and_conditions", as: "terms_and_conditions"
-  get 'about_us', to: "pages#about_us", as: "about"
-  get 'privacy_policy', to: "pages#privacy_policy", as: "privacy_policy"
 
   resources :shops do
     resources :products
