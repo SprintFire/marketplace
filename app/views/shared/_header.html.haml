@@ -8,6 +8,12 @@
         %ul.nav.navbar-nav
           %li.nav-item.active
             =link_to 'Explore Shops', root_path, class: 'nav-link'
+          %li.nav-item
+            =link_to 'About', page_path('about_us'), class: 'nav-link'
+          %li.nav-item
+            =link_to 'Privacy Policy', page_path('privacy_policy'), class: 'nav-link'
+          %li.nav-item
+            =link_to 'Terms', page_path('terms_and_conditions'), class: 'nav-link'
           - if current_user
             %li.nav-item.pull-xs-left
               =link_to 'Dashboard', dashboard_path, class: 'nav-link'
