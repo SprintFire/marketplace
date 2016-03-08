@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160307110829) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
+  add_index "admin_users", ["unlock_token"], name: "index_admin_users_on_unlock_token", unique: true, using: :btree
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"

@@ -51,9 +51,8 @@ ActiveAdmin.register User do
         column("Product") {|order| order.product.name}
         column("From Shop") {|order| order.product.shop.name}
         column("Date", :sortable => :created_at){|order| pretty_format(order.created_at) }
-        # column("Quantity")  {|order| order.purchasing_quantity}
-        # column("Total") {|order| number_to_currency order.purchasing_price }
-        # Wait until the payment integration is compeleted.
+        column("Quantity")  {|order| order.purchasing_quantity}
+        column("Total") {|order| number_to_currency order.purchasing_price }
       end
     end
     active_admin_comments
@@ -67,19 +66,5 @@ ActiveAdmin.register User do
     end
     f.actions
   end
-
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if params[:action] == 'create' && current_user.admin?
-#   permitted
-# end
-
 
 end
