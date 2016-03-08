@@ -27,8 +27,8 @@ $(function() {
     var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search_location'));
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
       var place = autocomplete.getPlace();
-      document.getElementById('search_latitude').value = place.geometry.location.lat();
-      document.getElementById('search_longitude').value = place.geometry.location.lng();
+      document.getElementById('latitude').value = place.geometry.location.lat();
+      document.getElementById('longitude').value = place.geometry.location.lng();
   });
   }
 

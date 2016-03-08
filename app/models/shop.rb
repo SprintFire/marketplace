@@ -5,9 +5,6 @@ class Shop < ActiveRecord::Base
   #geocoded_by :full_street_address
   #after_validation :geocode
 
-  geocoded_by :address
-  after_validation :geocode, :if => :address_changed?
-
   mount_uploader :profile_image, UserProfileUploader
   mount_uploader :header_image, UserHeaderImageUploader
 

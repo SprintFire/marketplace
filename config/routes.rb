@@ -21,10 +21,13 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :shops do
-    resources :products
+    @shops = Shop.all
+    resources :products do
+    end
   end
 
   get "dashboard" => "pages#dashboard", as: "dashboard"
+  get "search" => "search#index", as:"search"
   get "dashboard/purchases" => "purchases#index", as: "purchase_history"
   post "checkout/:id" => "purchases#create", as: "checkout"
 

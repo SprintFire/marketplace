@@ -21,13 +21,21 @@
             %li.nav-item.pull-xs-right
               =link_to 'Login', new_user_session_path, class: 'nav-link'
           %li.nav-item.pull-xs-left
-            %form.navbar-form.navbar-left{:role => "search"}
-              .form-group
+            %form.navbar-form.navbar-left.row{:role => "search"}
+              = form_tag("/search", method: "get") do
                 %input.form-control#search_location{:placeholder => "Search location", :type => "text", :style => "width: 300px"}/
-                #locationSearch{:type => "hidden"}
-                %input#search_latitude{:type => "hidden"}/
-                %input#search_longitude{:type => "hidden"}/
-              %button.btn.btn-default{:type => "submit"} Search
+                .col-md-12#locationSearch{type: "hidden", style: "height: 0; width: 0;"}
+                = hidden_field_tag 'latitude'
+                = hidden_field_tag 'longitude'
+                = submit_tag("Search")
+              -# = form_for(:shops, url: search_path, method: :get ) do |f|
+              -#   %input.form-control#search_location{:placeholder => "Search location", :type => "text", :style => "width: 300px"}/
+              -#   .col-md-12#locationSearch{type: "hidden", style: "height: 0; width: 0;"}
+              -#   = f.hidden_field :latitude, id: 'search_latitude'
+              -#   = f.hidden_field :longitude, id: 'search_longitude'
+              -# = link_to 'Search', search_path(:longitude => "search_longitude", :latitude => "search_latitude"), class: "btn btn-default"
+
 #heading
   .container
     Hello
+    = @latitude
