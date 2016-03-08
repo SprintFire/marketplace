@@ -49,7 +49,6 @@ ActiveAdmin.register Shop do
         column("Update Date", :sortable => :updated_at){|product| pretty_format(product.updated_at) }
         column("Quantity")  {|product| product.quantity}
         column("Price") {|product| number_to_currency product.price }
-        # Wait until the payment integration is compeleted.
       end
     end
     active_admin_comments
