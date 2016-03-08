@@ -23,15 +23,15 @@ $(function() {
 $(function() {
 
   var location_search = function() {
-
-    var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search_location'));
+    var autocomplete = new google.maps.places.Autocomplete(document.getElementById('header_search'));
+    
     google.maps.event.addListener(autocomplete, 'place_changed', function () {
       var place = autocomplete.getPlace();
-      document.getElementById('latitude').value = place.geometry.location.lat();
-      document.getElementById('longitude').value = place.geometry.location.lng();
-  });
+      document.getElementById('search-lat').value = place.geometry.location.lat();
+      document.getElementById('search-lng').value = place.geometry.location.lng();
+    });
   }
 
-  if($('#locationSearch').length) location_search();
+  if($('#header_search').length) location_search();
 
 });

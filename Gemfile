@@ -24,6 +24,7 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 
 gem 'geocoder'
+gem 'simple_form'
 
 gem 'commontator', '~> 4.11.1'
 gem 'ratyrate'
