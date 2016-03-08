@@ -35,6 +35,17 @@ ActiveAdmin.register User do
       row :sign_in_count
     end
 
+    panel "Shops" do
+      table_for user.shops.all.each do |shop|
+        column("Shop ID", :sortable => :id) {|shop| link_to "##{shop.id}", admin_shop_path(shop.id)}
+        column("Name") {|shop| shop.name}
+        column("Description") {|shop| shop.description}
+        column("Created at") {|shop| shop.created_at}
+        column("Updated at") {|shop| shop.updated_at}
+        
+      end
+    end
+
     panel "Purchase History" do
       table_for user.purchases.all.each do |order|
         column("Order ID", :sortable => :id) {|order| link_to "##{order.id}", admin_purchase_path(order.id) }
