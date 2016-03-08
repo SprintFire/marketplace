@@ -13,7 +13,7 @@
             .row
               %h4.col-md-4.col-md-5-offset
                 = link_to shop.name, shop_path(shop)
-                %strong &euro; #{shop.balance/ 100.00}
+                %strong &euro; #{shop_balance_in_euros(shop.balance)}
               .pull-right.col-md-3
                 .col-md-4
                   = link_to "New", new_shop_product_path(shop), class: 'btn btn btn-success btn-sm'
