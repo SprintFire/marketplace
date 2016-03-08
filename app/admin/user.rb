@@ -42,7 +42,6 @@ ActiveAdmin.register User do
         column("Description") {|shop| shop.description}
         column("Created at") {|shop| shop.created_at}
         column("Updated at") {|shop| shop.updated_at}
-        
       end
     end
 
