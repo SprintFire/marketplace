@@ -26,7 +26,7 @@ module Marketplace
     # Required for Heroku
     config.assets.initialize_on_precompile = false
 
-    #Error handling
+    # Error handling
     config.exceptions_app = self.routes
   end
 end

@@ -45,5 +45,4 @@ Rails.application.configure do
 
   # Error Handling
   config.consider_all_requests_local = false
-
 end

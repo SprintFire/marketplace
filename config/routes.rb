@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'errors/not_found'
-
-  get 'errors/internal_server_error'
-
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users, path: "", path_names: {
     sign_in: 'login',
@@ -32,9 +28,11 @@ Rails.application.routes.draw do
   get "dashboard/purchases" => "purchases#index", as: "purchase_history"
   post "checkout/:id" => "purchases#create", as: "checkout"
 
-  match "/404", :to => "errors#not_found", :via => :all
-  match "/500", :to => "errors#internal_server_error", :via => :all
+  get "errors/not_found"
+  get "errors/internal_server_error"
 
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
