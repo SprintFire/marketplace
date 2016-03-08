@@ -36,6 +36,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'premailer-rails'
 gem 'figaro'
 
+gem 'high_voltage', '~> 2.4.0'
+
 gem 'web-console', '~> 2.0', group: :development
 
 gem 'carrierwave'

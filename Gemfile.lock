@@ -268,6 +268,7 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hashie (3.4.3)
+    high_voltage (2.4.0)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
@@ -487,6 +488,7 @@ DEPENDENCIES
   font-awesome-rails
   guard-livereload (~> 2.4)
   haml-rails (~> 0.9)
+  high_voltage (~> 2.4.0)
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
