@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users, path: "", path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -12,8 +11,6 @@ Rails.application.routes.draw do
   :controllers => {
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
-
-  mount Commontator::Engine => '/commontator'
 
   get "account", to: 'users#edit', as: :account
   patch "account", to: 'users#update'
@@ -27,6 +24,12 @@ Rails.application.routes.draw do
   get "dashboard" => "pages#dashboard", as: "dashboard"
   get "dashboard/purchases" => "purchases#index", as: "purchase_history"
   post "checkout/:id" => "purchases#create", as: "checkout"
+
+  mount Commontator::Engine => '/commontator'
+  post '/rate' => 'rater#create', :as => 'rate'
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 
   get "errors/not_found"
   get "errors/internal_server_error"
