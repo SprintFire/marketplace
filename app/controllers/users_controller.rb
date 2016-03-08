@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     customer = Stripe::Customer.retrieve(params[:customer_id])
     customer.sources.retrieve(params[:card_id]).delete
 
-    Card.find_by(stripe_card_id: params[:card_id]).destroy
+    current_user.cards.find_by(stripe_card_id: params[:card_id]).destroy
 
     flash[:success] = "Card deleted!"
     redirect_to account_path

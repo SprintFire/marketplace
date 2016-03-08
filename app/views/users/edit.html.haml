@@ -19,11 +19,10 @@
           .row
             .col-md-1.text-xs-right
               = f.submit "Update", class: "btn btn-primary btn-cons m-t-10"
-
-    .card
-      .card-header My Credit Cards
-      .card-block
-        - unless @cards.empty?
+    - unless @cards.empty?
+      .card
+        .card-header My Credit Cards
+        .card-block
           - @cards.each do |card|
             .row
               .col-md-4

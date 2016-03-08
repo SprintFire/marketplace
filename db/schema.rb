@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308095418) do
+ActiveRecord::Schema.define(version: 20160308100019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(version: 20160308095418) do
     t.decimal  "latitude"
     t.integer  "balance",                       default: 0
     t.integer  "current_balance",               default: 0
+    t.integer  "withdraw_balance",              default: 0
   end
 
   add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree
