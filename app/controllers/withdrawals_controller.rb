@@ -10,15 +10,13 @@ class WithdrawalsController < ApplicationController
 
   def create
     withdrawal_amount = (withdrawals_params[:amount].to_i * 100).abs # get absolute value so user can't enter negative numbers
-    current_balance = WithdrawalsHelper.get_current_balance(@shop)
 
-    if withdrawal_amount > current_balance
-      flash[:danger] = "You can't withdraw more than you own"
-    else
+    @withdrawal = Withdrawal.new(amount: withdrawal_amount, shop: @shop)
+    if @withdrawal.save
       flash[:sucess] = "Withdrawal successfull"
 
-      # save withdrawal
-      Withdrawal.create(amount: withdrawal_amount, shop: @shop)
+    else
+      flash[:danger] = "You can't withdraw more than you own"
     end
 
     redirect_to new_shop_withdrawal_path(@shop)
