@@ -9,7 +9,7 @@ class WithdrawalsController < ApplicationController
   end
 
   def create
-    withdrawal_amount = (params[:withdrawal][:amount].to_i * 100).abs # get absolute value so user can't enter negative numbers
+    withdrawal_amount = (withdrawals_params[:amount].to_i * 100).abs # get absolute value so user can't enter negative numbers
     current_balance = WithdrawalsHelper.get_current_balance(@shop)
 
     if withdrawal_amount > current_balance
