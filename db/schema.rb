@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307110829) do
+ActiveRecord::Schema.define(version: 20160309110632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,13 +62,14 @@ ActiveRecord::Schema.define(version: 20160307110829) do
     t.datetime "updated_at"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.integer  "star_rating"
-    t.text     "body"
-    t.integer  "user_id",     null: false
-    t.integer  "product_id",  null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "cards", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "stripe_customer_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "stripe_card_id"
+    t.string   "card_brand"
+    t.string   "card_last_4"
   end
 
   create_table "commontator_comments", force: :cascade do |t|
@@ -132,10 +133,14 @@ ActiveRecord::Schema.define(version: 20160307110829) do
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",                      null: false
+    t.integer  "product_id",                   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "quantity"
+    t.decimal  "price"
+    t.string   "stripe_charge_id"
+    t.integer  "shop_profit",      default: 0
   end
 
   create_table "rates", force: :cascade do |t|
@@ -175,10 +180,10 @@ ActiveRecord::Schema.define(version: 20160307110829) do
     t.string   "instagram_username"
     t.string   "contact_phone",      limit: 20
     t.string   "email_id"
-    t.decimal  "longitude"
-    t.decimal  "latitude"
     t.string   "profile_image"
     t.string   "header_image"
+    t.decimal  "longitude"
+    t.decimal  "latitude"
   end
 
   add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree
@@ -211,5 +216,13 @@ ActiveRecord::Schema.define(version: 20160307110829) do
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "withdrawals", force: :cascade do |t|
+    t.integer  "shop_id"
+    t.integer  "amount"
+    t.boolean  "approved",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
 end

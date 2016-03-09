@@ -1,0 +1,18 @@
+%h3 Withdraw From #{@shop.name}
+%h2
+  Overall Balance &euro;
+  = shop_balance_in_euros @overall_balance
+%h2
+  You have withdrawn &euro;
+  = shop_balance_in_euros @withdrawal_balance
+%h2
+  You can withdraw a maximum of &euro;
+  = shop_balance_in_euros @current_balance
+
+= form_for @withdrawal, url: shop_withdrawals_path(@shop) do |f|
+
+  = f.hidden_field :shop_id, value: @shop.id
+
+  = f.number_field :amount
+
+  = f.submit
