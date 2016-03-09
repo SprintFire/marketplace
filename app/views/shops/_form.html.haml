@@ -47,8 +47,8 @@
           %input.form-control#address{:type => "text", autocomplete: "off"}/
         .row
           .col-md-12#map{style: "height: 500px;"}
-          = f.hidden_field :latitude, id: 'latitude'
-          = f.hidden_field :longitude, id: 'longitude'
+          = f.hidden_field :latitude, id: 'set-latitude'
+          = f.hidden_field :longitude, id: 'set-longitude'
         %br/
         %hr
         = f.submit(class: "btn btn-primary")

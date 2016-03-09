@@ -1,9 +1,13 @@
 class ShopsController < ApplicationController
   before_action :set_user_shop, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, exclude: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @shops = Shop.all
+    if params[:search]
+      @shops = Shop.near([search_params[:lat], search_params[:lng]], 50)
+    else
+      @shops = Shop.all
+    end
   end
 
   def show
@@ -52,6 +56,10 @@ class ShopsController < ApplicationController
 
     def shop_params
       params.require(:shop).permit(:name, :description, :facebook_url, :twitter_username, :instagram_username, :contact_phone, :email_id, :latitude, :longitude, :profile_image, :header_image)
+    end
+
+    def search_params
+      params.require(:search).permit(:text, :lat, :lng)
     end
 
 end
