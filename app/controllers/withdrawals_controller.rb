@@ -1,5 +1,5 @@
 class WithdrawalsController < ApplicationController
-  before_action :set_shop, only: [:new, :create]
+  before_action :set_shop
 
   def new
     @overall_balance = WithdrawalsHelper.get_shop_overall_balance(@shop)

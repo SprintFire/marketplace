@@ -30,6 +30,6 @@
               .col-md-4
                 = "**** **** **** " + card.card_last_4
               .col-md-4
-                = link_to "Delete Card", delete_card_path(customer_id: card.stripe_customer_id, card_id: card.stripe_card_id), method: :post
+                = link_to "Delete Card", delete_card_path(customer_id: card.stripe_customer_id, card_id: card.stripe_card_id), method: :delete
   .col-md-6
     = render "users/edit_login"
