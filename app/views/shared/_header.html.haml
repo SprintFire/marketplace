@@ -26,7 +26,10 @@
               =link_to 'Join', new_user_registration_path, class: 'nav-link'
             %li.nav-item.pull-xs-right
               =link_to 'Login', new_user_session_path, class: 'nav-link'
+          %li.nav-item.pull-xs-left
+            = render "shared/search_inline"
 
 #heading
   .container
     Hello
+    = @latitude
