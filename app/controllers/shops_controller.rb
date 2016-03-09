@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   before_action :set_user_shop, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, exclude: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     if params[:search]
