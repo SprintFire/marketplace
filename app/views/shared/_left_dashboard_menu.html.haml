@@ -1,0 +1,11 @@
+.container-fluid
+  .row
+    .btn-group-vertical{"aria-label" => "Button group with nested dropdown", :role => "group"}
+      %button.btn.btn-secondary{:type => "button"} 1
+      %button.btn.btn-secondary{:type => "button"} 2
+      .btn-group{:role => "group"}
+        %button#btnGroupDrop1.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+          Dropdown
+        .dropdown-menu{"aria-labelledby" => "btnGroupDrop1"}
+          %a.dropdown-item{:href => "#"} Dropdown link
+          %a.dropdown-item{:href => "#"} Dropdown link
