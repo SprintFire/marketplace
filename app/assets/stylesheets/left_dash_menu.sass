@@ -1,11 +1,36 @@
 #left-menu
-  border-radius: 3px
 
-.btn-group-vertical a
-  color: #31B0D5
-  background-color: white
-  border-color: white
+  .btn-group-vertical
+    width: 100%
+    border: 0
+    border-radius: 10px
 
-.btn-group-vertical .btn-group .dropdown-toggle
-  color: #31B0D5
-  background-color: white
+    &:button > :last-child
+      border: 0
+
+    button
+      padding: 14px 15px
+      border: 0
+      border-top: 2px solid $left-menu-border-color
+      text-align: left
+      font-size: 1.1em
+      font-weight: 600
+      color: $left-menu-text-color
+      transition: .3s
+
+      &:hover
+        color: $left-menu-text-hover-color
+
+
+    .dropdown-menu
+      padding: 0
+      margin-top: 0
+      border: 0
+      border-radius: 0
+      width: 100%
+      background: $active-dropdown-background
+
+      a
+        padding: 10px 15px
+        color: $active-dropdown-text-color
+        border-bottom: 1px solid $active-dropdown-border
