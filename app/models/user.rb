@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
   has_many :shops
   has_many :purchases
+  has_many :cards
 
   validates :first_name, length: {minimum: 2, maximum: 15}
   validates :password, length: { in: 6..20 }

@@ -14,10 +14,12 @@ Rails.application.routes.draw do
 
   get "account", to: 'users#edit', as: :account
   patch "account", to: 'users#update'
+  delete "delete_card", to: "users#delete_card", as: "delete_card"
 
   root 'pages#home'
 
   resources :shops do
+    resources :withdrawals, only: [:new, :create]
     @shops = Shop.all
     resources :products do
     end
@@ -25,7 +27,13 @@ Rails.application.routes.draw do
 
   get "dashboard" => "pages#dashboard", as: "dashboard"
   get "dashboard/purchases" => "purchases#index", as: "purchase_history"
-  post "checkout/:id" => "purchases#create", as: "checkout"
+
+  # get "checkout/:id", to: "purchases#show", as: "checkout"
+  # post "checkout/:id", to: "purchases#create"
+
+  get 'checkout/:id', to: "checkouts#new", as: "checkout"
+  post "checkout/:id", to: "checkouts#checkout_new_card"
+  post "checkout_current_card", to: "checkouts#checkout_current_card", as: "checkout_current_card"
 
   mount Commontator::Engine => '/commontator'
   post '/rate' => 'rater#create', :as => 'rate'

@@ -39,6 +39,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'premailer-rails'
 gem 'figaro'
 
+gem 'stripe'
 gem 'high_voltage', '~> 2.4.0'
 
 gem 'web-console', '~> 2.0', group: :development

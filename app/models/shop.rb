@@ -1,11 +1,11 @@
 class Shop < ActiveRecord::Base
   belongs_to :user
   has_many :products, :dependent => :delete_all
+  has_many :withdrawals
 
   validates :name, length: {minimum: 2, maximum: 15}, presence:true
   validates :description, length: {minimum: 2}, presence:true
   validates :email_id, presence:true
-
   # geocoded_by :full_street_address
   # after_validation :geocode
   geocoded_by :latitude => :latitude, :longitude => :longitude
@@ -38,4 +38,5 @@ class Shop < ActiveRecord::Base
       errors.add("Image should be less than 5MB")
     end
   end
+
 end

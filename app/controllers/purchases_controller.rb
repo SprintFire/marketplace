@@ -5,6 +5,10 @@ class PurchasesController < ApplicationController
     @purchases = current_user.purchases.all
   end
 
+  def show
+    @product = Product.find(params[:id])
+  end
+
   def create
     @product = Product.find(params[:id])
     @purchase = current_user.purchases.new(product: @product)
