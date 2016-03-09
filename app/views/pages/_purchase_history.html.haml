@@ -30,4 +30,4 @@
               .col-md-3
                 = time_ago_in_words(purchase.created_at) + " ago"
               .col-md-3
-                &euro; #{number_with_precision(purchase.purchasing_price, :precision => 2)} 
+                &euro; #{number_with_precision(purchase.price, :precision => 2)} 

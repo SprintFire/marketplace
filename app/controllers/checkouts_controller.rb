@@ -65,7 +65,7 @@ class CheckoutsController < ApplicationController
 
     # create record of the purcase in the database
     purchase = current_user.purchases.create(product: @product,
-                              purchasing_price: @product.price, purchasing_quantity: 1,
+                              price: @product.price, quantity: 1,
                               shop_profit: balance_after_marketplace_percentage, stripe_charge_id: @charge.id)
 
     flash[:success] = "Payment successfull"
