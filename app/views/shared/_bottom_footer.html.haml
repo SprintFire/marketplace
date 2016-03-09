@@ -5,6 +5,6 @@
         &copy; #{Time.now.year} MarketPlace.
       .col-md-8.text-xs-right
         %nav.nav.nav-inline
-          %a{href: "#"} About
-          %a{href: "#"} Terms &amp; Conditions
-          %a{href: "#"} Privacy Policy
+          = link_to "About us", page_path('about_us'), class: "footer-links"
+          = link_to "Terms & Conditions", page_path('terms_and_conditions'), class: "footer-links"
+          = link_to "Privacy Policy", page_path('privacy_policy'), class: "footer-links"
