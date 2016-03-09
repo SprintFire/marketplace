@@ -6,6 +6,7 @@
       %h3.card-title= form_header
       %hr
       = form_for @shop, :html => {class: ''} do |f|
+        = render 'shared/form_errors', f: @shop
         %fieldset.form-group
           = f.label :name
           = f.text_field :name, class: "form-control", autofocus: true
