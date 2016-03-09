@@ -38,7 +38,7 @@ class CheckoutsController < ApplicationController
     )
 
     # store the user and the customer_id from stripe so we can charge the card automatically
-    card = Card.create(user: current_user, stripe_customer_id: customer.id, stripe_card_id: @charge[:source][:id], card_brand: @charge[:source][:brand], card_last_4: @charge[:source][:last4])
+    card = current_user.cards.create(stripe_customer_id: customer.id, stripe_card_id: @charge[:source][:id], card_brand: @charge[:source][:brand], card_last_4: @charge[:source][:last4])
 
     record_purchase
 
@@ -64,8 +64,8 @@ class CheckoutsController < ApplicationController
     balance_after_marketplace_percentage = balance_after_stripe_fees - marketplace_percentage(balance_after_stripe_fees)
 
     # create record of the purcase in the database
-    purchase = Purchase.create(user: current_user, product: @product,
-                              purchasing_price: @product.price, purchasing_quantity: 1, 
+    purchase = current_user.purchases.create(product: @product,
+                              purchasing_price: @product.price, purchasing_quantity: 1,
                               shop_profit: balance_after_marketplace_percentage, stripe_charge_id: @charge.id)
 
     flash[:success] = "Payment successfull"
