@@ -4,5 +4,5 @@
     %span.input-group-addon
       = button_tag(type: 'submit', class: "btn") do
         %i.fa.fa-search#search-button
-    = form.input_field :lat, as: :hidden, id: 'search-lat'
-    = form.input_field :lng, as: :hidden, id: 'search-lng'
+    = form.input_field :lat, as: :hidden, id: 'search-lat', value: (params['search']) ? params['search']['lat'] : ''
+    = form.input_field :lng, as: :hidden, id: 'search-lng', value: (params['search']) ? params['search']['lng'] : ''
