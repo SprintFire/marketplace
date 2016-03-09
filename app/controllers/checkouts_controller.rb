@@ -57,15 +57,16 @@ class CheckoutsController < ApplicationController
   end
 
   def record_purchase
-    # create record of the purcase in the database
-    purchase = Purchase.create(user: current_user, product: @product, purchasing_price: @product.price, purchasing_quantity: 1, stripe_charge_id: @charge.id)
 
     # balance transaction information for a particular charge
     balance_transaction = Stripe::BalanceTransaction.retrieve(@charge[:balance_transaction])
     balance_after_stripe_fees = balance_transaction[:net].to_i
     balance_after_marketplace_percentage = balance_after_stripe_fees - marketplace_percentage(balance_after_stripe_fees)
-    new_shop_balance = @shop.balance.to_i + balance_after_marketplace_percentage
-    @shop.update(balance: new_shop_balance)
+
+    # create record of the purcase in the database
+    purchase = Purchase.create(user: current_user, product: @product,
+                              purchasing_price: @product.price, purchasing_quantity: 1, 
+                              shop_profit: balance_after_marketplace_percentage, stripe_charge_id: @charge.id)
 
     flash[:success] = "Payment successfull"
     redirect_to root_path
