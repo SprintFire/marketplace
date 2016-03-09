@@ -1,5 +1,10 @@
-%ol.breadcrumb
-  %li
-    = link_to "Home", root_path
-  %li
-    = link_to "Shops", shops_path
+.row
+  .col-md-8
+    %ol.breadcrumb
+      %li
+        = link_to "Home", root_path
+      %li
+        = link_to "Shops", shops_path
+  .col-md-4
+    .pull-xs-right.search-view
+      = render "shared/search_inline"

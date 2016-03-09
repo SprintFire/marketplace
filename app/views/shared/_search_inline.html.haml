@@ -1,9 +1,8 @@
 = simple_form_for :search, url: shops_path, method: :get, html: { class: 'form-inline', role: 'search' } do |form|
-
-  = form.input_field :text, label: false, placeholder: 'What are you looking for?', required: true, id: 'header_search', class: 'form-control', value: (params['search']) ? params['search']['text'] : ''
-
-  = form.input_field :lat, as: :hidden, id: 'search-lat'
-  = form.input_field :lng, as: :hidden, id: 'search-lng'
-
-  = form.button :submit, value: 'Search', class: 'btn btn-primary' do
-    Search
+  .input-group
+    = form.input_field :text, label: false, placeholder: 'What are you looking for?', required: true, id: 'header_search', class: 'form-control', value: (params['search']) ? params['search']['text'] : ''
+    %span.input-group-addon
+      = button_tag(type: 'submit', class: "btn") do
+        %i.fa.fa-search#search-button
+    = form.input_field :lat, as: :hidden, id: 'search-lat'
+    = form.input_field :lng, as: :hidden, id: 'search-lng'
