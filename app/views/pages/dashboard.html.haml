@@ -1,7 +1,8 @@
 .col-md-3
-  = render 'shared/left_dashboard_menu'
+  = render 'shared/left_dashboard_menu', shop: @shops
 .col-md-8.col-md-offset-1
-  = render 'shared/right_dashboard_menu'
+  = render 'shared/right_dashboard_black_header', button: true, button_text: "Create New Shop", button_path: new_shop_path
+  = render 'shared/right_dashboard_box', shop: @shops
   .card
 -# %h1 Dashboard
 -#

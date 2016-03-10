@@ -1,5 +1,6 @@
-.row#right-menu
+.row#right-menu-header
   .card.card-inverse{:style => "background-color: #333; border-color: #333;"}
     .card-block.row
       %h3.card-title.col-md-9 Your Shops
-      %a.btn.btn-primary.col-md-3{:href => "#"} Create New Shop
+      - if button
+        = link_to button_text, button_path, class: "btn btn-primary fa fa-plus"
