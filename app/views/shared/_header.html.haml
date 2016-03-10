@@ -8,12 +8,6 @@
         %ul.nav.navbar-nav
           %li.nav-item.active
             =link_to 'Explore Shops', root_path, class: 'nav-link'
-          %li.nav-item
-            =link_to 'About', page_path('about_us'), class: 'nav-link'
-          %li.nav-item
-            =link_to 'Privacy Policy', page_path('privacy_policy'), class: 'nav-link'
-          %li.nav-item
-            =link_to 'Terms', page_path('terms_and_conditions'), class: 'nav-link'
           - if current_user
             %li.nav-item.pull-xs-left
               =link_to 'Dashboard', dashboard_path, class: 'nav-link'
@@ -26,10 +20,8 @@
               =link_to 'Join', new_user_registration_path, class: 'nav-link'
             %li.nav-item.pull-xs-right
               =link_to 'Login', new_user_session_path, class: 'nav-link'
-          %li.nav-item.pull-xs-left
-            = render "shared/search_inline"
 
 #heading
   .container
-    Hello
-    = @latitude
+    .row
+      = render 'shared/breadcrumbs'
