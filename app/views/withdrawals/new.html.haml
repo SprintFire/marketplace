@@ -1,18 +1,58 @@
-%h3 Withdraw From #{@shop.name}
-%h2
-  Overall Balance &euro;
-  = shop_balance_in_euros @overall_balance
-%h2
-  You have withdrawn &euro;
-  = shop_balance_in_euros @withdrawal_balance
-%h2
-  You can withdraw a maximum of &euro;
-  = shop_balance_in_euros @current_balance
+.row
+  .col-md-3
+    = render 'shared/left_dashboard_menu'
+  .col-md-9#withdrawal-content
+    .card
+      .card-block
+        %h4.card-title.text-muted
+          New Withdrawal
+        %hr
+        %h6.card-subtitle.text-muted
+          You can withdraw up to
+          %strong
+          &euro;
+          = shop_balance_in_euros @current_balance
+        .card-block
+          = form_for @withdrawal, url: shop_withdrawals_path(@shop), html: { class: "form-inline" } do |f|
+            .form-group
+              = f.hidden_field :shop_id, value: @shop.id
+              %label{:for => "w-amount"}
+                %strong.text-muted &euro;
+              = f.text_field :amount, class: "form-control text-success", id: "w-amount", placeholder: "0.00"
 
-= form_for @withdrawal, url: shop_withdrawals_path(@shop) do |f|
+              = f.submit "Request Withdrawal", class: "btn btn-primary btn-lg"
 
-  = f.hidden_field :shop_id, value: @shop.id
+    %h4 Withdrawal Requests
+    %hr
+    - if @shop.withdrawals.empty?
+      %h4 You currently have no withdrawals pending or queued for processing.
+    - else
+      #withdrawal-requests
+        %table.table.table-striped
+          %thead
+            %tr
+              %th Amount
+              %th Status
+              %th Created At
+          %tbody
+            - @shop.withdrawals.order("created_at desc").each do |w|
+              %tr
+                %td
+                  &euro;
+                  %strong= number_with_precision(shop_balance_in_euros(w.amount), precision: 2)
+                - if w.approved
+                  %td.text-success= "Approved"
+                - else
+                  %td.text-warning= "Pending"
+                  %td= w.created_at.strftime("%A %b %d %T")
 
-  = f.number_field :amount
-
-  = f.submit
+      -# %h3 Withdraw From #{@shop.name}
+      -# %h2
+      -#   Overall Balance &euro;
+      -#   = shop_balance_in_euros @overall_balance
+      -# %h2
+      -#   You have withdrawn &euro;
+      -#   = shop_balance_in_euros @withdrawal_balance
+      -# %h2
+      -#   You can withdraw a maximum of &euro;
+      -#   = shop_balance_in_euros @current_balance
