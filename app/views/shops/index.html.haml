@@ -18,17 +18,19 @@
         .row
           .col-md-5
             %img.card-img-top{:alt => "Card image cap", src: "http://placehold.it/318x180"}/
-          .col-md-7
+          .col-md-4
             .card-block
               %h4.card-title= s.name
               %p.card-text=s.description
               -# = link_to "Edit", edit_shop_path(s)
               -# = link_to "View", shop_path(s)
-              .row
-                = link_to edit_shop_path(s), class: 'btn btn-primary' do
+          .col-md-3
+            .card-block
+              .btn-group{:role => "group"}
+                = link_to edit_shop_path(s), class: 'btn' do
                   Edit
                   -# %i.fa.fa-pencil-square-o.fa-lg
-                = link_to shop_path(s), class: 'btn btn-primary' do
+                = link_to shop_path(s), class: 'btn' do
                   View
                   -# %i.fa.fa-external-link-square.fa-lg
       -# .card
