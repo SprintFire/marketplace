@@ -1,7 +1,7 @@
 .jumbotron.jumbotron-fluid#similar_suggestions.col-md-12
   .container
     %h4.display-8 Checkout other similar suppliers!
-  .row.col-md-12
+  .row.col-md-12#suggestions-box
     - shop.each do |s|
       -# %img.img-thumbnail{:alt => "...", src: "http://placehold.it/100x100"}/
       %a{:href => "#"}
