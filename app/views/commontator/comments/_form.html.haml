@@ -13,7 +13,7 @@
       - comment.errors.full_messages.each do |msg|
         %li= msg
 = form_for([commontator, thread, comment], |
-  :remote => !no_remote) do |f|            |
+  :remote => !no_remote, class: 'form-control') do |f|            |
   = hidden_field_tag :per_page, per_page
   .comment_form_field
     = f.text_area :body, :rows => '7'
