@@ -1,3 +1,8 @@
-.jumbotron.jumbotron-fluid#similar-category.col-md-12
+.jumbotron.jumbotron-fluid#similar_suggestions.col-md-12
   .container
     %h4.display-8 Checkout other similar suppliers!
+  .row.col-md-12
+    - shop.each do |s|
+      -# %img.img-thumbnail{:alt => "...", src: "http://placehold.it/100x100"}/
+      %a{:href => "#"}
+        %img.img-thumbnail#small-box{:alt => "Shop's profile image",src: "http://placehold.it/100x100"}/

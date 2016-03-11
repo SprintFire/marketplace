@@ -12,6 +12,7 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    @shops = Shop.all
     @products = @shop.products
   end
 
