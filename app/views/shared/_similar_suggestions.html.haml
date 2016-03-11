@@ -1,7 +1,7 @@
 .jumbotron.jumbotron-fluid#similar_suggestions.col-md-12
   .container
     %h4.display-8.col-md-6 Checkout other similar suppliers!
-    = link_to "View All Shops", shops_path(), class: "btn btn-primary col-md-3"
+    = link_to "View All Shops", shops_path(), class: "btn btn-primary col-md-3 blue-button"
   .row.col-md-12#suggestions-box
     - shop.each do |s|
       -# %img.img-thumbnail{:alt => "...", src: "http://placehold.it/100x100"}/
