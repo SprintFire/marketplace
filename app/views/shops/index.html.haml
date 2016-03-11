@@ -1,6 +1,8 @@
-%h1 Results
-
-%h1
-  - @shops.each do |shop|
-    = link_to shop.name, shop_path(shop)
-    = shop.user.email
+.row
+  .col-md-3
+    = render 'shared/left_dashboard_menu'
+  .col-md-9
+    %h1
+      - @shops.each do |shop|
+        = link_to shop.name, shop_path(shop)
+        = shop.user.email
