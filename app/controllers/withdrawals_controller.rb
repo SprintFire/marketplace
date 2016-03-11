@@ -1,5 +1,9 @@
 class WithdrawalsController < ApplicationController
-  before_action :set_shop
+  before_action :set_shop, except: [:index]
+
+  def index
+    @shops = current_user.shops
+  end
 
   def new
     @overall_balance = WithdrawalsHelper.get_shop_overall_balance(@shop)
@@ -13,7 +17,7 @@ class WithdrawalsController < ApplicationController
 
     @withdrawal = Withdrawal.new(amount: withdrawal_amount, shop: @shop)
     if @withdrawal.save
-      flash[:sucess] = "Withdrawal successfull"
+      flash[:sucess] = "Withdrawal request sent"
 
     else
       flash[:danger] = "You can't withdraw more than you own"

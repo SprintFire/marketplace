@@ -1,14 +1,15 @@
 .row
   .col-md-3
     = render 'shared/left_dashboard_menu'
-  .col-md-9
-    %ul.nav.nav-tabs{:role => "tablist"}
-      %li.nav-item
-        %a.nav-link.active{"data-toggle" => "tab", :href => "#about-you", :role => "tab"} About You
-      %li.nav-item
-        %a.nav-link{"data-toggle" => "tab", :href => "#settings", :role => "tab"} Settings
-      %li.nav-item
-        %a.nav-link{"data-toggle" => "tab", :href => "#cards", :role => "tab"} My Cards
+  .col-md-9#preference-view
+    .card
+      %ul.nav.nav-tabs{:role => "tablist"}
+        %li.nav-item
+          %a.nav-link.active{"data-toggle" => "tab", :href => "#about-you", :role => "tab"} About You
+        %li.nav-item
+          %a.nav-link{"data-toggle" => "tab", :href => "#settings", :role => "tab"} Settings
+        %li.nav-item
+          %a.nav-link{"data-toggle" => "tab", :href => "#cards", :role => "tab"} My Cards
 
     / Tab panes
     .tab-content
