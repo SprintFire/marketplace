@@ -1,11 +1,50 @@
 #top
-  background: $black
+  background: $blue
 
   .navbar
     padding-left: 0px
     padding-right: 0px
 
+.nav-link, .navbar-brand
+  color: $white
+  &:hover
+    color: $gray
+
 #heading
   background: white
-  padding: 10px 0
   border-bottom: 1px solid $greyBorder
+
+.breadcrumb
+  background: white
+
+#heading .container
+  padding-top: 0
+  padding-bottom: 0
+
+#heading .breadcrumb
+  margin-bottom: 0
+
+.input-group input
+  //border-color: transparent
+  border-radius: 0
+
+span.input-group-addon
+  padding: 0
+  border: 0
+  border-radius: 0
+
+  button
+    border-radius: 0
+
+#search-button
+  color: $white
+  &:hover
+    color: $lighterBlack
+
+#header_search
+  color: $lighterBlack
+  width: 20em
+
+.search-view
+  padding-top: .75rem
+  padding-bottom: .75rem
