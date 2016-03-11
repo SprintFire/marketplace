@@ -2,10 +2,10 @@
   .col-md-3
     = render 'shared/left_dashboard_menu'
   .col-md-9#preference-view
-    .card
+    .card#tab-head
       %ul.nav.nav-tabs{:role => "tablist"}
         %li.nav-item
-          %a.nav-link.active{"data-toggle" => "tab", :href => "#about-you", :role => "tab"} About You
+          %a.nav-link.active{"data-toggle" => "tab", :href => "#about-you", :role => "tab"} Basic Information
         %li.nav-item
           %a.nav-link{"data-toggle" => "tab", :href => "#settings", :role => "tab"} Settings
         %li.nav-item
@@ -14,8 +14,7 @@
     / Tab panes
     .tab-content
       #about-you.tab-pane.active{:role => "tabpanel"}
-        .card
-          .card-header About You
+        .card.tab-bottom
           .card-block
             = form_for @user, url: account_path, html: {:autocomplete => "off", :role => "form"} do |f|
               = render "shared/form_errors", f: @user
@@ -41,8 +40,7 @@
 
       #cards.tab-pane{:role => "tabpanel"}
         - unless @cards.empty?
-          .card
-            .card-header My Credit Cards
+          .card.tab-bottom
             .card-block
               - @cards.each do |card|
                 .row
