@@ -13,7 +13,7 @@
 .row.jumbotron#public-view-shop-body
   %h1.display-6.col-md-8=shop.name
   .card.card-block.col-md-4
-    .card-text.fa.fa-shopping-cart 5
+    .card-text.fa.fa-shopping-cart=@product.purchases.count
     %span#single-word Sales
   %hr.m-y-2.col-md-7/
   %p.col-md-8.description=shop.description
