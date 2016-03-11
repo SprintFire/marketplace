@@ -1,70 +1,70 @@
-.container-fluid.shop-form
-  .row
-    .col-md-10.col-md-offset-1
-      = image_tag(@shop.profile_image_url, size: "168x168", class: "img-thumbnail img-responsive shop-profile") if @shop.profile_image?
-    .card.card-block.col-md-10.col-md-offset-1
-      %h3.card-title= form_header
-      %hr
-      = form_for @shop, :html => {class: ''} do |f|
-        = render 'shared/form_errors', f: @shop
-        %fieldset.form-group
-          = f.label :name
-          = f.text_field :name, class: "form-control", autofocus: true
-        .row
-          %fieldset.form-group.col-md-4
-            = f.label :facebook_url
-            = f.url_field :facebook_url, class: "form-control"
-          %fieldset.form-group.col-md-4
-            = f.label :twitter_username
-            = f.url_field :twitter_username, class: "form-control"
-          %fieldset.form-group.col-md-4
-            = f.label :instagram_username
-            = f.url_field :instagram_username, class: "form-control"
-        .row
-          %fieldset.form-group.col-md-6
-            = f.label :contact_phone
-            = f.telephone_field :contact_phone, class: "form-control"
-          %fieldset.form-group.col-md-6
-            = f.label :email_id
-            = f.email_field :email_id, class: "form-control"
-        %fieldset.form-group
-          = f.label :description
-          = f.text_area :description, class: "form-control"
-        .row
-          %fieldset.form-group.col-md-6
-            = f.label :profile_image
-            %label.file
-              = f.file_field :profile_image
-              %span.file-custom
 
-          %fieldset.form-group.col-md-6
-            = f.label :header_image
-            %label.file
-              = f.file_field :header_image
-              %span.file-custom
-            -# = image_tag(@shop.header_image_url) if @shop.header_image?
-        %fieldset.form-group
-          Location
-          %input.form-control#address{:type => "text", autocomplete: "off"}/
-        .row
-          .col-md-12#map{style: "height: 500px;"}
-          = f.hidden_field :latitude, id: 'set-latitude'
-          = f.hidden_field :longitude, id: 'set-longitude'
-        %br/
-        %hr
-        = f.submit(class: "btn btn-primary")
+.shop-form
+  .col-md-12
+    = image_tag(@shop.profile_image_url, size: "168x168", class: "img-thumbnail img-responsive shop-profile") if @shop.profile_image?
+  .card.card-block.col-md-12
+    %h3.card-title= form_header
+    %hr
+    = form_for @shop, :html => {class: ''} do |f|
+      = render 'shared/form_errors', f: @shop
+      %fieldset.form-group
+        = f.label :name
+        = f.text_field :name, class: "form-control", autofocus: true
+      -# .row
+      -#   %fieldset.form-group.col-md-4
+      -#     = f.label :facebook_url
+      -#     = f.url_field :facebook_url, class: "form-control"
+      -#   %fieldset.form-group.col-md-4
+      -#     = f.label :twitter_username
+      -#     = f.url_field :twitter_username, class: "form-control"
+      -#   %fieldset.form-group.col-md-4
+      -#     = f.label :instagram_username
+      -#     = f.url_field :instagram_username, class: "form-control"
+      .row
+        %fieldset.form-group.col-md-6
+          = f.label :contact_phone
+          = f.telephone_field :contact_phone, class: "form-control"
+        %fieldset.form-group.col-md-6
+          = f.label :email_id
+          = f.email_field :email_id, class: "form-control"
+      %fieldset.form-group
+        = f.label :description
+        = f.text_area :description, class: "form-control"
+      -# .row
+      -#   %fieldset.form-group.col-md-6
+      -#     = f.label :profile_image
+      -#     %label.file
+      -#       = f.file_field :profile_image
+      -#       %span.file-custom
+      -#
+      -#   %fieldset.form-group.col-md-6
+      -#     = f.label :header_image
+      -#     %label.file
+      -#       = f.file_field :header_image
+      -#       %span.file-custom
+      -#     -# = image_tag(@shop.header_image_url) if @shop.header_image?
+      %fieldset.form-group
+        Location
+        %input.form-control#address{:type => "text", autocomplete: "off"}/
+      .row
+        .col-md-12#map{style: "height: 350px;"}
+        = f.hidden_field :latitude, id: 'set-latitude'
+        = f.hidden_field :longitude, id: 'set-longitude'
+      %br/
+      %hr
+      = f.submit(class: "btn btn-primary")
 
 :javascript
-  imageValidation($('#shop_header_image'));
-  imageValidation($('#shop_profile_image'));
+imageValidation($('#shop_header_image'));
+imageValidation($('#shop_profile_image'));
 
-  function imageValidation(el) {
-    el.bind('change', function() {
-      var size_in_megabytes = this.files[0].size / 1048576;
-      if(size_in_megabytes > 5) {
-        $(this).parent().parent().append("<p class=\"text-danger\" >The image is to large, please use an image less than 5MB</p>");
-      } else {
-        $(this).parent().parent().append("<p class=\"text-success\">" + this.files[0].name + " uploaded");
-      }
-    });
-  }
+function imageValidation(el) {
+  el.bind('change', function() {
+    var size_in_megabytes = this.files[0].size / 1048576;
+    if(size_in_megabytes > 5) {
+      $(this).parent().parent().append("<p class=\"text-danger\" >The image is to large, please use an image less than 5MB</p>");
+    } else {
+      $(this).parent().parent().append("<p class=\"text-success\">" + this.files[0].name + " uploaded");
+    }
+  });
+}

@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     end
   end
 
+get "withdrawals", to: "withdrawals#index", as: "withdrawals"
+
   get "dashboard" => "pages#dashboard", as: "dashboard"
   get "dashboard/purchases" => "purchases#index", as: "purchase_history"
 
