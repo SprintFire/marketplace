@@ -1,0 +1,23 @@
+.row
+  .col-md-3
+    = render 'shared/left_dashboard_menu'
+  .col-md-9
+    - @shops.each do |s|
+      .card
+        .card-block
+          %h3.card-title
+            = s.name
+            .pull-md-right
+              &euro;
+              = number_with_precision(shop_balance_in_euros(WithdrawalsHelper.get_current_balance(s)), precision: 2)
+
+          %p.card-text.text-muted= s.description
+
+          - if WithdrawalsHelper.get_current_balance(s) > 0
+            = link_to new_shop_withdrawal_path(s), class: "btn btn-success" do
+              Withdraw Money
+              %i.fa.fa-arrow-right
+
+          - else
+            %p.card-text.text-danger.font-italic Not enough funds to withdraw money
+            %a.btn.btn-success.disabled{:href => "#"} Withdraw Money
