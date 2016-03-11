@@ -25,29 +25,25 @@
   -#     %h5.card-title Contact Krüst Bakery
   -# .card-block.col-md-4#icons
   -#   %h9.card-title.text-xs-center Please sign in to contact the supplier
-  .card-deck-wrapper.col-md-12
-    .card-deck
+
+.row
+  - shop.each do |s|
+    .col-md-3
       .card
-        %img.card-img-top{:alt => "Card image cap", src: "http://placehold.it/318x180"}/
+        %img.card-img-top{:alt => "Card image cap", "data-src" => "..."}/
         .card-block
-          %h4.card-title Shop 1
+          %h4.card-title=s.name
           %p.card-text This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
           %p.card-text
             %small.text-muted Last updated 3 mins ago
       .card
-        %img.card-img-top{:alt => "Card image cap", src: "http://placehold.it/318x180"}/
+        %img.card-img-top{:alt => "Card image cap", "data-src" => "..."}/
         .card-block
-          %h4.card-title Shop 2
-          %p.card-text This card has supporting text below as a natural lead-in to additional content.
+          %h4.card-title=s.name
+          %p.card-text This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
           %p.card-text
             %small.text-muted Last updated 3 mins ago
-      .card
-        %img.card-img-top{:alt => "Card image cap", src: "http://placehold.it/318x180"}/
-        .card-block
-          %h4.card-title Shop 3
-          %p.card-text This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
-          %p.card-text
-            %small.text-muted Last updated 3 mins ago
+
   .jumbotron.jumbotron-fluid#similar-category.col-md-12
     .container
       %h1.display-8 Similar Suppliers
