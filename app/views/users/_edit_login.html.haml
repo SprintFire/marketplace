@@ -1,6 +1,4 @@
-.card
-  .card-header Login Details
-
+.card.tab-bottom
   .card-block
     = form_for(@user, url: registration_path(@user), html: { method: :put }) do |f|
       = render "shared/form_errors", f: @user
