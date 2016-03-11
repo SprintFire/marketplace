@@ -1,49 +1,27 @@
 .row.container#public-view-shop-header
   %img.img-fluid.col-md-8{:alt => "Cover Photo", src: "http://placehold.it/590x240"}/
   .card.card-block.col-md-4
-    %img.img-circle{:alt => "Profile picture", src: "http://placehold.it/100x100"}/
+    - if shop.profile_image?
+      = image_tag(shop.profile_image.url)
+    - else
+      %img.img-circle{:alt => "Profile picture",  src: "http://placehold.it/100x100"}
     .text-xs-center
-      %h4.card-title Krüst Bakery
-      %p.card-text At Krüst Bakery we supply delicious Donuts, Cronuts, Pastries and specialty breads through wholesale & retail.
+      %h4.card-title=shop.name
+      %p.card-text=shop.description
       = link_to "View Portfolio", "#", class: "btn btn-primary"
 
 .row.jumbotron#public-view-shop-body
-  %h1.display-6.col-md-8 Krüst Bakery
+  %h1.display-6.col-md-8=shop.name
   .card.card-block.col-md-4
     .card-text.fa.fa-shopping-cart 3,147
     %span#single-word Sales
   %hr.m-y-2.col-md-7/
-  %p.col-md-8.description At Krüst Bakery we understand the importance of high quality produce, therefore we only supply the best possible bakery products to our customers. We also offer a unique white label service to our customers, for own branded packaging and sell our products in their stores.  This allows stores to have their own uniquely branded in-store bakery, which over the past number of years is becoming increasingly popular. The 2013 Irish Retail Market Reports have shown that consumer spending has increased in purchase of Own Store Branded products, as many consumers feel that they can get better value for money this way.
+  %p.col-md-8.description We understand the importance of high quality produce, therefore we only supply the best possible bakery products to our customers. We also offer a unique white label service to our customers, for own branded packaging and sell our products in their stores.  This allows stores to have their own uniquely branded in-store bakery, which over the past number of years is becoming increasingly popular. The 2013 Irish Retail Market Reports have shown that consumer spending has increased in purchase of Own Store Branded products, as many consumers feel that they can get better value for money this way.
   .card.card-inverse.col-md-4{:style => "background-color: #333; border-color: #333;"}
     .card-block.row
       %h5.card-title Social Media
   .card-block.col-md-4#icons
     %h9.card-title.text-xs-center Social Icons
-  -#
-  -# .card.card-inverse.col-md-4{:style => "background-color: #333; border-color: #333;"}
-  -#   .card-block.row
-  -#     %h5.card-title Contact Krüst Bakery
-  -# .card-block.col-md-4#icons
-  -#   %h9.card-title.text-xs-center Please sign in to contact the supplier
 
-.row
-  - shop.each do |s|
-    .col-md-3
-      .card
-        %img.card-img-top{:alt => "Card image cap", "data-src" => "..."}/
-        .card-block
-          %h4.card-title=s.name
-          %p.card-text This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-          %p.card-text
-            %small.text-muted Last updated 3 mins ago
-      .card
-        %img.card-img-top{:alt => "Card image cap", "data-src" => "..."}/
-        .card-block
-          %h4.card-title=s.name
-          %p.card-text This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-          %p.card-text
-            %small.text-muted Last updated 3 mins ago
-
-  .jumbotron.jumbotron-fluid#similar-category.col-md-12
-    .container
-      %h1.display-8 Similar Suppliers
+= render 'shared/products_card_deck', product: @products
+= render 'shared/similar_suggestions'

@@ -12,7 +12,7 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
-    @shops = current_user.shops
+    @products = @shop.products
   end
 
   def new
