@@ -31,8 +31,3 @@
                   = time_ago_in_words(purchase.created_at) + " ago"
                 .col-md-3
                   &euro; #{number_with_precision(purchase.price, :precision => 2)}
-        -# - @purchases.each do |purchase|
-        -#   .row
-        -#     = purchase.id
-        -#     = purchase.product.name
-        -#     = purchase.created_at
