@@ -2,6 +2,7 @@ class CheckoutsController < ApplicationController
   before_action :set_variables, only: [:checkout_current_card, :checkout_new_card]
   before_action :out_of_quantity, only: [:checkout_current_card, :checkout_new_card]
 
+  add_breadcrumb "Checkout", :checkout_path
 
   def new
     @product = Product.find(params[:id])
