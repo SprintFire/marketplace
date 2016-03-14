@@ -1,6 +1,6 @@
 class Withdrawal < ActiveRecord::Base
   belongs_to :shop
-
+  scope :unapproved, -> { where(approved: false)}
   validate :only_make_withdrawal_if_you_have_balance
 
   def only_make_withdrawal_if_you_have_balance
