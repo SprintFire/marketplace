@@ -1,6 +1,9 @@
 class WithdrawalsController < ApplicationController
   before_action :set_shop, except: [:index]
 
+  add_breadcrumb "Withdrawals", :withdrawals_path
+
+
   def index
     @shops = current_user.shops
   end
@@ -10,6 +13,7 @@ class WithdrawalsController < ApplicationController
     @withdrawal_balance = WithdrawalsHelper.get_withdrawal_balance(@shop)
     @current_balance = @overall_balance - @withdrawal_balance
     @withdrawal = Withdrawal.new
+    add_breadcrumb "New Withdrawals", new_shop_withdrawal_path(@shop)
   end
 
   def create

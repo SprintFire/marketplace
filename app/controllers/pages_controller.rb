@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:dashboard]
 
   add_breadcrumb "Dashboard", :dashboard_path
+
   def home
   end
 

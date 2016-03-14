@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  add_breadcrumb "My Account", :account_path
+
   def edit
     @user = current_user
     @cards = Card.where(user: current_user)

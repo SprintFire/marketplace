@@ -3,6 +3,10 @@ class ProductsController < ApplicationController
   before_action :set_shop
   before_action :set_product, only: [:edit, :update, :destroy]
 
+  add_breadcrumb "Products", :shop_products_path
+
+  add_breadcrumb "New Product", :new_shop_product_path
+
   def index
     @products = Product.all
   end
@@ -10,6 +14,8 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     commontator_thread_show(@product)
+
+    add_breadcrumb "#{@product.name}", shop_product_path(@product.shop.id, @product.id)
   end
 
   def new
