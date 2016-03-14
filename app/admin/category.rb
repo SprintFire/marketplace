@@ -10,14 +10,6 @@ ActiveAdmin.register Category do
 
   filter :title
 
-  show :title => :name do
-    attributes_table do
-      row :title
-      row :created_at
-      row :updated_at
-    end
-  end
-
   form do |f|
     f.inputs "Categories" do
       f.input :title
