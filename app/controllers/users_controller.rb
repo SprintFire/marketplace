@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  add_breadcrumb "Dashboard", :dashboard_path
   add_breadcrumb "My Account", :account_path
 
   def edit

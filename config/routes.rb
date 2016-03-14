@@ -25,10 +25,13 @@ Rails.application.routes.draw do
     end
   end
 
-get "withdrawals", to: "withdrawals#index", as: "withdrawals"
 
-  get "dashboard" => "pages#dashboard", as: "dashboard"
-  get "dashboard/purchases" => "purchases#index", as: "purchase_history"
+namespace :dashboard do
+  get "/" => "/pages#dashboard", as: "/"
+  get "purchases" => "/purchases#index", as: "purchase_history"
+  get "withdrawals", to: "/withdrawals#index", as: "withdrawals"
+end
+
 
   # get "checkout/:id", to: "purchases#show", as: "checkout"
   # post "checkout/:id", to: "purchases#create"
