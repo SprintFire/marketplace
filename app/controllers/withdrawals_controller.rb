@@ -2,10 +2,11 @@ class WithdrawalsController < ApplicationController
   before_action :set_shop, except: [:index]
 
   add_breadcrumb "Dashboard", :dashboard_path
+  add_breadcrumb "Withdrawals", :dashboard_withdrawals_path
 
   def index
     @shops = current_user.shops
-    add_breadcrumb "Withdrawals", :dashboard_withdrawals_path
+
   end
 
   def new
