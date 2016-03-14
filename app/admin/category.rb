@@ -19,7 +19,7 @@ ActiveAdmin.register Category do
   end
 
   form do |f|
-    f.inputs "Shop Details" do
+    f.inputs "Categories" do
       f.input :title
     end
     f.actions
