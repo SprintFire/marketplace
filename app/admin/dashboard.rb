@@ -62,5 +62,19 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end # column
     end # columns
+
+    columns do
+      column do
+        panel "Recent Withdrawal Requests" do
+          table_for Withdrawal.order('id desc').limit(10).each do |withdrawal|
+            column("Withdrawal ID") {|withdrawal| link_to "##{withdrawal.id}", admin_withdrawal_path(withdrawal)}
+            column("From Shop") {|withdrawal| link_to withdrawal.shop.name, admin_shop_path(withdrawal.shop)}
+            column("Amount") {|withdrawal| number_to_currency withdrawal.amount}
+            column("Status") {|withdrawal| withdrawal.approved ? "Approved" : "Pending"}
+            column("Created at") {|withdrawal| time_ago_in_words(withdrawal.created_at) + " ago"}
+          end
+        end
+      end # column
+    end # columns
   end # content
 end
