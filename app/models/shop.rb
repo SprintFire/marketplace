@@ -4,7 +4,7 @@ class Shop < ActiveRecord::Base
   has_many :withdrawals
 
   validates :name, length: {minimum: 2, maximum: 15}, presence:true
-  validates :description, length: {minimum: 2}, presence:true
+  validates :description, length: {minimum: 140}, presence:true
   validates :email_id, presence:true
   # geocoded_by :full_street_address
   # after_validation :geocode

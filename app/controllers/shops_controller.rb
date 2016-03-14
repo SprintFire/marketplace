@@ -2,6 +2,9 @@ class ShopsController < ApplicationController
   before_action :set_user_shop, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
+  add_breadcrumb "Dashboard", :dashboard_path
+  add_breadcrumb "Shops", :shops_path
+
   def index
     if params[:search]
       @shops = Shop.near([search_params[:lat], search_params[:lng]], 50)
@@ -12,10 +15,12 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    add_breadcrumb "#{@shop.name}", shop_path(@shop), title: "Testing"
   end
 
   def new
     @shop = current_user.shops.new
+    add_breadcrumb "New Shop", :new_shop_path
   end
 
   def create
@@ -30,6 +35,8 @@ class ShopsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb "#{@shop.name}", shop_path(@shop)
+    add_breadcrumb "Edit", edit_shop_path(@shop)
   end
 
   def update
