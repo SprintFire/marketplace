@@ -48,6 +48,8 @@ gem 'carrierwave'
 gem "mini_magick"
 gem 'fog'
 
+gem "breadcrumbs_on_rails"
+
 group :development, :test do
   gem 'byebug'
   gem 'spring'

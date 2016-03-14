@@ -4,7 +4,7 @@
   .col-md-9#withdrawal-content
     .card
       .card-block
-        %h4.card-title.text-muted
+        %h4.card-title
           New Withdrawal
         %hr
         %h6.card-subtitle.text-muted
@@ -22,37 +22,29 @@
 
               = f.submit "Request Withdrawal", class: "btn btn-primary btn-lg"
 
-    %h4 Withdrawal Requests
-    %hr
-    - if @shop.withdrawals.empty?
-      %h4 You currently have no withdrawals pending or queued for processing.
-    - else
-      #withdrawal-requests
-        %table.table.table-striped
-          %thead
-            %tr
-              %th Amount
-              %th Status
-              %th Created At
-          %tbody
-            - @shop.withdrawals.order("created_at desc").each do |w|
-              %tr
-                %td
+    .card
+      .card-block
+        %h3.card-title
+          Withdrawal Requests
+      %ul.list-group.list-group-flush
+        - if @shop.withdrawals.empty?
+          %li.list-group-item You currently have no withdrawals pending or queued for processing.
+        - else
+          %li.list-group-item
+            .row
+              .col-md-4
+                %strong Amount
+              .col-md-4
+                %strong Status
+              .col-md-4
+                %strong Created at
+          - @shop.withdrawals.order("created_at desc").each do |w|
+            %li.list-group-item
+              .row
+                .col-md-4
                   &euro;
                   %strong= number_with_precision(shop_balance_in_euros(w.amount), precision: 2)
-                - if w.approved
-                  %td.text-success= "Approved"
-                - else
-                  %td.text-warning= "Pending"
-                  %td= w.created_at.strftime("%A %b %d %T")
-
-      -# %h3 Withdraw From #{@shop.name}
-      -# %h2
-      -#   Overall Balance &euro;
-      -#   = shop_balance_in_euros @overall_balance
-      -# %h2
-      -#   You have withdrawn &euro;
-      -#   = shop_balance_in_euros @withdrawal_balance
-      -# %h2
-      -#   You can withdraw a maximum of &euro;
-      -#   = shop_balance_in_euros @current_balance
+                .col-md-4
+                  = w.approved ? "Approved" : "Pending"
+                .col-md-4
+                  = w.created_at.strftime("%b. %d %Y, %T")
