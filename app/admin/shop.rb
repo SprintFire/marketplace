@@ -54,7 +54,7 @@ ActiveAdmin.register Shop do
 
     panel "Withdrawal History" do
       table_for shop.withdrawals.all.each do |withdrawal|
-        column("Withdrawal ID", :sortable => :id) {|withdrawal| link_to "##{withdrawal.id}", admin_purchase_path(withdrawal.id) }
+        column("Withdrawal ID", :sortable => :id) {|withdrawal| link_to "##{withdrawal.id}", admin_withdrawal_path(withdrawal.id) }
         column("Amount")  {|withdrawal| withdrawal.amount}
         column("Status")  {|withdrawal| withdrawal.approved ? "Approved" : "Pending"}
         column("Create Date", :sortable => :created_at){|withdrawal| pretty_format(withdrawal.created_at) }
