@@ -1,4 +1,5 @@
 ActiveAdmin.register Product do
+  permit_params :title, :content
 
   show do
     attributes_table do
