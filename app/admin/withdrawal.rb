@@ -1,5 +1,5 @@
 ActiveAdmin.register Withdrawal do
-  permit_params :shop_id, :amount, :approved
+  permit_params :approved
 
   index do
     selectable_column
@@ -28,8 +28,13 @@ ActiveAdmin.register Withdrawal do
       row :created_at
       row :updated_at
     end
-
     active_admin_comments
+  end
 
+  form do |f|
+    f.inputs "Withdrawal Details" do
+      f.input :approved
+    end
+    f.actions
   end
 end
