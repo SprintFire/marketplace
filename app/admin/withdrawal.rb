@@ -5,7 +5,7 @@ ActiveAdmin.register Withdrawal do
     selectable_column
     id_column
     column :shop_id
-    column :amount
+    column :amount_decimal
     column :approved
     column :created_at
     column :updated_at
@@ -14,7 +14,7 @@ ActiveAdmin.register Withdrawal do
 
   filter :id
   filter :shop_id
-  filter :amount
+  filter :amount_decimal
   filter :approved
   filter :created_at
   filter :updated_at
@@ -23,7 +23,7 @@ ActiveAdmin.register Withdrawal do
     attributes_table do
       row :id
       row :shop_id
-      row :amount
+      row :amount_decimal
       row :approved
       row :created_at
       row :updated_at
