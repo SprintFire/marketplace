@@ -36,7 +36,8 @@
           %em.comment_timestamp{:id => "comment_#{comment.id.to_s}_updated_timestamp_span"}
             - if comment.is_modified?
               = comment.updated_timestamp
-          %span.comment_actions{:id => "comment_#{comment.id.to_s}_actions_span"}
-            = render :partial => 'commontator/comments/actions',
-              :locals => { :comment => comment,
-              :user => user }
+          .col-md-2.pull-md-right
+            %span.comment_actions{:id => "comment_#{comment.id.to_s}_actions_span"}
+              = render :partial => 'commontator/comments/actions',
+                :locals => { :comment => comment,
+                :user => user }

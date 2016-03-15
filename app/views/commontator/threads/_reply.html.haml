@@ -17,6 +17,7 @@
           :locals => { :comment => @new_comment,          |
           :thread => thread,                              |
           :per_page => per_page }                         |
+
     - if @new_comment.nil?
       .thread_new_comment_link{:id => "thread_#{thread.id}_new_comment_link_div"}
         = link_to t('commontator.comment.actions.new'),                       |
