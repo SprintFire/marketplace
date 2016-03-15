@@ -24,4 +24,12 @@
           .col-md-12
             = f.label :description
             = f.text_area :description, :style => "width: 100%", class: "form-control"
+      .row
+        %fieldset.form-group
+          .col-md-6
+            = f.label :category
+            %select{:multiple => "multiple"}
+              %option{:value => "1"} Book
+              %option{:value => "2"} Bakery
+              %option{:value => "3"} Gym
       = f.submit "Create", class: "btn btn-primary"
