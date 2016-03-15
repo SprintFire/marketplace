@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     add_breadcrumb "New Product", :new_shop_product_path
+    @category = Category.all
   end
 
   def create

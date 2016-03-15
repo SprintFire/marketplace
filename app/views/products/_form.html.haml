@@ -34,9 +34,11 @@
               %button.btn.btn-default.dropdown-toggle.btn-category{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
                 %span.sr-only Toggle Dropdown
               .dropdown-menu
-                %a.dropdown-item{:href => "#"} Action
-                %a.dropdown-item{:href => "#"} Another action
-                %a.dropdown-item{:href => "#"} Something else here
-                .dropdown-divider
-                %a.dropdown-item{:href => "#"} Separated link
+              - @category each do |category|
+                %a.dropdown-item
+                = options_from_collection_for_select(@category, 'id', 'title')
+                  -# = f.select :category, options
+                  -# %a.dropdown-item{:href => "#"} Book
+                  -# %a.dropdown-item{:href => "#"} Bakery
+                  -# %a.dropdown-item{:href => "#"} Gym
       = f.submit "Create", class: "btn btn-primary"
