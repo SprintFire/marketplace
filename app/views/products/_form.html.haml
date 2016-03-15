@@ -24,12 +24,19 @@
           .col-md-12
             = f.label :description
             = f.text_area :description, :style => "width: 100%", class: "form-control"
-      .row
+      .row#category
         %fieldset.form-group
-          .col-md-6
-            = f.label :category
-            %select{:multiple => "multiple"}
-              %option{:value => "1"} Book
-              %option{:value => "2"} Bakery
-              %option{:value => "3"} Gym
+          .col-md-12
+            = f.label :category_id
+          .col-md-12
+            .btn-group
+              %button.btn.btn-default.btn-category{:type => "button"} Select a category
+              %button.btn.btn-default.dropdown-toggle.btn-category{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                %span.sr-only Toggle Dropdown
+              .dropdown-menu
+                %a.dropdown-item{:href => "#"} Action
+                %a.dropdown-item{:href => "#"} Another action
+                %a.dropdown-item{:href => "#"} Something else here
+                .dropdown-divider
+                %a.dropdown-item{:href => "#"} Separated link
       = f.submit "Create", class: "btn btn-primary"
