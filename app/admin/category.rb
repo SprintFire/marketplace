@@ -13,6 +13,7 @@ ActiveAdmin.register Category do
   form do |f|
     f.inputs "Categories" do
       f.input :title
+      f.input :description
     end
     f.actions
   end
