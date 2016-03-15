@@ -40,19 +40,20 @@
         :page => page,                                     |
         :per_page => per_page }                            |
 
-%span.thread_show.commontator_hidden{:id => "thread_#{thread.id.to_s}_show_span"}
-  = link_to t('commontator.thread.actions.show'), |
-    '#',                                          |
-    id: "thread_#{thread.id.to_s}_show_link",     |
-    class: "thread_show_link btn btn-success btn-sm"
+.row.container
+  %span.thread_show.commontator_hidden{:id => "thread_#{thread.id.to_s}_show_span"}
+    = link_to t('commontator.thread.actions.show'), |
+      '#',                                          |
+      id: "thread_#{thread.id.to_s}_show_link",     |
+      class: "thread_show_link btn btn-success btn-sm"
 
-%span.thread_span{:id => "thread_#{thread.id}_span"}
-  %span.thread_actions{:id => "thread_#{thread.id.to_s}_actions_span"}
-    %span.thread_hide.commontator_hidden{:id => "thread_#{thread.id.to_s}_hide_span"}
-      = link_to t('commontator.thread.actions.hide'), |
-        '#',                                          |
-        id: "thread_#{thread.id.to_s}_hide_link",     |
-        class: "thread_hide_link btn btn-primary btn-sm"
+  %span.thread_span{:id => "thread_#{thread.id}_span"}
+    %span.thread_actions{:id => "thread_#{thread.id.to_s}_actions_span"}
+      %span.thread_hide.commontator_hidden{:id => "thread_#{thread.id.to_s}_hide_span"}
+        = link_to t('commontator.thread.actions.hide'), |
+          '#',                                          |
+          id: "thread_#{thread.id.to_s}_hide_link",     |
+          class: "thread_hide_link btn btn-warning btn-sm"
      
     - if can_subscribe
       %span.thread_subscription{:id => "thread_#{thread.id.to_s}_subscription_span"}
@@ -79,9 +80,10 @@
         :class => "thread_#{close_string}_link",                                        |
         :remote => true                                                                 |
 
-- if thread.config.comment_order != :l
-  = render :partial => 'commontator/threads/reply',                        |
-    :locals => { :thread => thread, :user => user, :per_page => per_page } |
+.row.container
+  - if thread.config.comment_order != :l
+    = render :partial => 'commontator/threads/reply',                        |
+      :locals => { :thread => thread, :user => user, :per_page => per_page } |
 
 :javascript
   #{render partial: 'commontator/threads/hide_show_links.js',
