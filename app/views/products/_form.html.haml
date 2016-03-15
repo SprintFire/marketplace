@@ -34,9 +34,10 @@
               %button.btn.btn-default.dropdown-toggle.btn-category{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
                 %span.sr-only Toggle Dropdown
               .dropdown-menu
-              - @category each do |category|
-                %a.dropdown-item
-                = options_from_collection_for_select(@category, 'id', 'title')
+                - Category.all.each do |category|
+                  %a.dropdown-item
+                    = category.title 
+                -# = options_from_collection_for_select(@category, 'id', 'title')
                   -# = f.select :category, options
                   -# %a.dropdown-item{:href => "#"} Book
                   -# %a.dropdown-item{:href => "#"} Bakery
