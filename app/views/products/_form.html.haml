@@ -28,18 +28,6 @@
         %fieldset.form-group
           .col-md-12
             = f.label :category_id
-          .col-md-12
-            .btn-group
-              %button.btn.btn-default.btn-category{:type => "button"} Select a category
-              %button.btn.btn-default.dropdown-toggle.btn-category{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-                %span.sr-only Toggle Dropdown
-              .dropdown-menu
-                - Category.all.each do |category|
-                  %a.dropdown-item
-                    = category.title 
-                -# = options_from_collection_for_select(@category, 'id', 'title')
-                  -# = f.select :category, options
-                  -# %a.dropdown-item{:href => "#"} Book
-                  -# %a.dropdown-item{:href => "#"} Bakery
-                  -# %a.dropdown-item{:href => "#"} Gym
+          .col-md-12#custom-dropdown
+            = f.select :category_id, options_for_select(@category.collect{ |u| [u.title, u.id] })
       = f.submit "Create", class: "btn btn-primary"
