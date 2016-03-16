@@ -1,6 +1,27 @@
+%header#header
+  %a.site-logo{:href => "#"}
+    Logo
+  %nav#nav-main.okayNav{:role => "navigation"}
+    %ul
+      %li
+        %a{:href => "#"} Home
+      %li
+        %a{:href => "#"} Shop
+      %li
+        %a{:href => "#"} Blog
+      %li
+        %a{:href => "#"} Services
+      %li
+        %a{:href => "#"} Contacts
+      %li
+        %a{:href => "#"} About us
+      %li
+        %a{:href => "#"} Testimonials
+/ /header
+
 .header#header#top
   .container
-    %nav.navbar.navbar-static-top#nav-main.okayNav{role: "navigation", class: "okayNav", id: "nav-main"}
+    %nav.navbar.navbar-static-top#nav-main.okayNav{role: "navigation"}
       #navbar-header.collapse.navbar-toggleable-xs
         =link_to 'Marketplace', root_path, class: 'navbar-brand site-logo'
       %button.navbar-toggler.hidden-sm-up{"aria-controls" => "navbar-header", "data-target" => "#navbar-header", "data-toggle" => "collapse", :type => "button"}
