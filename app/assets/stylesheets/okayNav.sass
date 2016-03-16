@@ -1,6 +1,7 @@
 /*
  * We are hiding the invisible nav outside the screen
  * so we need to avoid the horizontal scroll
+ */
 
 body.okayNav-loaded
   overflow-x: hidden
@@ -33,7 +34,7 @@ body.okayNav-loaded
     -ms-user-select: none
     user-select: none
   ul
-    /* We want two navigations - one hidden and one visible
+    // We want two navigations - one hidden and one visible
     float: left
   a
     position: relative
@@ -45,14 +46,14 @@ body.okayNav-loaded
   li
     display: inline-block
   a
-    /* Link styling for the visible part of the nav
+    // Link styling for the visible part of the nav
     display: block
     padding: 15px 15px
     transition: color 200ms cubic-bezier(0.55, 0, 0.1, 1)
   &:empty ~ .okayNav__menu-toggle
     top: 0
 
-/* Link styling for the off-screen part of the nav
+// Link styling for the off-screen part of the nav
 
 .okayNav__nav--invisible
   position: fixed
@@ -81,7 +82,7 @@ body.okayNav-loaded
     -webkit-transform: translateX(0)
     transform: translateX(0)
 
-/* Kebab icon
+// Kebab icon
 
 .okayNav__menu-toggle
   position: relative
@@ -121,6 +122,6 @@ body.okayNav-loaded
     &:nth-child(3)
       bottom: 0
   &.icon--active
-    /* Kebab icon when off-screen nav is open
+    // Kebab icon when off-screen nav is open
     -webkit-transform: rotate(90deg)
     transform: rotate(90deg)
