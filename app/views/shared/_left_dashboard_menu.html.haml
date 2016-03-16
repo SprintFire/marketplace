@@ -1,0 +1,23 @@
+.row#left-menu
+  .btn-group-vertical{"aria-label" => "Button group with nested dropdown", :role => "group"}
+    = link_to dashboard_path, class: 'btn btn-secondary' do
+      %i.fa.fa-home
+      Dashboard
+    = link_to account_path, class: 'btn btn-secondary' do
+      %i.fa.fa-cogs
+      Preferences
+    .btn-group{:role => "group"}
+      %a#btnGroupDrop1.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+        %i.fa.fa-building
+        Shops
+      .dropdown-menu{"aria-labelledby" => "btnGroupDrop1"}
+        = link_to 'My Shops', shops_path, class: 'dropdown-item'
+        = link_to new_shop_path, class: 'dropdown-item' do
+          %i.fa.fa-plus.text-success
+          Create Shop
+    = link_to dashboard_purchase_history_path, class: 'btn btn-secondary' do
+      %i.fa.fa-credit-card
+      Purchase History
+    = link_to dashboard_withdrawals_path, class: 'btn btn-secondary' do
+      %i.fa.fa-shopping-basket
+      Withdrawal

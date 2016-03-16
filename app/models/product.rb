@@ -1,6 +1,8 @@
 class Product < ActiveRecord::Base
   belongs_to :shop
   has_many :purchases
+  belongs_to :category
+  validates :category, presence: true
 
   validates :name, length: {minimum: 2, maximum: 15}, presence:true
   validates :price, presence:true
