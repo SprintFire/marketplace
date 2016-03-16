@@ -1,4 +1,4 @@
-= simple_form_for :search, url: shops_path, method: :get, html: { class: 'form-inline', role: 'search' } do |form|
+= simple_form_for :search, url: search_path, method: :get, html: { class: 'form-inline', role: 'search' } do |form|
   .input-group
     = form.input_field :text, label: false, placeholder: 'Where are you looking for?', required: true, id: 'header_search', class: 'form-control', value: (params['search']) ? params['search']['text'] : ''
     %span.input-group-addon

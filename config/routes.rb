@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'search', to: 'search#index', as: 'search'
+
   devise_for :users, path: "", path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -31,7 +33,6 @@ namespace :dashboard do
   get "purchases" => "/purchases#index", as: "purchase_history"
   get "withdrawals", to: "/withdrawals#index", as: "withdrawals"
 end
-
 
   # get "checkout/:id", to: "purchases#show", as: "checkout"
   # post "checkout/:id", to: "purchases#create"
