@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'category/:id', to: 'category#show', as: 'category'
+
   devise_for :users, path: "", path_names: {
     sign_in: 'login',
     sign_out: 'logout',
