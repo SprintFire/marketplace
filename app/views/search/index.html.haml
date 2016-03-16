@@ -1,41 +1,33 @@
-%h1 Search#index
+.row
+  .col-md-12
+    .card
+      #searchMap{ style: "height: 400px;" }
 
 - if @shops.empty?
   There are no shops in that location
 - else
   .row
+    %h3 Products
+    %hr
     - @shops.each do |s|
-      .col-md-5
-        .card
-          .col-md-5
+      - s.products.each do |p|
+        .col-md-4
+          .card
             %img.card-img-top{:alt => "Card image cap", src: "http://placehold.it/318x180"}/
-          .col-md-4
             .card-block
-              %h4.card-title= s.name
-              %p.card-text=s.description
+              %h4.card-title= p.name
+              %p.card-text= truncate(p.description, length: 10)
               -# = link_to "Edit", edit_shop_path(s)
               -# = link_to "View", shop_path(s)
-          .col-md-3
-            .card-block
               .btn-group{:role => "group"}
-                = link_to edit_shop_path(s), class: 'btn' do
-                  Edit
-                  -# %i.fa.fa-pencil-square-o.fa-lg
-                = link_to shop_path(s), class: 'btn' do
+                = link_to shop_product_path(s, p), class: 'btn' do
                   View
-                  -# %i.fa.fa-external-link-square.fa-lg
-
-
-%h3 The shop locations #{@shop_locations[0]["longitude"]}
-
-#searchMap{ style: "height: 400px; width: 500px;" }
-
 
 :javascript
   var locations = #{@shop_locations}
 
   var map = new google.maps.Map(document.getElementById('searchMap'), {
-    zoom: 13,
+    zoom: 14,
     center: new google.maps.LatLng(locations[0]["latitude"], locations[0]["longitude"]),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
