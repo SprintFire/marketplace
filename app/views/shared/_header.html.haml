@@ -1,10 +1,10 @@
-#top
+.header#header#top
   .container
-    %nav.navbar.navbar-static-top
+    %nav.navbar.navbar-static-top#nav-main.okayNav{role: "navigation", class: "okayNav", id: "nav-main"}
+      #navbar-header.collapse.navbar-toggleable-xs
+        =link_to 'Marketplace', root_path, class: 'navbar-brand site-logo'
       %button.navbar-toggler.hidden-sm-up{"aria-controls" => "navbar-header", "data-target" => "#navbar-header", "data-toggle" => "collapse", :type => "button"}
         ☰
-      #navbar-header.collapse.navbar-toggleable-xs
-        =link_to 'Marketplace', root_path, class: 'navbar-brand'
         %ul.nav.navbar-nav
           %li.nav-item.active
             =link_to 'Explore Shops', root_path, class: 'nav-link'

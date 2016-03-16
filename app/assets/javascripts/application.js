@@ -15,6 +15,7 @@
 //= require locationpicker.jquery
 //= require map
 //= require jquery.raty
+//= require jquery.okayNav
 //= require ratyrate
 //= require bootstrap
 //= require jquery.turbolinks
