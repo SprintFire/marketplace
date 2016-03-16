@@ -3,21 +3,22 @@
 - if @shops.empty?
   There are no shops in that location
 - else
-  .row
-    .col-md-5
+  .row.search-page-container
+    .col-md-4.product-container
+      %h3 Products
       - @shops.each do |s|
         - s.products.each do |p|
-          .card
-            %img.card-img-top{:alt => "Card image cap", src: "http://placehold.it/318x180"}/
-            .card-block
-              %h4.card-title= p.name
-              %p.card-text= truncate(p.description, length: 10)
-              -# = link_to "Edit", edit_shop_path(s)
-              -# = link_to "View", shop_path(s)
-              .btn-group{:role => "group"}
-                = link_to shop_product_path(s, p), class: 'btn' do
-                  View
-    .col-md-7
+          .product-card.col-md-12
+            .col-md-9.m-b-1
+              = link_to "#{p.name} at #{s.name}", shop_product_path(s, p), class: "p-b-1"
+              %p= p.description
+            .col-md-3.m-b-1
+              %strong.pull-xs-right.m-b-1
+                &euro;
+                = number_with_precision(p.price, precision: 2)
+              = link_to "View Details", shop_product_path(s, p), class: 'btn btn-success'
+
+    .col-md-8.map-container
       #searchMap{ style: "height: 600px;" }
 
 :javascript
@@ -47,7 +48,8 @@
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(locations[i]["latitude"], locations[i]["longitude"]),
       map: map,
-      maxWidth: 200
+      maxWidth: 200,
+      icon: "http://findicons.com/files/icons/2222/gloss_basic/32/pin_red.png"
     });
 
     google.maps.event.addListener(marker, 'click', (function(marker, i, infoWindowContent) {
