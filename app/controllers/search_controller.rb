@@ -6,6 +6,6 @@ class SearchController < ApplicationController
       @shops = Shop.all
     end
 
-    @shop_locations = @shops.to_json(only: [:name, :latitude, :longitude, :id])
+    @shop_locations = @shops.to_json(only: [:name, :latitude, :longitude, :id, :address])
   end
 end

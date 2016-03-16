@@ -1,17 +1,12 @@
-.row
-  .col-md-12
-    .card
-      #searchMap{ style: "height: 400px;" }
+
 
 - if @shops.empty?
   There are no shops in that location
 - else
   .row
-    %h3 Products
-    %hr
-    - @shops.each do |s|
-      - s.products.each do |p|
-        .col-md-4
+    .col-md-5
+      - @shops.each do |s|
+        - s.products.each do |p|
           .card
             %img.card-img-top{:alt => "Card image cap", src: "http://placehold.it/318x180"}/
             .card-block
@@ -22,6 +17,8 @@
               .btn-group{:role => "group"}
                 = link_to shop_product_path(s, p), class: 'btn' do
                   View
+    .col-md-7
+      #searchMap{ style: "height: 600px;" }
 
 :javascript
   var locations = #{@shop_locations}
@@ -37,17 +34,28 @@
   var marker, i;
 
   for (i = 0; i < locations.length; i++) {
+    var infoWindowContent = '<div class="row"> \
+        <div class="col-md-8" > \
+          <a href="/shops/ ' + locations[i]["id"] +  '" > ' + locations[i]["name"] + ' </a>  \
+          <p> ' + locations[i]["address"]+ ' </p> \
+        </div> \
+        <div class="col-md-4" > \
+          <img class="img-fluid" src="http://placehold.it/250x250" > \
+        </div> \
+      </div> ';
+
     marker = new google.maps.Marker({
       position: new google.maps.LatLng(locations[i]["latitude"], locations[i]["longitude"]),
       map: map,
       maxWidth: 200
     });
 
-    var infoWindowContent = '<a href="/shops/ ' + locations[i]["id"] +  '" > ' + locations[i]["name"] + ' </a>'
-    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+    google.maps.event.addListener(marker, 'click', (function(marker, i, infoWindowContent) {
       return function() {
         infowindow.setContent(infoWindowContent);
         infowindow.open(map, marker);
       }
-    })(marker, i));
+    })(marker, i, infoWindowContent));
+
+
   }
