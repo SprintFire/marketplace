@@ -5,27 +5,39 @@
 - name = Commontator.commontator_name(creator) || ''
 - link = Commontator.commontator_link(creator, main_app) || ''
 - avatar = Commontator.commontator_avatar(creator, self) || ''
-.comment{:id => "comment_#{comment.id.to_s}_div"}
-  .comment_div{:id => "comment_#{comment.id.to_s}_top_div"}
-    %span.comment_commontator{:id => "comment_#{comment.id.to_s}_commontator_span"}
-      = link.blank? ? name : link_to(name, link)
-    %span.comment_actions{:id => "comment_#{comment.id.to_s}_actions_span"}
-      = render :partial => 'commontator/comments/actions',
-        :locals => { :comment => comment,
-        :user => user }
-  .comment_div{:id => "comment_#{comment.id.to_s}_middle_div"}
-    %span.comment_avatar{:id => "comment_#{comment.id.to_s}_avatar_span"}
-      = avatar
-    %span.comment_votes{:id => "comment_#{comment.id.to_s}_votes_span"}
-      = render :partial => 'commontator/comments/votes',
-        :locals => { :comment => comment,
-        :user => user }
-    .comment_body{:id => "comment_#{comment.id.to_s}_body_div"}
-      = render :partial => 'commontator/comments/body', :locals => { :comment => comment }
-  .comment_div{:id => "comment_#{comment.id.to_s}_bottom_div"}
-    %span.comment_timestamp{:id => "comment_#{comment.id.to_s}_created_timestamp_span"}
-      = comment.created_timestamp
-    %br/
-    %span.comment_timestamp{:id => "comment_#{comment.id.to_s}_updated_timestamp_span"}
-      - if comment.is_modified?
-        = comment.updated_timestamp
+%ul.list-group.list-group-flush
+  %li.list-group-item
+    .row
+      .col-md-1
+        .comment{:id => "comment_#{comment.id.to_s}_div"}
+          .comment_div{:id => "comment_#{comment.id.to_s}_top_div"}
+            %span.comment_avatar{:id => "comment_#{comment.id.to_s}_avatar_span"}
+              = avatar
+
+      .col-md-11
+        .row
+          .col-md-2
+            %strong.comment_commontator{:id => "comment_#{comment.id.to_s}_commontator_span"}
+              = link.blank? ? name : link_to(name, link)
+          .col-md-10
+            %span.comment_timestamp{:id => "comment_#{comment.id.to_s}_created_timestamp_span"}
+              = comment.created_timestamp
+        .comment_div{:id => "comment_#{comment.id.to_s}_middle_div"}
+          %span.comment_votes{:id => "comment_#{comment.id.to_s}_votes_span"}
+            = render :partial => 'commontator/comments/votes',
+              :locals => { :comment => comment,
+              :user => user }
+          .comment_body{:id => "comment_#{comment.id.to_s}_body_div"}
+            = render :partial => 'commontator/comments/body', :locals => { :comment => comment }
+
+    .row
+      .col-md-12
+        .comment_div{:id => "comment_#{comment.id.to_s}_bottom_div"}
+          %em.comment_timestamp{:id => "comment_#{comment.id.to_s}_updated_timestamp_span"}
+            - if comment.is_modified?
+              = comment.updated_timestamp
+          .col-md-2.pull-md-right
+            %span.comment_actions{:id => "comment_#{comment.id.to_s}_actions_span"}
+              = render :partial => 'commontator/comments/actions',
+                :locals => { :comment => comment,
+                :user => user }
