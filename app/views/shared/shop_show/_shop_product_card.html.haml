@@ -1,0 +1,14 @@
+.card_section.card.col-md-7
+  .card-header#card_header
+    %i.fa.fa-camera-retro
+    %span.text Products
+  .row#card-deck
+    - product.each do |p|
+      .col-md-6.col-md-offset-1#product_deck
+        .card#decks
+          %img.card-img-top{:alt => "Card image cap", src: "http://placehold.it/300x200"}/
+          .card-block
+            %h4.card-title=p.name
+            %p.card-text=p.description
+            %p
+              = link_to "View Product", shop_product_path(p.shop, p), class: "btn btn-primary"

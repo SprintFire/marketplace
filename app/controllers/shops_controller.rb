@@ -13,6 +13,10 @@ class ShopsController < ApplicationController
     end
   end
 
+  def my_shops
+    @shops = current_user.shops
+  end
+
   def show
     @shop = Shop.find(params[:id])
     @shops = Shop.all
@@ -57,6 +61,8 @@ class ShopsController < ApplicationController
     flash[:info] = 'Your shop was successfully deleted.'
     redirect_to dashboard_path
   end
+
+
 
   private
 
