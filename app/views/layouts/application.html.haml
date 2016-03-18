@@ -6,6 +6,8 @@
     = render 'shared/flash_banner'
     = render 'shared/header'
 
+    = yield :header_fluid
+
     #main
       .container
         = yield
