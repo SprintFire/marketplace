@@ -7,7 +7,7 @@
   = link_to t('commontator.comment.actions.edit'), |
     commontator.edit_comment_path(comment),        |
     :id => "comment_#{comment.id.to_s}_edit_link", |
-    :class => "comment_edit_link",                 |
+    :class => "comment_edit_link btn btn-sm btn-success",   |
     :remote => true                                |
  
 - if can_delete
@@ -18,5 +18,5 @@
     :confirm => (!is_deleted ? t('commontator.comment.actions.confirm_delete') : nil), |
     :method => :put,                                                                   |
     :id => "comment_#{comment.id.to_s}_#{del_string}_link",                            |
-    :class => "comment_#{del_string}_link",                                            |
+    :class => "comment_#{del_string}_link btn btn-sm btn-danger",                      |
     :remote => true                                                                    |

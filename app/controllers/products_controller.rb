@@ -21,10 +21,12 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     add_breadcrumb "New Product", :new_shop_product_path
+    @categories = Category.all
   end
 
   def create
     @product = current_user.shops.find(params[:shop_id]).products.new(product_params)
+    @categories = Category.all
     if @product.save
       flash[:success] = 'Products was successfully saved!'
       redirect_to shop_product_path(@shop, @product)
@@ -64,6 +66,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-        params.require(:product).permit(:name, :product, :price, :quantity, :description)
+        params.require(:product).permit(:name, :product, :price, :quantity, :description, :category_id)
     end
 end

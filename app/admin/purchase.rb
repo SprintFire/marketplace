@@ -7,8 +7,8 @@ ActiveAdmin.register Purchase do
     column :product_id
     column :created_at
     column :updated_at
-    column :purchasing_price
-    column :purchasing_quantity
+    column :price
+    column :quantity
     column :stripe_charge_id
     actions
   end
@@ -16,8 +16,8 @@ ActiveAdmin.register Purchase do
   filter :id
   filter :user_id
   filter :product_id
-  filter :purchasing_price
-  filter :purchasing_quantity
+  filter :price
+  filter :quantity
   filter :stripe_charge_id
 
   show :title => :id do
@@ -27,8 +27,8 @@ ActiveAdmin.register Purchase do
       row :product_id
       row :created_at
       row :updated_at
-      row :purchasing_price
-      row :purchasing_quantity
+      row :price
+      row :quantity
       row :stripe_charge_id
     end
 
