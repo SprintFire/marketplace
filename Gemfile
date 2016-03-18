@@ -42,11 +42,15 @@ gem 'figaro'
 gem 'stripe'
 gem 'high_voltage', '~> 2.4.0'
 
+gem 'friendly_id', '~> 5.1.0'
+
 gem 'web-console', '~> 2.0', group: :development
 
 gem 'carrierwave'
 gem "mini_magick"
 gem 'fog'
+
+gem "breadcrumbs_on_rails"
 
 group :development, :test do
   gem 'byebug'

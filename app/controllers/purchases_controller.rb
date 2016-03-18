@@ -1,6 +1,9 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
 
+  add_breadcrumb "Dashboard", :dashboard_path
+  add_breadcrumb "Purchases History", :dashboard_purchase_history_path
+
   def index
     @purchases = current_user.purchases.all
   end

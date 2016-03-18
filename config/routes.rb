@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'category/:id', to: 'category#show', as: 'category'
+
   devise_for :users, path: "", path_names: {
     sign_in: 'login',
     sign_out: 'logout',
@@ -25,8 +27,13 @@ Rails.application.routes.draw do
     end
   end
 
-  get "dashboard" => "pages#dashboard", as: "dashboard"
-  get "dashboard/purchases" => "purchases#index", as: "purchase_history"
+
+namespace :dashboard do
+  get "/" => "/pages#dashboard", as: "/"
+  get "purchases" => "/purchases#index", as: "purchase_history"
+  get "withdrawals", to: "/withdrawals#index", as: "withdrawals"
+end
+
 
   # get "checkout/:id", to: "purchases#show", as: "checkout"
   # post "checkout/:id", to: "purchases#create"

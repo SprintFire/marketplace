@@ -1,6 +1,8 @@
 class CheckoutsController < ApplicationController
   before_action :set_variables, only: [:checkout_current_card, :checkout_new_card]
+  before_action :out_of_quantity, only: [:checkout_current_card, :checkout_new_card]
 
+  add_breadcrumb "Checkout", :checkout_path
 
   def new
     @product = Product.find(params[:id])
@@ -68,8 +70,16 @@ class CheckoutsController < ApplicationController
                               price: @product.price, quantity: 1,
                               shop_profit: balance_after_marketplace_percentage, stripe_charge_id: @charge.id)
 
+    @product.decrement!(:quantity, 1)
     flash[:success] = "Payment successfull"
-    redirect_to root_path
+    redirect_to shop_product_path(@shop, @product)
+  end
+
+  def out_of_quantity
+    if @product.quantity < 1
+      flash[:error] = "There is no quantity left for this product"
+      redirect_to shop_product_path(@shop, @product)
+    end
   end
 
   def marketplace_percentage(cost)
