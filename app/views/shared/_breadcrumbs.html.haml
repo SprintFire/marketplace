@@ -3,7 +3,7 @@
     %ul.nav.navbar-nav
       - @categories.each do |c|
         %li.nav-item
-          = link_to c.title, category_path(c.slug), class: 'nav-link category'
+          = link_to c.title, category_path(c.id), class: 'nav-link categories'
     -# %ol.breadcrumb
     -#   = render_breadcrumbs :tag => :li, :separator => ""
   .col-md-4
