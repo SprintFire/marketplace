@@ -11,7 +11,7 @@
               &euro;
               = number_with_precision(shop_balance_in_euros(WithdrawalsHelper.get_current_balance(s)), precision: 2)
 
-          %p.card-text.text-muted= s.description
+          %p.card-text.text-muted= truncate(s.description, length: 75)
 
           - if WithdrawalsHelper.get_current_balance(s) > 0
             = link_to new_shop_withdrawal_path(s), class: "btn btn-success" do

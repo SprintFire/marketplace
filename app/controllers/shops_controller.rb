@@ -6,11 +6,7 @@ class ShopsController < ApplicationController
   add_breadcrumb "Shops", :shops_path
 
   def index
-    if params[:search]
-      @shops = Shop.near([search_params[:lat], search_params[:lng]], 50)
-    else
-      @shops = Shop.all
-    end
+    @shops = current_user.shops
   end
 
   def show

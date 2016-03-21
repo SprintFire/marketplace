@@ -1,30 +1,38 @@
 .container
   .col-md-8.col-md-offset-2.text-xs-center
-    %form.form-inline
-      .form-group
-        %input#exampleInputName2.form-control{:placeholder => "What are you looking for?", :type => "text"}
-      .form-group
-        %input#exampleInputEmail2.form-control{:placeholder => "Location", :type => "email"}
-      .form-group
-        .dropdown
-          %button#dropdownMenu2.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
-            Category
-          .dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
-            %button.dropdown-item{:type => "button"} Action
-            %button.dropdown-item{:type => "button"} Another action
-            %button.dropdown-item{:type => "button"} Something else here
-      %button.btn.btn-primary{:type => "submit"} Search
+    -# %form.form-inline
+    -#   .form-group
+    -#     %input#exampleInputName2.form-control{:placeholder => "What are you looking for?", :type => "text"}
+    -#   .form-group
+    -#     %input#exampleInputEmail2.form-control{:placeholder => "Location", :type => "email"}
+    -#   .form-group
+    -#     .dropdown
+    -#       %button#dropdownMenu2.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+    -#         Category
+    -#       .dropdown-menu{"aria-labelledby" => "dropdownMenu2"}
+    -#         %button.dropdown-item{:type => "button"} Action
+    -#         %button.dropdown-item{:type => "button"} Another action
+    -#         %button.dropdown-item{:type => "button"} Something else here
+    -#   %button.btn.btn-primary{:type => "submit"} Search
+
     -# = link_to 'Explore', shops_path, class: 'btn btn-primary btn-lg'
     -# = link_to 'Create a Shop', new_shop_path, class: 'btn btn-primary btn-lg'
 
 
-= simple_form_for :search, url: search_path, method: :get, html: { class: 'form-inline', role: 'search' } do |form|
-  .form-group
-    = form.input_field :text, label: false, placeholder: 'Where are you looking for?', required: true, id: 'header_search', class: 'form-control', value: (params['search']) ? params['search']['text'] : ''
-  .form-group
-    = form.input_field :text, label: false, placeholder: 'Where are you looking for?', required: true, id: 'header_search', class: 'form-control', value: (params['search']) ? params['search']['text'] : ''
-    %span.input-group-addon
-      = button_tag(type: 'submit', class: "btn") do
-        %i.fa.fa-search#search-button
-    = form.input_field :lat, as: :hidden, id: 'search-lat', value: (params['search']) ? params['search']['lat'] : ''
-    = form.input_field :lng, as: :hidden, id: 'search-lng', value: (params['search']) ? params['search']['lng'] : ''
+
+    -# = simple_form_for :search, url: search_path, method: :get, html: { class: 'form-inline', role: 'search' } do |form|
+    -#   .form-group
+    -#     = form.input_field :text, label: false, placeholder: 'Where are you looking for?', required: true, id: 'header_search', class: 'form-control', value: (params['search']) ? params['search']['text'] : ''
+    -#   .form-group
+    -#     = form.input_field :text, label: false, placeholder: 'Where are you looking for?', required: true, id: 'header_search', class: 'form-control', value: (params['search']) ? params['search']['text'] : ''
+    -#   .form-group
+    -#     .control-label.col-md-2
+    -#       = form.label :company_id, "Select Company"
+    -#       %br/
+    -#     .col-md-9
+    -#       = form.select :company_id, options_from_collection_for_select(Category.all, 'id', 'title'), {}, {required: 'true', autofocus: 'true', class: 'form-control',}
+    -#     %button.btn.btn-primary{type: 'submit'} Submit
+    -#     = form.input_field :lat, as: :hidden, id: 'search-lat', value: (params['search']) ? params['search']['lat'] : ''
+    -#     = form.input_field :lng, as: :hidden, id: 'search-lng', value: (params['search']) ? params['search']['lng'] : ''
+
+    = render 'shared/search_inline'

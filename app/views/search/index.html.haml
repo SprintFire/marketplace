@@ -1,22 +1,24 @@
+-# %h3= @products[0].name
 
+= render 'shared/search_inline'
+= params["search"]
 
-- if @shops.empty?
-  There are no shops in that location
+- if @products.empty?
+  There are no search result for your search criateria
 - else
   .row.search-page-container
     .col-md-4.product-container
       %h3 Products
-      - @shops.each do |s|
-        - s.products.each do |p|
-          .product-card.col-md-12
-            .col-md-9.m-b-1
-              = link_to "#{p.name} at #{s.name}", shop_product_path(s, p), class: "p-b-1"
-              %p= p.description
-            .col-md-3.m-b-1
-              %strong.pull-xs-right.m-b-1
-                &euro;
-                = number_with_precision(p.price, precision: 2)
-              = link_to "View Details", shop_product_path(s, p), class: 'btn btn-success'
+      - @products.each do |p|
+        .product-card.col-md-12
+          .col-md-9.m-b-1
+            = link_to "#{p.name} at #{p.shop.name}", shop_product_path(p.shop, p), class: "p-b-1"
+            %p= p.description
+          .col-md-3.m-b-1
+            %strong.pull-xs-right.m-b-1
+              &euro;
+              = number_with_precision(p.price, precision: 2)
+            = link_to "View Details", shop_product_path(p.shop, p), class: 'btn btn-success'
 
     .col-md-8.map-container
       #searchMap{ style: "height: 600px;" }
@@ -33,7 +35,7 @@
   var infowindow = new google.maps.InfoWindow();
 
   var marker, i;
-
+  console.log(locations);
   for (i = 0; i < locations.length; i++) {
     var infoWindowContent = '<div class="row"> \
         <div class="col-md-8" > \
@@ -41,7 +43,7 @@
           <p> ' + locations[i]["address"]+ ' </p> \
         </div> \
         <div class="col-md-4" > \
-          <img class="img-fluid" src="http://placehold.it/250x250" > \
+          <img class="img-fluid" src="' + (locations[i]["header_image"]["url"] || "http://placehold.it/250x250") + '" > \
         </div> \
       </div> ';
 
@@ -49,7 +51,7 @@
       position: new google.maps.LatLng(locations[i]["latitude"], locations[i]["longitude"]),
       map: map,
       maxWidth: 200,
-      icon: "http://findicons.com/files/icons/2222/gloss_basic/32/pin_red.png"
+      icon: "http://www.megaicons.net/static/img/icons_sizes/22/119/32/location-map-icon.png"
     });
 
     google.maps.event.addListener(marker, 'click', (function(marker, i, infoWindowContent) {
