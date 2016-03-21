@@ -1,5 +1,4 @@
 %h3= @product.name
-%hr
 .row#product-show
   .col-md-7
     #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
@@ -9,11 +8,11 @@
         %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
       .carousel-inner{:role => "listbox"}
         .carousel-item.active
-          %img{:alt => "First slide", "src" => "http://placehold.it/400x250"}
+          %img{:alt => "First slide", "src" => "/assets/placeholder_400x250.png"}
         .carousel-item
-          %img{:alt => "Second slide", "src" => "http://placehold.it/400x250"}
+          %img{:alt => "Second slide", "src" => "/assets/placeholder_400x250.png"}
         .carousel-item
-          %img{:alt => "Third slide", "src" => "http://placehold.it/400x250"}
+          %img{:alt => "Third slide", "src" => "/assets/placeholder_400x250.png"}
       %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic", :role => "button"}
         %span.icon-prev{"aria-hidden" => "true"}
         %span.sr-only Previous
@@ -21,12 +20,16 @@
         %span.icon-next{"aria-hidden" => "true"}
         %span.sr-only Next
 
-    .card.card-block.m-t-1
-      %h4.card-title= @product.name
-      %hr
-      %p.card-text= @product.description
-      %a.card-link{:href => "#"} Card link
-      %a.card-link{:href => "#"} Another link
+    .card.m-t-1
+      .card-block
+        %h4.card-title
+          = @product.name
+        %p.card-text
+          = @product.description
+      %ul.list-group.list-group-flush
+        %li.list-group-item
+          %a.card-link{:href => "#"} Card link
+          %a.card-link{:href => "#"} Another link
 
   .col-md-5
     .card.card-block
@@ -51,9 +54,12 @@
         Left
 
   .col-md-12
-    .card.p-y-1.p-x-1
-      %h3.card-title Comments
-      %hr
-      = commontator_thread(@product)
-      %p.card-text Please rate  :
-      = rating_for @product, "quality", :disable_after_rate => false
+    .card.p-y-1
+      .card-block
+        %h3.card-title Reviews
+      %ul.list-group.list-group-flush
+        %li.list-group-item
+          = commontator_thread(@product)
+        %li.list-group-item
+          %p.card-text Please rate:
+          = rating_for @product, "quality", :disable_after_rate => false

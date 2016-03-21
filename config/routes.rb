@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
   get 'search', to: 'search#index', as: 'search'
+  get 'category/:id', to: 'category#show', as: 'category'
 
   devise_for :users, path: "", path_names: {
     sign_in: 'login',

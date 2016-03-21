@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :get_categories
 
   def after_sign_in_path_for(resource)
     root_path
@@ -26,6 +27,10 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:error] = 'You are not authorized to perform this action.'
     redirect_to(request.referrer || root_path)
+  end
+
+  def get_categories
+    @categories = Category.all
   end
 
 end
