@@ -1,7 +1,8 @@
 -# %h3= @products[0].name
 
-= render 'shared/search_inline'
-= params["search"]
+.row
+  .col-md-10.col-md-offset-1
+    = render 'shared/search_inline'
 
 - if @products.empty?
   There are no search result for your search criateria
