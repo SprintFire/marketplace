@@ -206,10 +206,11 @@ ActiveRecord::Schema.define(version: 20160316155018) do
     t.string   "instagram_username"
     t.string   "contact_phone",      limit: 20
     t.string   "email_id"
-    t.decimal  "longitude"
-    t.decimal  "latitude"
     t.string   "profile_image"
     t.string   "header_image"
+    t.decimal  "longitude"
+    t.decimal  "latitude"
+    t.string   "address"
   end
 
   add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree

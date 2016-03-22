@@ -44,8 +44,9 @@
             %span.file-custom
           -# = image_tag(@shop.header_image_url) if @shop.header_image?
       %fieldset.form-group
-        Location
-        %input.form-control#address{:type => "text", autocomplete: "off"}/
+        = f.label :address, "Location"
+        = f.text_field :address, class: "form-control", id: "address"
+        -# %input.form-control#address{:type => "text", autocomplete: "off", name: "shop_address"}/
       .row
         .col-md-12#map{style: "height: 350px;"}
         = f.hidden_field :latitude, id: 'set-latitude'

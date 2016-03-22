@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   add_breadcrumb "Products", :shop_products_path
 
   def index
-    @products = Product.all
+    @products = Product.all.page params[:page]
   end
 
   def show

@@ -18,7 +18,6 @@
         .row
           .col-md-5
             %img.card-img-top{:alt => "Card image cap", src: shop_header_image(s)}/
-          .col-md-4
             .card-block
               %h4.card-title= s.name
               %p.card-text= truncate(s.description, length: 75)
@@ -33,3 +32,4 @@
                 = link_to shop_path(s), class: 'btn' do
                   View
                   -# %i.fa.fa-external-link-square.fa-lg
+  = paginate @shops, :outer_window => 3

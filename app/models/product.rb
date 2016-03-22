@@ -11,6 +11,8 @@ class Product < ActiveRecord::Base
 
   acts_as_commontable
 
+  paginates_per 10
+
   ratyrate_rateable "quality"
 
 end

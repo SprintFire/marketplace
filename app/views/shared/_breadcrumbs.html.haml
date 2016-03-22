@@ -1,7 +1,11 @@
-.row
-  .col-md-8
-    %ol.breadcrumb
-      = render_breadcrumbs :tag => :li, :separator => "" 
+%nav.navbar.navbar-light
+  .col-md-8.breadcrumb
+    %ul.nav.navbar-nav
+      - @categories.each do |c|
+        %li.nav-item
+          = link_to c.title, category_path(c.slug), class: 'nav-link categories'
+    -# %ol.breadcrumb
+    -#   = render_breadcrumbs :tag => :li, :separator => ""
   .col-md-4
     .pull-xs-right.search-view
-      = render "shared/search_inline"
+      -# = render "shared/search_inline"
