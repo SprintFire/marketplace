@@ -13,6 +13,8 @@ class Shop < ActiveRecord::Base
   mount_uploader :profile_image, UserProfileUploader
   mount_uploader :header_image, UserHeaderImageUploader
 
+  paginates_per 1
+
   validate :picture_size
 
   # def search
