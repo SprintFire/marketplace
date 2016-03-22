@@ -52,7 +52,7 @@
       position: new google.maps.LatLng(locations[i]["latitude"], locations[i]["longitude"]),
       map: map,
       maxWidth: 200,
-      icon: "http://www.megaicons.net/static/img/icons_sizes/22/119/32/location-map-icon.png"
+      icon: "#{asset_path('location.png')}"
     });
 
     google.maps.event.addListener(marker, 'click', (function(marker, i, infoWindowContent) {
