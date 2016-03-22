@@ -1,9 +1,10 @@
-= simple_form_for :search, url: shops_path, method: :get, html: { class: 'form-inline', role: 'search' } do |form|
-
-  = form.input_field :text, label: false, placeholder: 'What are you looking for?', required: true, id: 'header_search', class: 'form-control', value: (params['search']) ? params['search']['text'] : ''
-
-  = form.input_field :lat, as: :hidden, id: 'search-lat'
-  = form.input_field :lng, as: :hidden, id: 'search-lng'
-
-  = form.button :submit, value: 'Search', class: 'btn btn-primary' do
-    Search
+= simple_form_for :search, url: search_path, method: :get, html: { class: 'form-inline', role: 'search' } do |form|
+  .input-group
+    = form.input_field :text, label: false, placeholder: 'What are you looking for?', required: false, id: 'keyword_search', class: 'form-control', name: 'keyword_search'
+  .input-group
+    = form.input_field :text, label: false, placeholder: 'Location', required: false, id: 'header_search', class: 'form-control', value: (params['search']) ? params['search']['text'] : ''
+  .input-group
+    = form.select :company_id, options_from_collection_for_select(Category.all, 'id', 'title'), {}, {required: 'false', autofocus: 'true', class: 'form-control', name: 'search_category'}
+  %button.btn.btn-primary{type: 'submit'} Search
+  = form.input_field :lat, as: :hidden, id: 'search-lat', value: (params['search']) ? params['search']['lat'] : ''
+  = form.input_field :lng, as: :hidden, id: 'search-lng', value: (params['search']) ? params['search']['lng'] : ''

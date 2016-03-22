@@ -1,32 +1,66 @@
-.container
-  .row
-    %h1= @product.name
-    %h4
-      by
-      = link_to @product.shop.name, @product.shop
-  .row
-    .col-md-1
-      %h6 Price
-    .col-md-1
-      %p= @product.price
-  .row
-    .col-md-1
-      %h6 Quantity
-    .col-md-1
-      %p= @product.quantity
-  .row
-    .col-md-1
-      %h6 Description
-  .row
-    .col.md-6
-      %p= @product.description
-  - if @product.quantity == 0
-    = render 'sold_out'
-  - else
-    = link_to "Checkout", checkout_path(@product)
+%h3= @product.name
+.row#product-show
+  .col-md-7
+    #carousel-example-generic.carousel.slide{"data-ride" => "carousel"}
+      %ol.carousel-indicators
+        %li.active{"data-slide-to" => "0", "data-target" => "#carousel-example-generic"}
+        %li{"data-slide-to" => "1", "data-target" => "#carousel-example-generic"}
+        %li{"data-slide-to" => "2", "data-target" => "#carousel-example-generic"}
+      .carousel-inner{:role => "listbox"}
+        .carousel-item.active
+          %img{:alt => "First slide", "src" => "/assets/placeholder_400x250.png"}
+        .carousel-item
+          %img{:alt => "Second slide", "src" => "/assets/placeholder_400x250.png"}
+        .carousel-item
+          %img{:alt => "Third slide", "src" => "/assets/placeholder_400x250.png"}
+      %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic", :role => "button"}
+        %span.icon-prev{"aria-hidden" => "true"}
+        %span.sr-only Previous
+      %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-example-generic", :role => "button"}
+        %span.icon-next{"aria-hidden" => "true"}
+        %span.sr-only Next
 
-  %h3 Comments
-  = commontator_thread(@product)
+    .card.m-t-1
+      .card-block
+        %h4.card-title
+          = @product.name
+        %p.card-text
+          = @product.description
+      %ul.list-group.list-group-flush
+        %li.list-group-item
+          %a.card-link{:href => "#"} Card link
+          %a.card-link{:href => "#"} Another link
 
-  %p Please rate  :
-  = rating_for @product, "quality", :disable_after_rate => false
+  .col-md-5
+    .card.card-block
+      %h4.card-title
+        %strong
+          &euro;
+          = number_with_precision(@product.price, precision: 2)
+      %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+      .text-md-right
+        = link_to "Buy Product", checkout_path(@product), class: "btn btn-primary"
+
+    .card.p-y-1.p-l-1
+      %h3.card-title
+        %i.fa.fa-shopping-cart
+        = @product.purchases.count
+        Sales
+
+    .card.p-y-1.p-l-1
+      %h3.card-title
+        %i.fa.fa-cubes
+        = @product.quantity
+        Left
+
+  .col-md-12
+    .card.p-y-1
+      .card-block
+        %h3.card-title Reviews
+      %ul.list-group.list-group-flush
+        %li.list-group-item
+          = commontator_thread(@product)
+        %li.list-group-item
+          %p.card-text Please rate:
+          = rating_for @product, "quality", :disable_after_rate => false
+  -# = paginate @products, :outer_window => 3

@@ -1,18 +1,50 @@
-%h3 Withdraw From #{@shop.name}
-%h2
-  Overall Balance &euro;
-  = shop_balance_in_euros @overall_balance
-%h2
-  You have withdrawn &euro;
-  = shop_balance_in_euros @withdrawal_balance
-%h2
-  You can withdraw a maximum of &euro;
-  = shop_balance_in_euros @current_balance
+.row
+  .col-md-3
+    = render 'shared/left_dashboard_menu'
+  .col-md-9#withdrawal-content
+    .card
+      .card-block
+        %h4.card-title
+          New Withdrawal
+        %hr
+        %h6.card-subtitle.text-muted
+          You can withdraw up to
+          %strong
+          &euro;
+          = shop_balance_in_euros @current_balance
+        .card-block
+          = form_for @withdrawal, url: shop_withdrawals_path(@shop), html: { class: "form-inline" } do |f|
+            .form-group
+              = f.hidden_field :shop_id, value: @shop.id
+              %label{:for => "w-amount"}
+                %strong.text-muted &euro;
+              = f.text_field :amount, class: "form-control text-success", id: "w-amount", placeholder: "0.00"
 
-= form_for @withdrawal, url: shop_withdrawals_path(@shop) do |f|
+              = f.submit "Request Withdrawal", class: "btn btn-primary btn-lg"
 
-  = f.hidden_field :shop_id, value: @shop.id
-
-  = f.number_field :amount
-
-  = f.submit
+    .card
+      .card-block
+        %h3.card-title
+          Withdrawal Requests
+      %ul.list-group.list-group-flush
+        - if @shop.withdrawals.empty?
+          %li.list-group-item You currently have no withdrawals pending or queued for processing.
+        - else
+          %li.list-group-item
+            .row
+              .col-md-4
+                %strong Amount
+              .col-md-4
+                %strong Status
+              .col-md-4
+                %strong Created at
+          - @shop.withdrawals.order("created_at desc").each do |w|
+            %li.list-group-item
+              .row
+                .col-md-4
+                  &euro;
+                  %strong= number_with_precision(shop_balance_in_euros(w.amount), precision: 2)
+                .col-md-4
+                  = w.approved ? "Approved" : "Pending"
+                .col-md-4
+                  = w.created_at.strftime("%b. %d %Y, %T")

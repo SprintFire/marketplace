@@ -2,20 +2,26 @@ class ShopsController < ApplicationController
   before_action :set_user_shop, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
+  add_breadcrumb "Dashboard", :dashboard_path
+  add_breadcrumb "Shops", :shops_path
+
   def index
-    if params[:search]
-      @shops = Shop.near([search_params[:lat], search_params[:lng]], 50)
-    else
-      @shops = Shop.all
-    end
+    @shops = current_user.shops.page params[:page]
+  end
+
+  def my_shops
+    @shops = current_user.shops
   end
 
   def show
     @shop = Shop.find(params[:id])
+    @products = @shop.products
+    add_breadcrumb "#{@shop.name}", shop_path(@shop), title: "Testing"
   end
 
   def new
     @shop = current_user.shops.new
+    add_breadcrumb "New Shop", :new_shop_path
   end
 
   def create
@@ -30,6 +36,8 @@ class ShopsController < ApplicationController
   end
 
   def edit
+    add_breadcrumb "#{@shop.name}", shop_path(@shop)
+    add_breadcrumb "Edit", edit_shop_path(@shop)
   end
 
   def update
@@ -48,6 +56,7 @@ class ShopsController < ApplicationController
     redirect_to dashboard_path
   end
 
+
   private
 
     def set_user_shop
@@ -55,7 +64,7 @@ class ShopsController < ApplicationController
     end
 
     def shop_params
-      params.require(:shop).permit(:name, :description, :facebook_url, :twitter_username, :instagram_username, :contact_phone, :email_id, :latitude, :longitude, :profile_image, :header_image)
+      params.require(:shop).permit(:name, :description, :facebook_url, :twitter_username, :instagram_username, :contact_phone, :email_id, :latitude, :longitude, :profile_image, :header_image, :address, :email_id,:contact_phone)
     end
 
     def search_params

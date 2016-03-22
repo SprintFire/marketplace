@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309110632) do
+ActiveRecord::Schema.define(version: 20160316155018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,25 @@ ActiveRecord::Schema.define(version: 20160309110632) do
     t.string   "card_last_4"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
+    t.string   "slug"
+  end
+
+  add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "star_rating"
+    t.text     "body"
+    t.integer  "user_id",     null: false
+    t.integer  "product_id",  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "commontator_comments", force: :cascade do |t|
     t.string   "creator_type"
     t.integer  "creator_id"
@@ -114,6 +133,19 @@ ActiveRecord::Schema.define(version: 20160309110632) do
 
   add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true, using: :btree
 
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
   create_table "overall_averages", force: :cascade do |t|
     t.integer  "rateable_id"
     t.string   "rateable_type"
@@ -130,7 +162,10 @@ ActiveRecord::Schema.define(version: 20160309110632) do
     t.datetime "updated_at",  null: false
     t.integer  "shop_id"
     t.integer  "quantity"
+    t.integer  "category_id"
   end
+
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "purchases", force: :cascade do |t|
     t.integer  "user_id",                      null: false
@@ -180,10 +215,11 @@ ActiveRecord::Schema.define(version: 20160309110632) do
     t.string   "instagram_username"
     t.string   "contact_phone",      limit: 20
     t.string   "email_id"
-    t.string   "profile_image"
-    t.string   "header_image"
     t.decimal  "longitude"
     t.decimal  "latitude"
+    t.string   "profile_image"
+    t.string   "header_image"
+    t.string   "address"
   end
 
   add_index "shops", ["longitude", "latitude"], name: "index_shops_on_longitude_and_latitude", using: :btree
@@ -225,4 +261,5 @@ ActiveRecord::Schema.define(version: 20160309110632) do
     t.datetime "updated_at",                 null: false
   end
 
+  add_foreign_key "products", "categories"
 end

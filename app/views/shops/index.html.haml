@@ -1,6 +1,21 @@
-%h1 Results
-
-%h1
-  - @shops.each do |shop|
-    = link_to shop.name, shop_path(shop)
-    = shop.user.email
+.row
+  .col-md-10.col-md-offset-1
+    .card
+      .card-block
+        %h3.card-title
+          All Shops
+    .card-group
+    - @shops.each do |s|
+      .card
+        .row
+          .col-md-5
+            %img.card-img-top{:alt => "Card image cap", src: shop_header_image(s)}/
+            .card-block
+              %h4.card-title= s.name
+              %p.card-text= truncate(s.description, length: 75)
+          .col-md-3
+            .card-block
+              .btn-group{:role => "group"}
+                = link_to shop_path(s), class: 'btn' do
+                  View
+  = paginate @shops, :outer_window => 3

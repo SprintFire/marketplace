@@ -17,8 +17,10 @@
           :locals => { :comment => @new_comment,          |
           :thread => thread,                              |
           :per_page => per_page }                         |
+
     - if @new_comment.nil?
       .thread_new_comment_link{:id => "thread_#{thread.id}_new_comment_link_div"}
         = link_to t('commontator.comment.actions.new'),                       |
           commontator.new_thread_comment_path(thread, :per_page => per_page), |
-          :remote => true                                                     |
+          :remote => true,                                                    |
+          :class => "thread_hide_link btn btn-primary btn-sm"

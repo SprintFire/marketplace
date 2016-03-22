@@ -4,7 +4,7 @@ class Shop < ActiveRecord::Base
   has_many :withdrawals
 
   validates :name, length: {minimum: 2, maximum: 15}, presence:true
-  validates :description, length: {minimum: 2}, presence:true
+  validates :description, length: {minimum: 140}, presence:true
   validates :email_id, presence:true
   # geocoded_by :full_street_address
   # after_validation :geocode
@@ -12,6 +12,8 @@ class Shop < ActiveRecord::Base
 
   mount_uploader :profile_image, UserProfileUploader
   mount_uploader :header_image, UserHeaderImageUploader
+
+  paginates_per 10
 
   validate :picture_size
 
@@ -30,6 +32,11 @@ class Shop < ActiveRecord::Base
   #       @locations = Location.near(params[:search], 50, :order => :distance)
   #     end
   # end
+
+  def total_sales
+    products.map{|product| product.purchases.count }.sum
+  end
+
 
   private
 

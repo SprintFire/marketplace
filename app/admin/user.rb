@@ -1,4 +1,4 @@
-ActiveAdmin.register User do
+ActiveAdmin.register User, as: 'Users' do
   permit_params :email, :first_name, :last_name
 
   index do
@@ -51,8 +51,8 @@ ActiveAdmin.register User do
         column("Product") {|order| order.product.name}
         column("From Shop") {|order| order.product.shop.name}
         column("Date", :sortable => :created_at){|order| pretty_format(order.created_at) }
-        column("Quantity")  {|order| order.purchasing_quantity}
-        column("Total") {|order| number_to_currency order.purchasing_price }
+        column("Quantity")  {|order| order.quantity}
+        column("Total") {|order| number_to_currency order.price }
       end
     end
     active_admin_comments
