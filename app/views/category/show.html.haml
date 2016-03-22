@@ -3,5 +3,5 @@
 - if @products.empty?
   %h5 There is no products in this category.
 - else
-  - @products.all.each do |product|
+  - @products.each do |product|
     %h2= link_to product.name, shop_product_path(product.shop, product)
