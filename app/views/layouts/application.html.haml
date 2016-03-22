@@ -4,9 +4,7 @@
     = render 'shared/head'
   %body{class: "#{params[:controller]} #{params[:action]}"}
 
-    = render 'shared/flash_banner'
     = render 'shared/header'
-
     #main
       .container-fluid
         = yield
