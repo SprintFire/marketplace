@@ -9,11 +9,11 @@
       .card
         .row
           .col-md-5
-            %img.card-img-top{:alt => "Card image cap", src: "/assets/placeholder_318x180.png"}/
+            %img.card-img-top{:alt => "Card image cap", src: s.header_image.url || "http://placehold.it/318x180"}/
           .col-md-4
             .card-block
               %h4.card-title= s.name
-              %p.card-text=s.description
+              %p.card-text= truncate(s.description, length: 75)
               -# = link_to "Edit", edit_shop_path(s)
               -# = link_to "View", shop_path(s)
           .col-md-3

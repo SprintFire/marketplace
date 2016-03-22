@@ -1,0 +1,66 @@
+-# %h3= @products[0].name
+
+.row
+  .col-md-10.col-md-offset-1
+    = render 'shared/search_inline'
+
+- if @products.empty?
+  There are no search result for your search criateria
+- else
+  .row.search-page-container
+    .col-md-4.product-container
+      %h3 Products
+      - @products.each do |p|
+        .product-card.col-md-12
+          .col-md-9.m-b-1
+            = link_to "#{p.name} at #{p.shop.name}", shop_product_path(p.shop, p), class: "p-b-1"
+            %p= p.description
+          .col-md-3.m-b-1
+            %strong.pull-xs-right.m-b-1
+              &euro;
+              = number_with_precision(p.price, precision: 2)
+            = link_to "View Details", shop_product_path(p.shop, p), class: 'btn btn-success'
+
+    .col-md-8.map-container
+      #searchMap{ style: "height: 600px;" }
+
+:javascript
+  var locations = #{@shop_locations}
+
+  var map = new google.maps.Map(document.getElementById('searchMap'), {
+    zoom: 14,
+    center: new google.maps.LatLng(locations[0]["latitude"], locations[0]["longitude"]),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+
+  var infowindow = new google.maps.InfoWindow();
+
+  var marker, i;
+  console.log(locations);
+  for (i = 0; i < locations.length; i++) {
+    var infoWindowContent = '<div class="row"> \
+        <div class="col-md-8" > \
+          <a href="/shops/ ' + locations[i]["id"] +  '" > ' + locations[i]["name"] + ' </a>  \
+          <p> ' + locations[i]["address"]+ ' </p> \
+        </div> \
+        <div class="col-md-4" > \
+          <img class="img-fluid" src="' + (locations[i]["header_image"]["url"] || "http://placehold.it/250x250") + '" > \
+        </div> \
+      </div> ';
+
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(locations[i]["latitude"], locations[i]["longitude"]),
+      map: map,
+      maxWidth: 200,
+      icon: "#{asset_path('location.png')}"
+    });
+
+    google.maps.event.addListener(marker, 'click', (function(marker, i, infoWindowContent) {
+      return function() {
+        infowindow.setContent(infoWindowContent);
+        infowindow.open(map, marker);
+      }
+    })(marker, i, infoWindowContent));
+
+
+  }

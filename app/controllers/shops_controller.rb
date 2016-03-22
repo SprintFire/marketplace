@@ -6,11 +6,7 @@ class ShopsController < ApplicationController
   add_breadcrumb "Shops", :shops_path
 
   def index
-    if params[:search]
-      @shops = Shop.near([search_params[:lat], search_params[:lng]], 50).page params[:page]
-    else
-      @shops = Shop.all.page params[:page]
-    end
+    @shops = current_user.shops
   end
 
   def my_shops
@@ -68,7 +64,7 @@ class ShopsController < ApplicationController
     end
 
     def shop_params
-      params.require(:shop).permit(:name, :description, :facebook_url, :twitter_username, :instagram_username, :contact_phone, :email_id, :latitude, :longitude, :profile_image, :header_image)
+      params.require(:shop).permit(:name, :description, :facebook_url, :twitter_username, :instagram_username, :contact_phone, :email_id, :latitude, :longitude, :profile_image, :header_image, :address)
     end
 
     def search_params
