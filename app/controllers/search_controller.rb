@@ -4,9 +4,6 @@ class SearchController < ApplicationController
     if params[:search] && (!params[:search][:lat].blank? || !params[:search][:lng].blank?)
       @shops = Shop.near([params[:search][:lat], params[:search][:lng]], 50)
       @products = @shops.map{|shop| shop.products}.flatten.uniq
-    elsif params[:search] && (params[:search][:lat].blank? || params[:search][:lng].blank?) && (params[:search_category] && params[:search_category].blank?) && (params[:keyword_search] && params[:keyword_search].blank?)
-      @shops = Shop.all
-      @products = Product.all
     else
       @shops = Shop.all
       @products = Product.all
