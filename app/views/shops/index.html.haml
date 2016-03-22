@@ -17,7 +17,7 @@
       .card
         .row
           .col-md-5
-            %img.card-img-top{:alt => "Card image cap", src: s.header_image.url || "http://placehold.it/318x180"}/
+            %img.card-img-top{:alt => "Card image cap", src: shop_header_image(s)}/
           .col-md-4
             .card-block
               %h4.card-title= s.name
