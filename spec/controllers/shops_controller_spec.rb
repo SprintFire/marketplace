@@ -15,6 +15,34 @@ RSpec.describe ShopsController, type: :controller do
     end
   end
 
+  describe "POST #create" do
+    context "with valid attributes" do
+      it "creates a new shop" do
+        expect{
+          post :create
+        }.to change (Shop, :count).by(1)
+      end
+
+      it "redirects to the new shop" do
+        post :create
+        expect(response).to redirect_to shop_url
+      end
+    end
+
+    context "with invalid attributes" do
+      it "does not save the new shop" do
+        expect{
+          post :create
+        }.to_not change(Shop, :count)
+      end
+
+      it "re-renders the new method" do
+        post :create
+        expect(response).to render_template("new")
+      end
+    end
+  end
+
   describe "GET #edit" do
     it "responds successfully with an HTTP 200 status code" do
       get :index
@@ -34,6 +62,12 @@ RSpec.describe ShopsController, type: :controller do
       expect(response).to render_template("show")
     end
   end
+
+  # describe "PUT #update" do 
+  #   context "with valid attributes" do
+  #
+  #   end
+  # end
 
   describe "DELETE #destroy" do
     it "deletes the shop" do
