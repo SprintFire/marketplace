@@ -30,4 +30,4 @@
             = f.label :category_id
           .col-md-12#custom-dropdown
             = f.select :category_id, options_for_select(@categories.collect{ |u| [u.title, u.id] })
-      = f.submit "Create", class: "btn btn-primary"
+      = f.submit(class: "btn btn-primary")
