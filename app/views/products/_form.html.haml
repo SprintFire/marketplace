@@ -28,5 +28,5 @@
           .col-md-12
             = f.label :category_id
           .col-md-12#custom-dropdown
-            = f.select :category_id, options_for_select(@categories.collect{ |u| [u.title, u.id] })
+            = f.select :category_id, options_for_select(@categories.collect{ |u| [u.title, u.id]}, selected = [@product.category.title, @product.category.id] )
       = f.submit(class: "btn btn-primary")
