@@ -1,4 +1,3 @@
-
 .row
   .card.card-block.col-md-12
     %h3.card-title= form_header
@@ -29,5 +28,5 @@
           .col-md-12
             = f.label :category_id
           .col-md-12#custom-dropdown
-            = f.select :category_id, options_for_select(@categories.collect{ |u| [u.title, u.id] })
-      = f.submit "Create", class: "btn btn-primary"
+            = f.select :category_id, options_for_select(@categories.collect{ |u| [u.title, u.id]}, selected = [@product.category.title, @product.category.id] )
+      = f.submit(class: "btn btn-primary")

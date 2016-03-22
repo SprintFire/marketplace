@@ -11,6 +11,7 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    @products = Product.all.page params[:page]
     add_breadcrumb "#{@shop.name}", shop_path(@shop), title: "Testing"
   end
 
