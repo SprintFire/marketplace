@@ -31,6 +31,11 @@ class Shop < ActiveRecord::Base
   #     end
   # end
 
+  def total_sales
+    products.map{|product| product.purchases.count }.sum
+  end
+
+
   private
 
   def picture_size

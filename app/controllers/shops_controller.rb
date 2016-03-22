@@ -19,8 +19,6 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
-    @shops = Shop.all
-    @product = Product.find(params[:id])
     @products = @shop.products
     add_breadcrumb "#{@shop.name}", shop_path(@shop), title: "Testing"
   end
@@ -61,7 +59,6 @@ class ShopsController < ApplicationController
     flash[:info] = 'Your shop was successfully deleted.'
     redirect_to dashboard_path
   end
-
 
 
   private
