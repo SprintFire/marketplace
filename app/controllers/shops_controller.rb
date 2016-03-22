@@ -6,7 +6,7 @@ class ShopsController < ApplicationController
   add_breadcrumb "Shops", :shops_path
 
   def index
-    @shops = current_user.shops
+    @shops = current_user.shops.page params[:page]
   end
 
   def my_shops

@@ -9,8 +9,7 @@
       .card
         .row
           .col-md-5
-            %img.card-img-top{:alt => "Card image cap", src: s.header_image.url || "/assets/placeholder_318x180.png"}/
-          .col-md-4
+            %img.card-img-top{:alt => "Card image cap", src: shop_header_image(s)}/
             .card-block
               %h4.card-title= s.name
               %p.card-text= truncate(s.description, length: 75)

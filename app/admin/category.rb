@@ -9,6 +9,7 @@ ActiveAdmin.register Category, as: "Available Categories"  do
     actions
   end
 
+  filter :id
   filter :title
   filter :description
 
