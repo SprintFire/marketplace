@@ -1,4 +1,4 @@
-ActiveAdmin.register Category do
+ActiveAdmin.register Category, as: "Available Categories"  do
   permit_params :title, :description
 
   index do
