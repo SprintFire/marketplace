@@ -11,7 +11,7 @@
         %i.fa.fa-building
         Shops
       .dropdown-menu{"aria-labelledby" => "btnGroupDrop1"}
-        = link_to 'My Shops', shops_path, class: 'dropdown-item'
+        = link_to 'My Shops', dashboard_my_shops_path, class: 'dropdown-item'
         = link_to new_shop_path, class: 'dropdown-item' do
           %i.fa.fa-plus.text-success
           Create Shop

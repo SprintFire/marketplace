@@ -1,35 +1,15 @@
 .row
-  .col-md-3
-    = render 'shared/left_dashboard_menu'
-  .col-md-9
+  .col-md-10.col-md-offset-1
     .card
       .card-block
         %h3.card-title
-          My Shops
-          .pull-md-right
-            %a.btn.btn-success{:href => new_shop_path} Create a Shop
-        %ul.list-group.list-group-flush
-          - if @shops.empty?
-            %li.list-group-item You don't have any shop yet.
-          - else
+          All Shops
     .card-group
-    - @shops.each do |s|
-      .card
-        .row
-          .col-md-5
-            %img.card-img-top{:alt => "Card image cap", src: "http://placehold.it/318x180"}/
-          .col-md-4
-            .card-block
-              %h4.card-title= s.name
-              %p.card-text=s.description
-              -# = link_to "Edit", edit_shop_path(s)
-              -# = link_to "View", shop_path(s)
-          .col-md-3
-            .card-block
-              .btn-group{:role => "group"}
-                = link_to edit_shop_path(s), class: 'btn' do
-                  Edit
-                  -# %i.fa.fa-pencil-square-o.fa-lg
-                = link_to shop_path(s), class: 'btn' do
-                  View
-                  -# %i.fa.fa-external-link-square.fa-lg
+    - @shops.each do |shop|
+      .card.col-md-5.col-md-offset-1
+        %img.card-img-top{:alt => "Card image cap", "data-src" => "..."}/
+        .card-block
+          %h4.card-title=shop.name
+          %p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+          -# = link_to shop_path(s), class: 'btn' do
+          -# View
