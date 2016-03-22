@@ -7,9 +7,9 @@ class ShopsController < ApplicationController
 
   def index
     if params[:search]
-      @shops = Shop.near([search_params[:lat], search_params[:lng]], 50)
+      @shops = Shop.near([search_params[:lat], search_params[:lng]], 50).page params[:page]
     else
-      @shops = Shop.all
+      @shops = Shop.all.page params[:page]
     end
   end
 

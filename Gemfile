@@ -34,6 +34,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'activeadmin', github: 'activeadmin'
 
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'premailer-rails'
