@@ -3,10 +3,10 @@
     .sales.fa.fa-shopping-cart
     %span#sales_count=@shop.total_sales
     %span.sales_text Sales
-  %p.text Unit 32 /33, The Chq Building, N Wall Quay, Dublin 1, Ireland
+  %p.text=@shop.address
   %div
     %i.fa.fa-phone
-    %span.text-block (480) 917-8700
+    %span.text-block=@shop.contact_phone
   %div
     %i.fa.fa-link.inline
-    %span.text-block.inline www.shop.com
+    %span.text-block.inline=@shop.email_id

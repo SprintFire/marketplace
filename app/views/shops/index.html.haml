@@ -14,12 +14,9 @@
             .card-block
               %h4.card-title= s.name
               %p.card-text= truncate(s.description, length: 75)
-              -# = link_to "Edit", edit_shop_path(s)
-              -# = link_to "View", shop_path(s)
           .col-md-3
             .card-block
               .btn-group{:role => "group"}
                 = link_to shop_path(s), class: 'btn' do
                   View
-                  -# %i.fa.fa-external-link-square.fa-lg
   = paginate @shops, :outer_window => 3

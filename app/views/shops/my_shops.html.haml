@@ -22,14 +22,10 @@
             .card-block
               %h4.card-title= s.name
               %p.card-text=s.description
-              -# = link_to "Edit", edit_shop_path(s)
-              -# = link_to "View", shop_path(s)
-          .col-md-3
+            .col-md-3
             .card-block
               .btn-group{:role => "group"}
                 = link_to edit_shop_path(s), class: 'btn' do
                   Edit
-                  -# %i.fa.fa-pencil-square-o.fa-lg
                 = link_to shop_path(s), class: 'btn' do
                   View
-                  -# %i.fa.fa-external-link-square.fa-lg

@@ -2,32 +2,3 @@
 = render 'shared/shop_show/shop_product_card', product: @products
 = render 'shared/shop_show/shop_location_card', shop: @shop
 = render 'shared/shop_show/shop_description_card', shop: @shop
--# = render 'shared/shop_show/shop_about_card', shop: @shop
--# .row.container#public-view-shop-header
--#   %img.img-fluid.col-md-8{:alt => "Cover Photo", src: "http://placehold.it/590x240"}/
--#   .card.card-block.col-md-4
--#     - if shop.profile_image?
--#       = image_tag(shop.profile_image.url)
--#     - else
--#       %img.img-circle{:alt => "Profile picture",  src: "http://placehold.it/100x100"}
--#     .text-xs-center
--#       %h4.card-title=shop.name
--#       %p.card-text
--#       = link_to "View Portfolio", "#", class: "btn btn-primary blue-button"
--#
--# .row.jumbotron#public-view-shop-body
--#   %h1.display-6.col-md-8=shop.name
--#   .card.card-block.col-md-4
--#     .card-text.fa.fa-shopping-cart=@product.purchases.count
--#     %span#single-word Sales
--#   %hr.m-y-2.col-md-7/
--#   %p.col-md-8.description=shop.description
--#   .card.card-inverse.col-md-4{:style => "background-color: #333; border-color: #333;"}
--#     .card-block.row
--#       %h5.card-title Social Media
--#   .card-block.col-md-4#icons
--#     %h9.card-title.text-xs-center Social Icons
--#
--#
--# = render 'shared/products_card_deck', product: @products
--# = render 'shared/similar_suggestions', shop: @shops
