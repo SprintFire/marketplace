@@ -9,9 +9,13 @@ class ShopsController < ApplicationController
     @shops = current_user.shops
   end
 
+  def my_shops
+    @shops = current_user.shops
+  end
+
   def show
     @shop = Shop.find(params[:id])
-    @products = Product.all.page params[:page]
+    @products = @shop.products
     add_breadcrumb "#{@shop.name}", shop_path(@shop), title: "Testing"
   end
 
@@ -52,6 +56,7 @@ class ShopsController < ApplicationController
     redirect_to dashboard_path
   end
 
+
   private
 
     def set_user_shop
@@ -59,7 +64,7 @@ class ShopsController < ApplicationController
     end
 
     def shop_params
-      params.require(:shop).permit(:name, :description, :facebook_url, :twitter_username, :instagram_username, :contact_phone, :email_id, :latitude, :longitude, :profile_image, :header_image, :address)
+      params.require(:shop).permit(:name, :description, :facebook_url, :twitter_username, :instagram_username, :contact_phone, :email_id, :latitude, :longitude, :profile_image, :header_image, :address, :email_id,:contact_phone)
     end
 
     def search_params

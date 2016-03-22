@@ -1,17 +1,9 @@
 .row
-  .col-md-3
-    = render 'shared/left_dashboard_menu'
-  .col-md-9
+  .col-md-10.col-md-offset-1
     .card
       .card-block
         %h3.card-title
-          My Shops
-          .pull-md-right
-            %a.btn.btn-success{:href => new_shop_path} Create a Shop
-        %ul.list-group.list-group-flush
-          - if @shops.empty?
-            %li.list-group-item You don't have any shop yet.
-          - else
+          All Shops
     .card-group
     - @shops.each do |s|
       .card
@@ -22,15 +14,9 @@
             .card-block
               %h4.card-title= s.name
               %p.card-text= truncate(s.description, length: 75)
-              -# = link_to "Edit", edit_shop_path(s)
-              -# = link_to "View", shop_path(s)
           .col-md-3
             .card-block
               .btn-group{:role => "group"}
-                = link_to edit_shop_path(s), class: 'btn' do
-                  Edit
-                  -# %i.fa.fa-pencil-square-o.fa-lg
                 = link_to shop_path(s), class: 'btn' do
                   View
-                  -# %i.fa.fa-external-link-square.fa-lg
   = paginate @shops, :outer_window => 3

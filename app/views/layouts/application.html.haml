@@ -1,4 +1,3 @@
-!!!
 %html.no-js{ lang: 'eng' }
   %head
     = render 'shared/head'
@@ -6,6 +5,8 @@
 
     = render 'shared/flash_banner'
     = render 'shared/header'
+
+    = yield :header_fluid
 
     #main
       .container-fluid

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
 namespace :dashboard do
   get "/" => "/pages#dashboard", as: "/"
+  get "my_shops" => "/shops#my_shops", as: "my_shops"
   get "purchases" => "/purchases#index", as: "purchase_history"
   get "withdrawals", to: "/withdrawals#index", as: "withdrawals"
 end

@@ -1,0 +1,10 @@
+.row#card-deck
+  - product.each do |p|
+    .col-md-4.col-md-offset-1
+      .card#decks
+        %img.card-img-top{:alt => "Card image cap", src: "http://placehold.it/300x200"}/
+        .card-block
+          %h4.card-title=p.name
+          %p.card-text=p.description
+          %p
+            = link_to "View Product", shop_product_path(p.shop, p), class: "btn btn-primary"

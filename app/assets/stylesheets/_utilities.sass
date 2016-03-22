@@ -12,6 +12,9 @@ input:focus
   -moz-box-shadow:    0px 1px 5px rgba(26, 26, 26, 0.2)
   box-shadow:         0px 1px 5px rgba(26, 26, 26, 0.2)
 
+@mixin blue-button-gradient
+  background-image: linear-gradient(to right, $blue 0%, $dark-blue 100%)
+
 @mixin background-cover($image)
   background: image-url($image) no-repeat center center fixed
   -webkit-background-size: cover
@@ -25,7 +28,6 @@ input:focus
 
 .hidden
   display: none
-
 
 .card-img-top
   width: 100%
