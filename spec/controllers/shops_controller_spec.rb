@@ -14,4 +14,8 @@ RSpec.describe ShopsController, type: :controller do
       expect(response).to render_template("index")
     end
   end
+
+  describe "POST #create" do
+    context "with valid parameters"
+  end
 end
