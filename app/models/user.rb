@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   has_many :purchases
   has_many :cards
 
-  validates :first_name, length: {minimum: 2, maximum: 15}
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :password, length: { in: 6..20 }
 
   acts_as_commontator
