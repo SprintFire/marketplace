@@ -123,6 +123,13 @@ GEM
     eventmachine (1.0.9.1)
     excon (0.46.0)
     execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.6.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
+    faker (1.6.3)
+      i18n (~> 0.5)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
@@ -528,6 +535,8 @@ DEPENDENCIES
   commontator (~> 4.11.1)
   devise (~> 4.0.0.rc1)
   devise-bootstrap-views
+  factory_girl_rails (~> 4.0)
+  faker
   figaro
   fog
   font-awesome-rails
