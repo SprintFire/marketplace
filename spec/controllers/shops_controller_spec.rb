@@ -22,4 +22,15 @@ RSpec.describe ShopsController, type: :controller do
       assigns(:shop).should eq(shop)
     end
   end
+
+  describe "GET#new" do
+    context "when initialized" do
+      let(:shop) { Shop.new }
+      
+      it "is a new shop" do
+        expect(shop).to be_a_new(Shop)
+      end
+    end
+  end
+
 end
