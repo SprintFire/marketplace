@@ -4,6 +4,7 @@ RSpec.describe UsersController, type: :controller do
   describe "Users controller" do
     login_user
     it "should have a current_user" do
+      p subject.current_user
       # note the fact that you should remove the "validate_session" parameter if this was a scaffold-generated controller
       expect(subject.current_user).to_not eq(nil)
     end
