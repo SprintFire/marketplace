@@ -19,8 +19,13 @@ RSpec.describe CategoryController, type: :controller do
         products << create(:product, shop: shop, category: category)
       end
 
+      category1 = create(:category, title: "AnotherCategory")
+      10.times do
+        create(:product, shop: shop, category: category1)
+      end
+
       get :show, id: category.id
-      expect(assigns(:products)).to eq(products)
+      expect(assigns(:products)).to match_array(products)
     end
   end
 end
