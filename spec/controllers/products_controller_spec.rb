@@ -39,5 +39,26 @@ RSpec.describe ProductsController, type: :controller do
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
+
+    it "goes to the editing product page" do
+      shop = create(:shop, user: subject.current_user)
+      product = create(:product, shop: shop)
+      p shop
+      p product
+      get :edit, { shop_id: shop.id, id: product.id }
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+
+    it "updates the product information" do
+      shop = create(:shop, user: subject.current_user)
+      product = create(:product, shop: shop)
+      p shop
+      put :update, { shop_id: shop.id, id: product.id, product: product.attributes = { name: 'New name' } }
+      product.reload
+      p product
+      expect(response).to redirect_to shop_product_path
+      expect(response).to have_http_status(302)
+    end
   end
 end

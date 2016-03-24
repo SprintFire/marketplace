@@ -35,8 +35,8 @@ Rails.application.routes.draw do
     get "withdrawals", to: "/withdrawals#index", as: "withdrawals"
   end
 
-  get 'products/', to: 'products#index'
-  get 'products/:id', to: 'products#show'
+  # get 'products/', to: 'products#index'
+  # get 'products/:id', to: 'products#show'
 
   # get "checkout/:id", to: "purchases#show", as: "checkout"
   # post "checkout/:id", to: "purchases#create"
