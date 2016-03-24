@@ -5,5 +5,6 @@ FactoryGirl.define do
     price Faker::Commerce.price
     association :shop
     quantity Faker::Number.number(3)
+    association :category
   end
 end
