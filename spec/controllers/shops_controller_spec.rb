@@ -17,7 +17,7 @@ RSpec.describe ShopsController, type: :controller do
 
   describe "GET#show" do
     it "assigns the requested shop to @shop" do
-      shop = FactoryGirl.create(:shop)
+      shop = create(:shop)
       get :show, id: shop
       assigns(:shop).should eq(shop)
     end
@@ -26,9 +26,24 @@ RSpec.describe ShopsController, type: :controller do
   describe "GET#new" do
     context "when initialized" do
       let(:shop) { Shop.new }
-      
+
       it "is a new shop" do
+        user = create(:user)
+        sign_in user
         expect(shop).to be_a_new(Shop)
+      end
+    end
+  end
+  
+  describe "POST#create" do
+    context "with valid attributes" do
+      it "creates a new shop" do
+        user = create(:user)
+        sign_in user
+        shop_attributes = attributes_for(:shop)
+        expect{
+          post :create, {shop: shop_attributes}
+        }.to change(Shop,:count).by(1)
       end
     end
   end
