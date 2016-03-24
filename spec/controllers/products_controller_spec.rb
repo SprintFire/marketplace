@@ -60,5 +60,14 @@ RSpec.describe ProductsController, type: :controller do
       expect(response).to redirect_to shop_product_path
       expect(response).to have_http_status(302)
     end
+
+    it "deletes the product" do
+      shop = create(:shop, user: subject.current_user)
+      product = create(:product, shop: shop)
+      p shop
+      delete :destroy, { shop_id: shop.id, id: product.id }
+      expect(response).to redirect_to dashboard_path
+      expect(response).to have_http_status(302)
+    end
   end
 end
