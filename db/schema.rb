@@ -82,15 +82,6 @@ ActiveRecord::Schema.define(version: 20160316155018) do
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
 
-  create_table "comments", force: :cascade do |t|
-    t.integer  "star_rating"
-    t.text     "body"
-    t.integer  "user_id",     null: false
-    t.integer  "product_id",  null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "commontator_comments", force: :cascade do |t|
     t.string   "creator_type"
     t.integer  "creator_id"
