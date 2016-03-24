@@ -15,7 +15,11 @@ RSpec.describe ShopsController, type: :controller do
     end
   end
 
-  describe "POST #create" do
-    context "with valid parameters"
+  describe "GET#show" do
+    it "assigns the requested shop to @shop" do
+      shop = FactoryGirl.create(:shop)
+      get :show, id: shop
+      assigns(:shop).should eq(shop)
+    end
   end
 end
