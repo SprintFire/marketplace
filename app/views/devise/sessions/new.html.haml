@@ -6,8 +6,6 @@
     .row
       .col-md-10.col-md-offset-1
 
-        = render partial: "shared/flash_alert"
-
         .social-connect-buttons
           %a.btn.btn-social.btn-facebook{href: user_omniauth_authorize_path(:facebook)}
             = fa_icon "facebook"
@@ -21,6 +19,8 @@
           %span or
 
         = form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: "form-login"}) do |f|
+
+          = render partial: "shared/flash_alert"
 
           .form-group.form-group-default
             = f.label :email
