@@ -2,29 +2,45 @@
   .card-header Log in
 
   .card-block
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    %br
+    .row
+      .col-md-10.col-md-offset-1
 
-      .form-group.form-group-default
-        = f.label :email
-        .controls
-          = f.email_field :email, autofocus: true, class: "form-control", required: true, placeholder: "Your Email", tabindex: "1"
+        = render partial: "shared/flash_alert"
 
-      .form-group.form-group-default
-        = f.label :password
-        .pull-xs-right 
-          %small= link_to "Forgot password?", new_password_path(resource_name)
-        .controls
-          = f.password_field :password, autocomplete: "off", class: "form-control", required: true, placeholder: "Your Password", tabindex: "2"
+        .social-connect-buttons
+          %a.btn.btn-social.btn-facebook{href: user_omniauth_authorize_path(:facebook)}
+            = fa_icon "facebook"
+            Connect with Facebook
+          %a.btn.btn-social.btn-google{href: user_omniauth_authorize_path(:google_oauth2)}
+            = fa_icon "google"
+            Connect with Google
 
-      .form-group
-        .row
-          .col-md-6
-            %small
-              New?
-              = link_to "Signup with email.", new_registration_path(resource_name)
+        %hr
+        %span.or
+          %span or
 
-          .col-md-6.text-xs-right
-            = f.submit "Sign in", class: "btn btn-primary"
-      
-  .card-footer
-    = render "devise/shared/links"
+        = form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: "form-login"}) do |f|
+
+          .form-group.form-group-default
+            = f.label :email
+            .controls
+              = f.email_field :email, autofocus: true, class: "form-control", required: true, placeholder: "Your Email", tabindex: "1"
+
+          .form-group.form-group-default
+            = f.label :password
+            .pull-xs-right
+              %small= link_to "Forgot password?", new_password_path(resource_name)
+            .controls
+              = f.password_field :password, autocomplete: "off", class: "form-control", required: true, placeholder: "Your Password", tabindex: "2"
+
+          .form-group
+            .row
+              .col-md-8
+                %span
+                  Register with email?
+                  %br
+                  = link_to "Register for free", new_registration_path(resource_name)
+
+              .col-md-4.text-xs-right
+                = f.submit "Sign in", class: "btn btn-primary"
