@@ -1,10 +1,10 @@
 - if f.errors.any?
   .alert.alert-dismissible.alert-danger{role: 'alert'}
-    %button.close{'aria-label': 'Close', 'data-dismiss': 'alert', type: 'button'}
-      %span{'aria-hidden': 'true'} &times;
+    %button.close{aria: {label: 'Close'}, data: {dismiss: 'alert'}, type: 'button'}
+      %span{aria: {hidden: 'true'}} &times;
     %h6
       There were
-      = pluralize(f.errors.count, 'error') 
+      = pluralize(f.errors.count, 'error')
       while trying to save...
     %ul
       - f.errors.full_messages.each do |msg|
