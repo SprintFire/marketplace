@@ -2,9 +2,10 @@
   @extend .box-shadow
 
   .card-header
-    background: #7B76CB
+    @extend .brand-gradient
+    border-bottom: 3px solid $brand-primary
+    text-transform: uppercase
     font-weight: bold
-    color: #FFFFFF
 
   .card-block
     color: $black
@@ -13,7 +14,7 @@
     background: #F5F8FD
 
   .card-header, .card-footer, .card-block
-    padding: 15px
+    padding: 20px
 
 .tab-bottom
   border-top-left-radius: 0

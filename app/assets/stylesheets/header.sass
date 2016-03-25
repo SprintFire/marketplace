@@ -1,5 +1,13 @@
 #top
-  background: $blue
+  background: $black
+  @extend .brand-gradient
+  @extend .box-shadow
+
+  .navbar-brand
+    text-transform: uppercase
+    margin-right: 20px
+    &:hover
+      text-decoration: none !important
 
   .navbar
     padding-left: 0px
@@ -8,14 +16,15 @@
 .nav-link, .navbar-brand
   color: $white
   &:hover
-    color: $gray
+    color: lighten($white, 0.5)
+    text-decoration: underline
 
 #heading
   background: white
-  border-bottom: 1px solid $greyBorder
 
 .breadcrumb
   background: white
+  padding: 0
 
 #heading .container
   padding-top: 0
