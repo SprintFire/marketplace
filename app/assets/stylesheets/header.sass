@@ -4,34 +4,29 @@
   @extend .menu-box-shadow
 
   .navbar-brand
+    color: $white
     text-transform: uppercase
     margin-right: 20px
     &:hover
+      color: lighten($white, 0.5)
       text-decoration: none !important
 
   .navbar
     padding-left: 0px
     padding-right: 0px
 
-.nav-link, .navbar-brand
-  color: $white
-  &:hover
-    color: lighten($white, 0.5)
-    text-decoration: underline
-
 #heading
   background: white
 
-.breadcrumb
-  background: white
-  padding: 0
+  .container
+    padding-top: 0
+    padding-bottom: 0
 
-#heading .container
-  padding-top: 0
-  padding-bottom: 0
+  .breadcrumb
+    margin-bottom: 0
+    background: transparent
+    padding: 0
 
-#heading .breadcrumb
-  margin-bottom: 0
 
 nav div ul li .categories
   padding-right: 1.5em

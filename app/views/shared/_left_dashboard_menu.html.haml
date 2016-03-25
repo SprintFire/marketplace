@@ -1,11 +1,17 @@
-.row#left-menu
-  .btn-group-vertical{"aria-label" => "Button group with nested dropdown", :role => "group"}
-    = link_to dashboard_path, class: 'btn btn-secondary' do
+%ul.nav.nav-pills.nav-stacked
+  %li.nav-item
+    = link_to dashboard_path, class: "nav-link #{is_active('pages', 'dashboard')}" do
       %i.fa.fa-home
       Dashboard
-    = link_to account_path, class: 'btn btn-secondary' do
+  %li.nav-item
+    = link_to account_path, class: "nav-link #{is_active('users', 'edit')}" do
       %i.fa.fa-cogs
       Preferences
+
+.row#left-menu
+
+  .btn-group-vertical{"aria-label" => "Button group with nested dropdown", :role => "group"}
+
     .btn-group{:role => "group"}
       %a#btnGroupDrop1.btn.btn-secondary.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
         %i.fa.fa-building

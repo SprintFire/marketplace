@@ -1,0 +1,18 @@
+%html.no-js{ lang: 'eng' }
+  %head
+    = render 'shared/head'
+  %body#dashboard{class: "#{params[:controller]} #{params[:action]}"}
+
+    = render 'shared/header'
+
+    = yield :header_fluid
+
+    #main
+      .container
+        .row
+          .col-md-3
+            = render 'shared/left_dashboard_menu'
+          .col-md-9
+            = yield
+
+    = render 'shared/footer'
