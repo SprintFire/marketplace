@@ -1,5 +1,6 @@
-#preference-view
-  .card#tab-head
+
+.card.tabs
+  .tab-head
     %ul.nav.nav-tabs{:role => "tablist"}
       %li.nav-item
         %a.nav-link.active{"data-toggle" => "tab", :href => "#about-you", :role => "tab"} Basic Information
@@ -8,7 +9,7 @@
       %li.nav-item
         %a.nav-link{"data-toggle" => "tab", :href => "#cards", :role => "tab"} My Cards
 
-  / Tab panes
+
   .tab-content
     #about-you.tab-pane.active{:role => "tabpanel"}
       .card.tab-bottom

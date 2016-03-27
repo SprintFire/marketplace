@@ -16,13 +16,18 @@
   .card-header, .card-footer, .card-block
     padding: 20px
 
-.tab-bottom
-  border-top-left-radius: 0
-  border-top-right-radius: 0
-  z-index: 9
+  &.tabs
+    .tab-head
+      padding-top: 10px
 
-#tab-head
-  margin-bottom: 0
-  border-bottom-left-radius: 0
-  border-bottom-right-radius: 0
-  z-index: 10
+    .nav-tabs
+      border-bottom: 2px solid $greyBorder
+      padding-left: 20px
+
+      .nav-link
+        border-color: transparent
+        margin-bottom: -1px
+        &.active
+          color: $brand-primary
+          background: transparent
+          border-bottom: 2px solid $brand-primary
