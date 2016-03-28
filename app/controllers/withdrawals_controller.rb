@@ -4,6 +4,8 @@ class WithdrawalsController < ApplicationController
   add_breadcrumb "Dashboard", :dashboard_path
   add_breadcrumb "Withdrawals", :dashboard_withdrawals_path
 
+  layout "dashboard"
+
   def index
     @shops = current_user.shops
 
@@ -32,11 +34,13 @@ class WithdrawalsController < ApplicationController
   end
 
   private
-  def withdrawals_params
-    params.require(:withdrawal).permit(:amount, :shop_id)
-  end
 
-  def set_shop
-    @shop = current_user.shops.find(params[:shop_id])
-  end
+    def withdrawals_params
+      params.require(:withdrawal).permit(:amount, :shop_id)
+    end
+
+    def set_shop
+      @shop = current_user.shops.find(params[:shop_id])
+    end
+
 end
