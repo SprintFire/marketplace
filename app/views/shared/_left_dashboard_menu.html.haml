@@ -11,6 +11,15 @@
     = link_to dashboard_my_shops_path, class: "nav-link #{is_active('shops', 'my_shops')}" do
       %i.fa.fa-building
       Your Shops
+    %ul
+      %li.nav-item
+        = link_to dashboard_my_shops_path, class: "nav-link #{is_active('shops', 'indes')}" do
+          %i.fa.fa-building
+          Your Shops
+      %li.nav-item
+        = link_to dashboard_my_shops_path, class: "nav-link #{is_active('shops', 'indes')}" do
+          %i.fa.fa-building
+          New Shops
   %li.nav-item
     = link_to dashboard_purchase_history_path, class: "nav-link #{is_active('purchases', 'index')}" do
       %i.fa.fa-shopping-bag

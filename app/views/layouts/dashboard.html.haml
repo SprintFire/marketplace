@@ -5,7 +5,7 @@
 
     = render 'shared/header'
 
-    = yield :header_fluid
+    = content_for?(:header_fluid) ? yield(:header_fluid) : render('dashboard/title_header')
 
     #main
       .container
