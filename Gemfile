@@ -59,6 +59,7 @@ group :development, :test do
   gem "faker"
   gem "factory_girl_rails", "~> 4.0"
   gem 'rspec-rails', '~> 3.0'
+  gem 'stripe-ruby-mock', '~> 2.2', require: 'stripe_mock'
   gem 'byebug'
   gem 'spring'
   gem 'letter_opener'
