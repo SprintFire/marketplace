@@ -3,7 +3,6 @@ class Shop < ActiveRecord::Base
   has_many :products, :dependent => :delete_all
   has_many :withdrawals
 
-
   validates :name, length: {minimum: 2}, presence:true
   validates :description, length: {minimum: 10}, presence: true
   validates :email_id, presence:true

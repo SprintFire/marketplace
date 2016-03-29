@@ -35,9 +35,6 @@ Rails.application.routes.draw do
     get "withdrawals", to: "/withdrawals#index", as: "withdrawals"
   end
 
-  # get "checkout/:id", to: "purchases#show", as: "checkout"
-  # post "checkout/:id", to: "purchases#create"
-
   get 'checkout/:id', to: "checkouts#new", as: "checkout"
   post "checkout/:id", to: "checkouts#checkout_new_card"
   post "checkout_current_card", to: "checkouts#checkout_current_card", as: "checkout_current_card"
@@ -56,5 +53,5 @@ Rails.application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  
+
 end
