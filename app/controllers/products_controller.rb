@@ -1,25 +1,24 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_shop
-  before_action :set_product, only: [:edit, :update, :destroy]
+  before_action :set_shop_user_product, only: [:edit, :update, :destroy]
 
   add_breadcrumb "Dashboard", :dashboard_path
   add_breadcrumb "Shops", :shops_path
   add_breadcrumb "Products", :shop_products_path
 
   def index
-    @products = Product.all.page params[:page]
+    @products = @shop.products.page params[:page]
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = @shop.products.find(params[:id])
     commontator_thread_show(@product)
-
     add_breadcrumb "#{@product.name}", shop_product_path(@product.shop.id, @product.id)
   end
 
   def new
-    @product = Product.new
+    @product = current_user.shops.find(params[:shop_id]).products.new
     add_breadcrumb "New Product", :new_shop_product_path
     @categories = Category.all
   end
@@ -61,7 +60,7 @@ class ProductsController < ApplicationController
       @shop = Shop.find(params[:shop_id])
     end
 
-    def set_product
+    def set_shop_user_product
       @product = current_user.shops.find(params[:shop_id]).products.find(params[:id])
     end
 
