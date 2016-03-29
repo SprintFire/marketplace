@@ -19,7 +19,6 @@ RSpec.describe ShopsController, type: :controller do
     it "assigns the requested shop to @shop" do
       shop = create(:shop)
       get :show, id: shop
-      # assigns(:shop).should eq(shop)
       expect(assigns(:shop)).to eq(shop)
     end
   end
