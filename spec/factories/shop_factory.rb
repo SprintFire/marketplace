@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :shop do
     name Faker::Company.name
-    description  Faker::Lorem.paragraph(15)
+    description  Faker::Lorem.characters(75)
     slug { "#{name}".downcase }
     association :user
     facebook_url Faker::Internet.url('facebook.com')
