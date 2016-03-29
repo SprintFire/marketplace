@@ -19,7 +19,7 @@ RSpec.describe ShopsController, type: :controller do
     it "assigns the requested shop to @shop" do
       shop = create(:shop)
       get :show, id: shop
-      assigns(:shop).should eq(shop)
+      expect(assigns(:shop)).to eq(shop)
     end
   end
 
@@ -83,7 +83,7 @@ RSpec.describe ShopsController, type: :controller do
       end
 
       it { expect(response).to render_template("edit") }
-      it { expect(@shop.name).should_not eq attr[:name] }
+      it { expect(@shop.name).to_not eq attr[:name] }
     end
   end
 
