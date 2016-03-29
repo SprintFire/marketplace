@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ShopsController, type: :controller do
-  
+
   describe "GET #index" do
     it "responds successfully with an HTTP 200 status code" do
       get :index
@@ -86,7 +86,9 @@ RSpec.describe ShopsController, type: :controller do
     end
 
     it "deletes the shop" do
-      delete :destroy, {id: @shop}
+      expect {
+        delete :destroy, {id: @shop}
+      }.to change{ Shop.count }.by(-1)
       expect(response).to redirect_to dashboard_path
       expect(response).to have_http_status(302)
     end
