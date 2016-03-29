@@ -24,7 +24,7 @@ RSpec.describe CheckoutsController, type: :controller do
   end
 
   describe "POST#checkout_current_card" do
-    it "processes charge" do
+    it "processes charge from current card" do
       charge = Stripe::Charge.create({
       customer: 'test',
       amount: 20,
@@ -34,5 +34,34 @@ RSpec.describe CheckoutsController, type: :controller do
       expect(charge.amount).to eq(20)
       expect(charge.currency).to eq('eur')
     end
+    #
+    # it "redirects back when an error is encountered" do
+    #
+    # end
+  end
+
+  describe "POST#checkout_new_card" do
+    it "creates a stripe customer" do
+      customer = Stripe::Customer.create({
+        email: 'johnny@appleseed.com',
+        card: stripe_helper.generate_card_token
+      })
+      expect(customer.email).to eq('johnny@appleseed.com')
+    end
+
+    it "processes charge from new card" do
+      charge = Stripe::Charge.create({
+        customer: 'test',
+        amount: 20,
+        description: 'Marketplace customer',
+        currency:'eur'
+      })
+    end
+
+    
+    #
+    # it "redirects back when an error is encountered" do
+    #
+    # end
   end
 end
