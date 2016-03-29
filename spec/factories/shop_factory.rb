@@ -7,7 +7,7 @@ FactoryGirl.define do
     facebook_url Faker::Internet.url('facebook.com')
     twitter_username Faker::Internet.url('twitter.com')
     instagram_username Faker::Internet.url('instagram.com')
-    contact_phone Faker::PhoneNumber.phone_number
+    contact_phone Faker::PhoneNumber.subscriber_number(20)
     email_id Faker::Internet.email
     longitude Faker::Address.longitude
     latitude Faker::Address.latitude
