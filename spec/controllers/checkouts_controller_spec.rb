@@ -34,10 +34,11 @@ RSpec.describe CheckoutsController, type: :controller do
       expect(charge.amount).to eq(20)
       expect(charge.currency).to eq('eur')
     end
-    #
-    # it "redirects back when an error is encountered" do
-    #
-    # end
+
+    it "redirects back when an error is encountered" do
+      expect(flash[:error]).to be_present
+      expect(response).to redirect_to(root_path)
+    end
   end
 
   describe "POST#checkout_new_card" do
@@ -58,10 +59,9 @@ RSpec.describe CheckoutsController, type: :controller do
       })
     end
 
-    
-    #
-    # it "redirects back when an error is encountered" do
-    #
-    # end
+    it "redirects back when an error is encountered" do
+      expect(flash[:error]).to be_present
+      expect(response).to redirect_to(root_path)
+    end
   end
 end
