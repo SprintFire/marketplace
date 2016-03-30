@@ -26,18 +26,26 @@ RSpec.describe CheckoutsController, type: :controller do
   describe "POST#checkout_current_card" do
     it "processes charge from current card" do
       charge = Stripe::Charge.create({
-      customer: 'test',
+      customer: 'John',
       amount: 20,
       currency: 'eur'})
       # expect(response).to redirect_to '?????'
-      expect(charge.customer).to eq('test')
+      expect(charge.customer).to eq('John')
       expect(charge.amount).to eq(20)
       expect(charge.currency).to eq('eur')
     end
 
     it "redirects back when an error is encountered" do
-      expect(flash[:error]).to be_present
-      expect(response).to redirect_to(root_path)
+      expect { Stripe::Charge.create(customer: 'Brian',amount: 1, currency: 'eur') }.to_not raise_error {|e|
+        expect(e).to be_a StandardError
+        expect(response).to redirect_to(root_path)
+      }
+    end
+
+    it "raises an error for an unrecognized card error code" do
+      expect { StripeMock.prepare_card_error(:non_existant_error_code) }.to raise_error {|e|
+        expect(e).to be_a(StripeMock::StripeMockError)
+      }
     end
   end
 
@@ -60,8 +68,16 @@ RSpec.describe CheckoutsController, type: :controller do
     end
 
     it "redirects back when an error is encountered" do
-      expect(flash[:error]).to be_present
-      expect(response).to redirect_to(root_path)
+      expect { Stripe::Charge.create(customer: 'Darren',amount: 10, currency: 'eur') }.to_not raise_error {|e|
+        expect(e).to be_a StandardError
+        expect(response).to redirect_to(root_path)
+      }
+    end
+    
+    it "raises an error for an unrecognized card error code" do
+      expect { StripeMock.prepare_card_error(:non_existant_error_code) }.to raise_error {|e|
+        expect(e).to be_a(StripeMock::StripeMockError)
+      }
     end
   end
 end
