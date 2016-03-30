@@ -37,7 +37,7 @@ RSpec.describe SearchController, type: :controller do
         expect(response).to have_http_status(200)
       end
 
-      it "searches correct coordinates" do
+      it "searches correct location" do
         get :index, {search: {lat: @shop.latitude, lng: @shop.longitude}}
         expect(assigns(:shops)).to eq([@shop])
         expect(assigns(:products)).to eq([@product])
@@ -258,7 +258,7 @@ RSpec.describe SearchController, type: :controller do
         expect(response).to have_http_status(200)
       end
 
-      it "searches correct coordinates" do
+      it "searches correct location" do
         sign_out :user
         get :index, {search: {lat: @shop.latitude, lng: @shop.longitude}}
         expect(assigns(:shops)).to eq([@shop])
