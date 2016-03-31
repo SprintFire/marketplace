@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "Association test of" do
+    describe "relationships" do
+      it "has many products" do
+        should have_many(:products)
+      end
+    end # describe
+  end # context
 end
