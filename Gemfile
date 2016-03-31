@@ -55,6 +55,8 @@ gem 'fog'
 
 gem "breadcrumbs_on_rails"
 
+gem 'grape'
+
 group :development, :test do
   gem 'byebug'
   gem 'spring'
