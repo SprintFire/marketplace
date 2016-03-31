@@ -28,6 +28,30 @@ RSpec.describe User, type: :model do
       it "is invalid if the password is more than 20 characters" do
         should validate_length_of(:password).is_at_most(20).on(:create)
       end
+
+      it "is invalid if the first name is less than 2 characters" do
+        should validate_length_of(:first_name).is_at_least(2).on(:create)
+      end
+
+      it "is invalid if the first name is more than 15 characters" do
+        should validate_length_of(:first_name).is_at_most(15).on(:create)
+      end
+    end # describe
+  end # context
+
+  context "Association test of" do
+    describe "relationships" do
+      it "has many shops" do
+        should have_many(:shops)
+      end
+
+      it "has many purchases" do
+        should have_many(:purchases)
+      end
+
+      it "has many cards" do
+        should have_many(:cards)
+      end
     end # describe
   end # context
 end
