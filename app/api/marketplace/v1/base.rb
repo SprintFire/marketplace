@@ -7,7 +7,7 @@ module Marketplace
       mount Marketplace::V1::Shops
       mount Marketplace::V1::Products
       mount Marketplace::V1::Categories
-      # mount Marketplace::V1::AdminUsers
+      mount Marketplace::V1::AdminUsers
     end # class
   end # module V1
 end # moducle Marketplace
