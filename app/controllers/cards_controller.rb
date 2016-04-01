@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     # create the customer account on stripe
