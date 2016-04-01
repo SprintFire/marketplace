@@ -49,9 +49,9 @@
                   .col-md-4
                     = "**** **** **** " + card.card_last_4
                   .col-md-4
-                    = link_to "Delete Card", delete_card_path(customer_id: card.stripe_customer_id, card_id: card.stripe_card_id), method: :delete
+                    = link_to "Delete Card", card_path(customer_id: card.stripe_customer_id, id: card.stripe_card_id), method: :delete
 
-        = form_tag(add_card_path, method: :post) do
+        = form_tag(cards_path, method: :post) do
           %article
             - if flash[:error].present?
               #error_explanation

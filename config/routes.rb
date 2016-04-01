@@ -20,8 +20,9 @@ Rails.application.routes.draw do
 
   # cards
 
-  post "add_card", to: "cards#create", as: "add_card"
-  delete "delete_card", to: "cards#destroy", as: "delete_card"
+  resources :cards, only: [:create, :destroy]
+  # post "add_card", to: "cards#create", as: "add_card"
+  # delete "delete_card", to: "cards#destroy", as: "delete_card"
   root 'pages#home'
 
   resources :shops do

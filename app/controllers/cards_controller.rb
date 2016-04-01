@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+
   def create
     # create the customer account on stripe
     customer = Stripe::Customer.create(
@@ -18,9 +19,9 @@ class CardsController < ApplicationController
   def destroy
 
     customer = Stripe::Customer.retrieve(params[:customer_id])
-    customer.sources.retrieve(params[:card_id]).delete
+    customer.sources.retrieve(params[:id]).delete
 
-    current_user.cards.find_by(stripe_card_id: params[:card_id]).destroy
+    current_user.cards.find_by(stripe_card_id: params[:id]).destroy
 
     flash[:success] = "Card deleted!"
     redirect_to account_path
