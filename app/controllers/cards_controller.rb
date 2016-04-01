@@ -13,7 +13,7 @@ class CardsController < ApplicationController
     redirect_to account_path
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to root_path
+    redirect_to account_path
   end
 
   def destroy
