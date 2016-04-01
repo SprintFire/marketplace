@@ -16,9 +16,12 @@ Rails.application.routes.draw do
 
   get "account", to: 'users#edit', as: :account
   patch "account", to: 'users#update'
-  delete "delete_card", to: "users#delete_card", as: "delete_card"
-  post "add_card", to: "users#add_card", as: "add_card"
 
+
+  # cards
+
+  post "add_card", to: "cards#create", as: "add_card"
+  delete "delete_card", to: "cards#destroy", as: "delete_card"
   root 'pages#home'
 
   resources :shops do
