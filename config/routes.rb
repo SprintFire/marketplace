@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount API => '/'
+  # mount API => '/'
   get 'search', to: 'search#index', as: 'search'
   get 'category/:id', to: 'category#show', as: 'category'
 
