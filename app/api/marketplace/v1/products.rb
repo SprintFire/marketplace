@@ -15,5 +15,5 @@ class Marketplace::V1::Products < Grape::API
         Product.find(params[:id])
       end
     end
-  end # resource
+  end # resource :products
 end
