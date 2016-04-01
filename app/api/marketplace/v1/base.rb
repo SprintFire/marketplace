@@ -8,6 +8,8 @@ module Marketplace
       mount Marketplace::V1::Products
       mount Marketplace::V1::Categories
       mount Marketplace::V1::AdminUsers
+      mount Marketplace::V1::Purchases
+      mount Marketplace::V1::Withdrawals
     end # class
   end # module V1
 end # moducle Marketplace

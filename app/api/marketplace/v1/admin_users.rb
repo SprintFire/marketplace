@@ -15,5 +15,5 @@ class Marketplace::V1::AdminUsers < Grape::API
         AdminUser.find(params[:id])
       end
     end
-  end
+  end # resource
 end
