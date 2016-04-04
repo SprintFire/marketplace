@@ -79,13 +79,35 @@ class Marketplace::V1::Users < Grape::API
 
     desc "return the information of a user"
     params do
-      requires :id, type: Integer, desc: "user id"
+      requires :id, type: Integer, desc: 'user id'
     end
 
     route_param :id do
       get do
         User.find(params[:id])
       end
+
+      resource :edit do
+        desc "edit the information of a user"
+        params do
+          requires :id, type: Integer, desc: 'user id'
+          optional :first_name, type: String, desc: 'First name'
+          optional :last_name,  type: String, desc: 'Last name'
+          optional :password, type: String, desc: 'Password'
+        end
+
+        put do
+          authenticate!
+          user = User.find(params[:id])
+
+          if user.update(params)
+            present user
+          else
+            render_401_error(user)
+          end
+        end
+      end
     end
+
   end # resource :users
 end
