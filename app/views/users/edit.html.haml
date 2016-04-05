@@ -39,7 +39,7 @@
 
 
       #cards.tab-pane{:role => "tabpanel"}
-        - unless @cards.empty?
+        - if @cards[0]
           .card.tab-bottom
             .card-block
               - @cards.each do |card|
@@ -50,3 +50,5 @@
                     = "**** **** **** " + card.card_last_4
                   .col-md-4
                     = link_to "Delete Card", delete_card_path(customer_id: card.stripe_customer_id, card_id: card.stripe_card_id), method: :delete
+        - else
+          No Cards Added Yet
