@@ -15,6 +15,13 @@ class Marketplace::V1::Shops < Grape::API
         Shop.find(params[:id])
       end
 
+      resource :products do
+        desc "List all products in given category"
+        get do
+          Product.where(shop_id: params[:id]).all
+        end
+      end
+
       resource :new do
         desc "create a product in this shop"
         params do
@@ -35,6 +42,7 @@ class Marketplace::V1::Shops < Grape::API
             shop_id: params[:id],
             category_id: params[:category_id] || Category.find_by(title: 'Uncategorized').id
           )
+          authorize product, :update?
           if product.save
             present product
           else
