@@ -87,6 +87,13 @@ class Marketplace::V1::Users < Grape::API
         User.find(params[:id])
       end
 
+      resource :cards do
+        desc "get all the cards"
+        get do
+          Card.where(user_id: params[:id]).all
+        end
+      end
+
       resource :edit do
         desc "edit the information of a user"
         params do
