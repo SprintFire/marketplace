@@ -15,6 +15,11 @@ class Marketplace::V1::Products < Grape::API
         Product.find(params[:id])
       end
 
+      delete do
+        authenticate!
+        Product.delete(params[:id])
+      end
+
       resource :edit do
         desc "edit the product"
         params do

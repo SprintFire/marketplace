@@ -15,6 +15,11 @@ class Marketplace::V1::Shops < Grape::API
         Shop.find(params[:id])
       end
 
+      delete do
+        authenticate!
+        Shop.delete(params[:id])
+      end
+
       resource :products do
         desc "List all products in given category"
         get do
@@ -42,7 +47,6 @@ class Marketplace::V1::Shops < Grape::API
             shop_id: params[:id],
             category_id: params[:category_id] || Category.find_by(title: 'Uncategorized').id
           )
-          authorize product, :update?
           if product.save
             present product
           else
@@ -75,5 +79,6 @@ class Marketplace::V1::Shops < Grape::API
         end
       end
     end # resource :new
+
   end # resource :shops
 end
