@@ -94,6 +94,42 @@ class Marketplace::V1::Users < Grape::API
         end
       end
 
+      resource :purchases do
+        desc "list all purchases of a user"
+        get do
+          Purchase.where(user_id: params[:id]).all
+        end
+      end
+
+      resource :purchase do
+        desc "make a new purchase"
+        params do
+          requires :id, :type => Integer, :desc => "user id"
+          requires :product_id, type: Integer, desc: 'product id'
+          requires :quantity, type: Integer, desc: 'quantity'
+          requires :price, type: Float, desc: 'price'
+          optional :stripe_charge_id, type: String, desc: 'stripe charge id'
+          optional :shop_profit, type: Integer, desc: 'shop profit'
+        end
+
+        post do
+          authenticate!
+          purchase = Purchase.new(
+            user_id: params[:id],
+            product_id: params[:product_id],
+            price: params[:price],
+            quantity: params[:quantity],
+            stripe_charge_id: params[:stripe_charge_id],
+            shop_profit: params[:shop_profit]
+          )
+          if purchase.save
+            present purchase
+          else
+            render_401_error(purchase)
+          end
+        end # post
+      end
+
       resource :edit do
         desc "edit the information of a user"
         params do
