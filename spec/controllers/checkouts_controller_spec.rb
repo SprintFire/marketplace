@@ -51,7 +51,7 @@ RSpec.describe CheckoutsController, type: :controller do
       #   cards = create(:card, :user => subject.current_user)
       # }.to change { Card.count }
 
-      expect { Stripe::Charge.create(customer: 'Brian',amount: 1, currency: 'eur') }.to eq(stripe_customer_id && stripe_card_id)
+      expect { Stripe::Charge.create(customer: 'Brian',amount: 1, currency: 'eur') }.to be_present
     end
   end
 
