@@ -17,7 +17,6 @@ RSpec.describe CheckoutsController, type: :controller do
     it "goes to the checkout page" do
       product = create(:product, shop: @shop)
       get :new, id: product.id
-      cards = create(:card, :user => subject.current_user)
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
@@ -29,7 +28,6 @@ RSpec.describe CheckoutsController, type: :controller do
       customer: 'John',
       amount: 20,
       currency: 'eur'})
-      # expect(response).to redirect_to '?????'
       expect(charge.customer).to eq('John')
       expect(charge.amount).to eq(20)
       expect(charge.currency).to eq('eur')
@@ -46,6 +44,14 @@ RSpec.describe CheckoutsController, type: :controller do
       expect { StripeMock.prepare_card_error(:non_existant_error_code) }.to raise_error {|e|
         expect(e).to be_a(StripeMock::StripeMockError)
       }
+    end
+
+    it "checks if the record is saved to database" do
+      # expect {
+      #   cards = create(:card, :user => subject.current_user)
+      # }.to change { Card.count }
+
+      expect { Stripe::Charge.create(customer: 'Brian',amount: 1, currency: 'eur') }.to eq(stripe_customer_id)
     end
   end
 
@@ -73,11 +79,17 @@ RSpec.describe CheckoutsController, type: :controller do
         expect(response).to redirect_to(root_path)
       }
     end
-    
+
     it "raises an error for an unrecognized card error code" do
       expect { StripeMock.prepare_card_error(:non_existant_error_code) }.to raise_error {|e|
         expect(e).to be_a(StripeMock::StripeMockError)
       }
+    end
+
+    it "checks if the record is saved to database" do
+      expect {
+        cards = create(:card, :user => subject.current_user)
+      }.to change { Card.count }
     end
   end
 end

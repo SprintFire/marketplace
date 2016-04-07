@@ -7,7 +7,9 @@ ActiveAdmin.register Purchase do
     column :product_id
     column :created_at
     column :updated_at
-    column :price
+    column :price do |product|
+      number_to_currency product.price , unit: "€"
+    end
     column :quantity
     column :stripe_charge_id
     actions
