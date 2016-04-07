@@ -31,6 +31,9 @@ RSpec.describe CheckoutsController, type: :controller do
       expect(charge.customer).to eq('John')
       expect(charge.amount).to eq(20)
       expect(charge.currency).to eq('eur')
+      expect(charge.customer).to be_present
+      expect(charge.amount).to be_present
+      expect(charge.currency).to be_present
     end
 
     it "redirects back when an error is encountered" do
@@ -47,11 +50,9 @@ RSpec.describe CheckoutsController, type: :controller do
     end
 
     it "checks if the record is saved to database" do
-      # expect {
-      #   cards = create(:card, :user => subject.current_user)
-      # }.to change { Card.count }
-
-      expect { Stripe::Charge.create(customer: 'Brian',amount: 1, currency: 'eur') }.to be_present
+      expect {
+        cards = create(:card, :user => subject.current_user)
+      }.to change { Card.count }
     end
   end
 
@@ -71,6 +72,9 @@ RSpec.describe CheckoutsController, type: :controller do
         description: 'Marketplace customer',
         currency:'eur'
       })
+      expect(charge.customer).to be_present
+      expect(charge.amount).to be_present
+      expect(charge.currency).to be_present
     end
 
     it "redirects back when an error is encountered" do
