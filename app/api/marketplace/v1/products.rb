@@ -41,7 +41,6 @@ class Marketplace::V1::Products < Grape::API
         put do
           authenticate!
           product = Product.find(params[:id])
-          authorize product, :update?
           if product.update(params)
             present product
           else
