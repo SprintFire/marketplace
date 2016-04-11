@@ -9,7 +9,6 @@ class CheckoutsController < ApplicationController
     @cards = current_user.cards
   end
 
-
   def checkout_current_card
     @charge = Stripe::Charge.create(
       :customer => params[:customer_id],
