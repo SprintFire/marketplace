@@ -19,16 +19,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def delete_card
-    customer = Stripe::Customer.retrieve(params[:customer_id])
-    customer.sources.retrieve(params[:card_id]).delete
-
-    current_user.cards.find_by(stripe_card_id: params[:card_id]).destroy
-
-    flash[:success] = "Card deleted!"
-    redirect_to account_path
-  end
-
   private
   def user_params
     params.require(:user).permit(:first_name, :last_name)
