@@ -5,5 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-AdminUser.create!(email: 'godmode@sprintfire.com', password: 'iamyourfather', password_confirmation: 'iamyourfather')
+
+AdminUser.create!(email: 'admin@sprintfire.com', password: 'Spr!ntFire2016', password_confirmation: 'Spr!ntFire2016')
+
 Category.create!(title: 'Uncategorized', description: 'This is the default category.')

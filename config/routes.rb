@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'search', to: 'search#index', as: 'search'
-  get 'category/:id', to: 'category#show', as: 'category'
+
+  root 'pages#home'
 
   devise_for :users, path: "", path_names: {
     sign_in: 'login',
@@ -19,14 +19,16 @@ Rails.application.routes.draw do
 
   resources :cards, only: [:create, :destroy]
 
-  root 'pages#home'
-
   resources :shops do
     resources :withdrawals, only: [:new, :create]
     @shops = Shop.all
     resources :products do
     end
   end
+
+
+  get 'search', to: 'search#index', as: 'search'
+  get 'category/:id', to: 'category#show', as: 'category'
 
   namespace :dashboard do
     get "/" => "/pages#dashboard", as: "/"
@@ -50,5 +52,4 @@ Rails.application.routes.draw do
 
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
-
 end
