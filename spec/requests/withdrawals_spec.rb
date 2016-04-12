@@ -8,7 +8,6 @@ RSpec.describe "Withdrawals", type: :request do
       expect(JSON.parse(response.body)).to be_an_instance_of(Array)
       expect(response.body).to eq Withdrawal.all.to_json
     end
-
     it "GET /api/v1/withdrawals/:id" do
       # withdrawal = create(:withdrawal)
       # get "/api/v1/withdrawals/#{withdrawal.id}"
