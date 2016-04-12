@@ -16,4 +16,13 @@ RSpec.describe "Users", type: :request do
       expect(response).to have_http_status(400)
     end
   end
+
+  describe "POST /api/v1/users/auth/sign_up" do
+    it 'logs in a user' do
+      user = create(:user)
+      params = {email: "#{user.email}", password: "#{user.password}"}
+      post '/api/v1/users/auth/sign_in', params.to_json, {'ACCEPT': "application/json", 'CONTENT_TYPE': 'multipart/form-data'}
+      expect(response).to have_http_status(400)
+    end
+  end
 end
