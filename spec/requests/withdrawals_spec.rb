@@ -15,6 +15,7 @@ RSpec.describe "Withdrawals", type: :request do
       get "/api/v1/withdrawals/#{withdrawal.id}"
       expect(response.body).to eq withdrawal.to_json
       expect(response).to have_http_status(200)
+
     end
   end
 end
