@@ -58,6 +58,11 @@ gem "breadcrumbs_on_rails"
 gem 'grape'
 
 group :development, :test do
+  gem "faker"
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'rspec-rails', '~> 3.0'
+  gem 'stripe-ruby-mock', '~> 2.2', require: 'stripe_mock'
+  gem 'shoulda-matchers', '~> 3.1'
   gem 'byebug'
   gem 'spring'
   gem 'letter_opener'

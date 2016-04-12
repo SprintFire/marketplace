@@ -2,8 +2,26 @@
   .card-header Sign up
 
   .card-block
+    = render partial: "shared/flash_alert"
+
+    .row
+      .col-md-6
+        %a.btn.btn-social.btn-facebook{href: user_omniauth_authorize_path(:facebook)}
+          = fa_icon "facebook"
+          Connect with Facebook
+      .col-md-6
+        %a.btn.btn-social.btn-google{href: user_omniauth_authorize_path(:google_oauth2)}
+          = fa_icon "google"
+          Connect with Google
+
+    %hr
+    %span.or
+      %span or
+
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+
       = render 'shared/form_errors', f: resource
+
       .row
         .col-sm-6
           .form-group.form-group-default
@@ -43,6 +61,3 @@
               %a.text-info{:href => "#"} Privacy Policy
         .col-md-6.text-xs-right
           = f.submit "Sign up", class: "btn btn-primary btn-cons m-t-10"
-
-  .card-footer
-    = render "devise/shared/links"
