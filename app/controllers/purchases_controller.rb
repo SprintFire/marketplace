@@ -4,6 +4,8 @@ class PurchasesController < ApplicationController
   add_breadcrumb "Dashboard", :dashboard_path
   add_breadcrumb "Purchases History", :dashboard_purchase_history_path
 
+  layout "dashboard"
+
   def index
     @purchases = current_user.purchases.all
   end

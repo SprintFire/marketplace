@@ -5,8 +5,10 @@ class ShopsController < ApplicationController
   add_breadcrumb "Dashboard", :dashboard_path
   add_breadcrumb "Shops", :shops_path
 
+  layout "dashboard", only: [:my_shops, :new]
+
   def index
-    @shops = current_user.shops.page params[:page]
+    @shops = Shop.all.page params[:page]
   end
 
   def my_shops

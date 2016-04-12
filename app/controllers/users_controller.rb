@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  layout "dashboard", only: [:edit, :update]
+
   add_breadcrumb "Dashboard", :dashboard_path
   add_breadcrumb "My Account", :account_path
 

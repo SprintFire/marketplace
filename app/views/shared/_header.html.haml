@@ -1,3 +1,5 @@
+= render 'shared/flash_banner'
+
 #top
   .container
     %nav.navbar.navbar-static-top
@@ -21,7 +23,8 @@
             %li.nav-item.pull-xs-right
               =link_to 'Login', new_user_session_path, class: 'nav-link'
 
-#heading
-  .container
-    .row
-      = render 'shared/breadcrumbs'
+  #heading
+    .container
+      .row
+        .col-md-12
+          = render 'shared/breadcrumbs'
