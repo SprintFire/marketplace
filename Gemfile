@@ -55,6 +55,8 @@ gem 'fog'
 
 gem "breadcrumbs_on_rails"
 
+gem 'grape'
+
 group :development, :test do
   gem "faker"
   gem "factory_girl_rails", "~> 4.0"
