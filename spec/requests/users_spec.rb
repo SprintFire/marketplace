@@ -6,6 +6,7 @@ RSpec.describe "Users", type: :request do
       get '/api/v1/users'
       expect(JSON.parse(response.body)).to be_an_instance_of(Array)
       expect(response.body).to eq User.all.to_json
+      expect(response).to have_http_status(200)
     end
   end
 
@@ -56,6 +57,6 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "POST /api/v1/users/:id/purchases" do
-    
+
   end
 end
