@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  layout "dashboard", only: [:edit, :update]
+
   add_breadcrumb "Dashboard", :dashboard_path
   add_breadcrumb "My Account", :account_path
 
@@ -17,16 +19,6 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def delete_card
-    customer = Stripe::Customer.retrieve(params[:customer_id])
-    customer.sources.retrieve(params[:card_id]).delete
-
-    current_user.cards.find_by(stripe_card_id: params[:card_id]).destroy
-
-    flash[:success] = "Card deleted!"
-    redirect_to account_path
   end
 
   private
