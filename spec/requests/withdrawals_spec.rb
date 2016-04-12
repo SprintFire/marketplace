@@ -12,6 +12,7 @@ RSpec.describe "Withdrawals", type: :request do
     it "Returns the information of a withdrawal" do
       get '/api/v1/withdrawals/1'
       expect(JSON.parse(response.body)).to be_an_instance_of(Hash)
+      # expect(response.body).to eq Withdrawal.where(id: 1).to_json
     end
   end
 end
