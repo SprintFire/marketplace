@@ -33,6 +33,7 @@ module Marketplace
       mount Marketplace::V1::AdminUsers
       mount Marketplace::V1::Purchases
       mount Marketplace::V1::Withdrawals
+      mount Marketplace::V1::Cards
     end # class
   end # module V1
 end # moducle Marketplace

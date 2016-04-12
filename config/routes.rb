@@ -26,7 +26,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   get 'search', to: 'search#index', as: 'search'
   get 'category/:id', to: 'category#show', as: 'category'
 

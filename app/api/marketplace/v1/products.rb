@@ -20,6 +20,13 @@ class Marketplace::V1::Products < Grape::API
         Product.delete(params[:id])
       end
 
+      resource :comments do
+        desc "get the comments"
+        get do
+          Commontator_comments.where(thread_id: params[:id]).all
+        end
+      end
+
       resource :edit do
         desc "edit the product"
         params do
@@ -34,7 +41,6 @@ class Marketplace::V1::Products < Grape::API
         put do
           authenticate!
           product = Product.find(params[:id])
-          authorize product, :update?
           if product.update(params)
             present product
           else
