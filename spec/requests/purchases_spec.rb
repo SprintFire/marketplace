@@ -10,7 +10,10 @@ RSpec.describe "Purchases", type: :request do
       end
 
       it "GET /api/v1/purchases/:id" do
-        purchase = create(:purchase)
+        user = create(:user)
+        shop = create(:shop, user: user)
+        product = create(:product, shop: shop)
+        purchase = create(:purchase, product: product)
         get "/api/v1/purchases/#{purchase.id}"
         expect(response.body).to eq purchase.to_json
         expect(response).to have_http_status(200)
