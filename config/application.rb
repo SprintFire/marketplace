@@ -28,5 +28,9 @@ module Marketplace
 
     # Error handling
     config.exceptions_app = self.routes
+
+    # Configure API path
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
   end
 end

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  mount Marketplace::API => '/'
   root 'pages#home'
 
   devise_for :users, path: "", path_names: {
@@ -25,7 +25,6 @@ Rails.application.routes.draw do
     resources :products do
     end
   end
-
 
   get 'search', to: 'search#index', as: 'search'
   get 'category/:id', to: 'category#show', as: 'category'
