@@ -9,11 +9,16 @@ RSpec.describe "Withdrawals", type: :request do
       expect(response.body).to eq Withdrawal.all.to_json
       expect(response).to have_http_status(200)
     end
+
     it "GET /api/v1/withdrawals/:id" do
-      # withdrawal = create(:withdrawal)
-      # get "/api/v1/withdrawals/#{withdrawal.id}"
-      # expect(response.body).to eq withdrawal.to_json
-      # expect(response).to have_http_status(200)
+      user = create(:user, email: "example@example.com")
+      shop = create(:shop, user: user)
+      product = create(:product, shop: shop)
+      purchase = create(:purchase, product: product)
+      withdrawal = create(:withdrawal, shop: shop)
+      get "/api/v1/withdrawals/#{withdrawal.id}"
+      expect(response.body).to eq withdrawal.to_json
+      expect(response).to have_http_status(200)
 
     end
   end
