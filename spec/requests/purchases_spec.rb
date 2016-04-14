@@ -10,7 +10,7 @@ RSpec.describe "Purchases", type: :request do
     end
 
     it "GET /api/v1/purchases/:id" do
-      user = create(:user)
+      user = create(:user, email: "example@example.com")
       shop = create(:shop, user: user)
       product = create(:product, shop: shop)
       purchase = create(:purchase, product: product)
