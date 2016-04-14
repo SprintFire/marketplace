@@ -11,7 +11,9 @@ RSpec.describe "Withdrawals", type: :request do
     end
 
     it "GET /api/v1/withdrawals/:id" do
-      withdrawal = create(:withdrawal)
+      user = create(:user)
+      shop = create(:shop, user: user)
+      withdrawal = create(:withdrawal, shop: shop)
       get "/api/v1/withdrawals/#{withdrawal.id}"
       expect(response.body).to eq withdrawal.to_json
       expect(response).to have_http_status(200)
